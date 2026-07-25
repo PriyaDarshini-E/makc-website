@@ -287,8 +287,8 @@ export default function AutomationPage() {
             <div className="lg:row-span-2 relative rounded-2xl overflow-hidden min-h-[400px] lg:min-h-0 group">
               <img
                 src={serviceLightingImg}
-                alt="Personalized smart lighting atmosphere"
-                title="Personalized Smart Lighting"
+                alt="Industrial and Commercial Lighting Automation Solutions"
+                title="Lighting Automation Services"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />

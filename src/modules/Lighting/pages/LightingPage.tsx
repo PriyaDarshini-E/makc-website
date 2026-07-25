@@ -31,8 +31,8 @@ const LIGHTING_SLIDES = [
     description:
       "Express your style with millions of colors. Control brightness, warmth, and dynamic color-changing effects directly from your touch panel or smartphone.",
     image: getImageUrl("rgbmod.webp"),
-    imageAlt: "RGB smart LED lighting system with customizable color control",
-    imageTitle: "RGB Smart Lighting System",
+    imageAlt: "RGB LED Lighting Module for Smart Lighting Automation",
+    imageTitle: "RGB LED Lighting Module",
     icon: Palette,
   },
   {
@@ -42,8 +42,8 @@ const LIGHTING_SLIDES = [
     description:
       "Smoothly adjust light intensity and color temperature from warm white to cool daylight, reducing eye strain and matching your natural circadian rhythm.",
     image: getImageUrl("dimeLight.webp"),
-    imageAlt: "Smart dimmable LED lighting control system for modern homes",
-    imageTitle: "Smart Dimmable Lighting",
+    imageAlt: "Smart Dimmable LED Lighting Control Solution",
+    imageTitle: "Dimmable LED Lighting System",
     icon: SunDim,
   },
   {
@@ -53,8 +53,8 @@ const LIGHTING_SLIDES = [
     description:
       "Enhance home curb appeal and security with automated exterior lighting. Program garden, compound, and facade lights to sync with sunset and sunrise.",
     image: getImageUrl("outdoorImage1.webp"),
-    imageAlt: "Luxury villa with automated outdoor landscape lighting",
-    imageTitle: "Smart Outdoor Lighting",
+    imageAlt: "Outdoor LED Lighting Solution for Commercial and Industrial Spaces",
+    imageTitle: "Outdoor Lighting Solutions",
     icon: Trees,
   },
 ];
