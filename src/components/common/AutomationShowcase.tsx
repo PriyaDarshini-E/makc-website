@@ -290,7 +290,7 @@ export default function AutomationShowcase({
               }`}
             >
               {/* Large glowing backdrop number */}
-              <span className="text-8xl lg:text-[110px] font-bold font-display tracking-[-0.04em] text-[rgba(var(--accent-color-rgb),0.3)] dark:text-[rgba(var(--accent-color-rgb),0.9)] select-none leading-none -ml-1.5 block">
+              <span className="text-6xl sm:text-8xl lg:text-[110px] font-bold font-display tracking-[-0.04em] text-[rgba(var(--accent-color-rgb),0.3)] dark:text-[rgba(var(--accent-color-rgb),0.9)] select-none leading-none -ml-1.5 block">
                 {activeTab.id}
               </span>
 

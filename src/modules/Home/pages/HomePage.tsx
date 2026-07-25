@@ -1,55 +1,85 @@
 import useSEO from "@/hooks/useSEO";
-import HeroSection from '@/modules/Home/sections/HeroSection';
-import ServicesSection from '@/modules/Home/sections/ServicesSection';
-import IndustriesSection from '@/modules/Home/sections/IndustriesSection';
-import OurVendorsSection from '@/modules/Home/sections/OurVendorsSection';
-import AboutSection from '@/modules/Home/sections/AboutSection';
-import WhyMAKcSection from '@/modules/Home/sections/WhyMAKcSection';
-import LocationSection from '@/modules/Home/sections/LocationSection';
-import FAQSection from '@/modules/Home/sections/FAQSection';
+import type { ReactNode } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import HeroSectionV2 from "../sections/HeroSectionV2";
 
-const homeFAQs = [
-  {
-    question: "WHAT SERVICES DO YOU SPECIALIZE IN?",
-    answer: "We deliver end-to-end design, contracting, and integration services across smart home automation, security surveillance, architectural lighting control, high-performance IT/OT networking, and motorized shades/AV interior systems."
-  },
-  {
-    question: "DO YOU WORK ON RESIDENTIAL AND COMMERCIAL PROJECTS?",
-    answer: "Yes. We execute projects ranging from luxury residential villas and high-rise apartments to corporate offices, hospitality spaces, and retail environments across the region."
-  },
-  {
-    question: "CAN YOU INTEGRATE MULTIPLE PROTOCOLS AND BRANDS?",
-    answer: "Yes, integration is our core strength. We unify systems running on KNX, Lutron, Crestron, Control4, Modbus, and BACnet, allowing them to communicate seamlessly and be controlled from a single interface."
-  },
-  {
-    question: "DO YOU PROVIDE POST-HANDOVER SUPPORT?",
-    answer: "Absolutely. We offer tailored maintenance agreements (SLA) that include 24/7 technical support, remote troubleshooting, system health checks, and firmware updates to ensure long-term reliability."
-  },
-  {
-    question: "HOW CAN I GET A QUOTATION FOR MY PROPERTY?",
-    answer: "Simply get in touch with us using the Contact Us form or phone number. Our design engineers will study your electrical layouts or architectural drawings to prepare a comprehensive, customized proposal."
-  }
-];
+// Lazy load below-the-fold sections to shrink the initial page load JS payload
+const ServicesSection = lazy(() => import("../sections/ServicesSection"));
+const PartnerLogosSection = lazy(
+  () => import("../sections/PartnerLogosSection"),
+);
+const SolutionsGallery = lazy(
+  () => import("@/components/common/SolutionsGallery"),
+);
 
-export default function HomePage() {
+function LazyOnView({
+  children,
+  minHeight = 520,
+}: {
+  children: ReactNode;
+  minHeight?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    if (shouldRender) return;
+
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldRender(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [shouldRender]);
+
+  return (
+    <div ref={ref} style={shouldRender ? undefined : { minHeight }}>
+      {shouldRender ? <Suspense fallback={null}>{children}</Suspense> : null}
+    </div>
+  );
+}
+
+export default function HomeV2Page() {
   useSEO({
     title: "Smart Home Automation Company in Bangalore | MAKc Automations",
-    description: "MAKc Automations is a leading smart home automation company in Bangalore providing luxury touch control, smart lighting, security systems, home audio & networking solutions.",
-    keywords: "home automation company in bangalore, home automation bangalore, smart home automation, luxury smart home, smart lighting bangalore",
+    description:
+      "MAKc Automations is a leading smart home automation company in Bangalore providing luxury touch control, smart lighting, security systems, home audio & networking solutions.",
+    keywords:
+      "home automation company in bangalore, home automation bangalore, smart home automation, luxury smart home, smart lighting bangalore",
     canonicalUrl: "https://makcautomations.com/",
-    robots: "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
+    robots:
+      "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
   });
 
   return (
-    <>
-      <HeroSection />
-      <ServicesSection />
-      <IndustriesSection />
-      <OurVendorsSection />
-      <AboutSection />
-      <WhyMAKcSection />
-      <LocationSection />
-      <FAQSection faqs={homeFAQs} />
-    </>
+    <div className="relative bg-bg-main min-h-screen text-text-main">
+      {/* V3 Hero Section */}
+      <HeroSectionV2 />
+
+      {/* V2 Stats Section */}
+      {/* <StatsSectionV2 /> */}
+
+      <LazyOnView minHeight={720}>
+        <ServicesSection />
+      </LazyOnView>
+
+      <LazyOnView minHeight={520}>
+        <SolutionsGallery />
+      </LazyOnView>
+
+      <LazyOnView minHeight={260}>
+        <PartnerLogosSection />
+      </LazyOnView>
+    </div>
   );
 }

@@ -164,7 +164,7 @@ export default function AutomationMosaicSection({
       {/* Heading block */}
       <div>
         <h2
-          className="text-4xl sm:text-5xl font-bold text-text-main leading-[1.1] tracking-tight mb-3"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-main leading-[1.1] tracking-tight mb-3"
           style={{ textWrap: "balance" } as CSSProperties}
         >
           {title}

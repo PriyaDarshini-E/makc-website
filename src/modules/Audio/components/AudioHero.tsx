@@ -47,7 +47,7 @@ export default function AudioHero() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="hero-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
+          <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
             Smart Audio <br />
             Solutions
           </h1>

@@ -160,7 +160,7 @@ export default function AutomationPage() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="hero-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
+            <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
               Smart Home <br />
               Automation
             </h1>
@@ -172,7 +172,7 @@ export default function AutomationPage() {
                 With almost a decade of experience and 700+ projects delivered
                 across homes and select commercial spaces, here's what you can
                 expect from us.
-                  <img
+                <img
                   src={getImageUrl("star.webp")}
                   alt="Five-star rating icon representing premium home automation services"
                   title="5 Star Home Automation Quality"
@@ -270,8 +270,6 @@ export default function AutomationPage() {
 
           </div>
         </section> */}
-
-        {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â SECTION 3 */}
         <section className="mb-28">
           {/* Header no eyebrow, strong typographic contrast */}
           {/* <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
@@ -379,7 +377,7 @@ export default function AutomationPage() {
                   Experience
                 </span>
                 <div>
-                  <p className="text-text-main text-5xl font-bold leading-none">
+                  <p className="text-text-main text-4xl sm:text-5xl font-bold leading-none">
                     700
                     <span className="text-2xl font-semibold text-text-muted">
                       +
@@ -605,11 +603,6 @@ export default function AutomationPage() {
             </div>
           </div>
         </section>
-
-        {/* <ConnectBanner
-          title="Connect With Us"
-          description="Our experts are ready to design your automated home. Contact us via phone or email for custom architecture pricing."
-        /> */}
       </div>
     </div>
   );

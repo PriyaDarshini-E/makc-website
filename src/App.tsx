@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/common/Layout";
-import HomeV2Page from "./modules/HomeV2/pages/HomeV2Page";
+import HomeV2Page from "./modules/Home/pages/HomePage";
 
 // Lazy load secondary pages to shrink the initial JS bundle
 const HomePage = lazy(() => import("./modules/Home/pages/HomePage"));
