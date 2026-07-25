@@ -15,10 +15,11 @@ const features = [
 const images = [
   {
     src: "service_theatre.webp",
-    alt: "High performance audio and speakers layout",
+    alt: "High-performance home theatre speakers and immersive surround sound setup",
+    title: "Home Theatre Audio System",
   },
-  { src: "service_automation.webp", alt: "Touch screen automation control panel" },
-  { src: "project_villas.webp", alt: "Luxury villa living room with multi-room audio" },
+  { src: "service_automation.webp", alt: "Smart touchscreen control panel for home automation and entertainment", title: "Smart Automation Control Panel" },
+  { src: "project_villas.webp", alt: "Luxury villa living room with integrated multi-room audio entertainment system", title: "Multi-Room Audio System" },
 ];
 
 export default function MultiRoomAudioSection() {

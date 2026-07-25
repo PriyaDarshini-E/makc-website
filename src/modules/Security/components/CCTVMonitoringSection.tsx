@@ -9,16 +9,19 @@ const checklist = [
 
 const images = [
   {
-    src: "cam1.webp",
-    alt: "Wall-mounted high-definition outdoor CCTV camera monitoring entry point",
+    src: "service/CC1.webp",
+    alt: "Wall-mounted high-definition outdoor CCTV camera monitoring the property entrance",
+    title: "Outdoor CCTV Security Camera",
   },
   {
-    src: "cam2.webp",
-    alt: "Tactile dome smart surveillance camera on travertine stone wall",
+    src: "service/CC2.webp",
+    alt: "Smart dome surveillance camera installed on a modern stone wall for indoor security",
+    title: "Smart Dome Security Camera",
   },
   {
     src: "service_security.webp",
-    alt: "Surveillance feed on a mobile screen",
+    alt: "Live CCTV surveillance feed displayed on a smartphone for remote monitoring",
+    title: "Mobile CCTV Monitoring",
   },
 ];
 

@@ -231,7 +231,7 @@ export default function HeroSectionV3() {
             designed exclusively for premium residences.
           </p>
 
-          <div className="mt-8 sm:mt-10 flex gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a
               href="#contact"
               title="Contact MAKc Automations"
@@ -247,7 +247,7 @@ export default function HeroSectionV3() {
               title="View Smart Home Solutions"
               accentColor="var(--color-gold-primary)"
               foregroundColor="#fff"
-              className="px-6 py-3.5 sm:px-8 sm:py-4  text-nowrap border border-gold-primary text-gold-primary font-bold text-[10px] sm:text-xs tracking-[0.15em] uppercase transition-all duration-300 rounded-none flex items-center gap-2 group"
+              className="px-6 py-3.5 sm:px-8 sm:py-4 text-nowrap border border-gold-primary text-gold-primary font-bold text-[10px] sm:text-xs tracking-[0.15em] uppercase transition-all duration-300 rounded-none flex items-center gap-2 group"
             >
               EXPLORE SMART HOMES
               <span className="font-mono text-xs transition-transform duration-300 group-hover:translate-x-1">

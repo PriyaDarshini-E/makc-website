@@ -15,11 +15,12 @@ const features = [
 
 const images = [
   {
-    src: "electric automation.webp",
-    alt: "Bedside wall-mounted tactile smart touch automation panel",
+    src: "service/EA1.webp",
+    alt: "Smart home automation control system with touch panel and connected devices",
+    title: "Smart Home Automation System",
   },
-  { src: "service_automation.webp", alt: "Smart switches and panels setup" },
-  { src: "smarter_way_bg.webp", alt: "Modern living room lighting scene" },
+  { src: "service/EA2.webp", alt: "Smart switches and panels setup", title: "Home Automation Control Panel" },
+  { src: "smarter_way_bg.webp", alt: "Modern living room lighting scene", title: "Smart Living Room Automation" },
 ];
 
 export default function ElectricalAutomationSection() {

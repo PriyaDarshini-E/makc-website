@@ -1,6 +1,6 @@
 import { Home, Award, ShieldCheck, MapPin } from "lucide-react";
 
-export default function StatsSectionV2() {
+export default function StatsSection() {
   const stats = [
     {
       icon: Home,

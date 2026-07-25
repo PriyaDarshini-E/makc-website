@@ -15,10 +15,11 @@ const features = [
 const images = [
   {
     src: "why_choose_us.webp",
-    alt: "Aesthetic smart speaker system integration in interior design",
+    alt: "Smart speaker system seamlessly integrated into a modern interior design",
+    title: "Smart Speaker Integration",
   },
-  { src: "service_automation.webp", alt: "Touch screen automation control panel" },
-  { src: "project_apartments.webp", alt: "Modern living room sound layout" },
+  { src: "service_automation.webp", alt: "Smart touchscreen panel for controlling home automation and media systems", title: "Home Automation Touch Panel" },
+  { src: "project_apartments.webp", alt: "Modern apartment living room featuring an immersive home audio setup", title: "Apartment Home Audio System" },
 ];
 
 export default function HiFiAudioSection() {

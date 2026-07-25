@@ -11,16 +11,19 @@ const scenes = [
 
 const images = [
   {
-    src: "lightimage1.webp",
-    alt: "Circadian ambient lighting layout",
+    src: "service/SBL1.webp",
+    alt: "Circadian ambient lighting layout for a modern smart home",
+    title: "Circadian Smart Lighting",
   },
   {
-    src: "lightimage2.webp",
-    alt: "Warm lighting in modern dining room",
+    src: "service/SBL2.webp",
+    alt: "Warm lighting in a modern dining room with smart lighting automation",
+    title: "Smart Dining Room Lighting",
   },
   {
     src: "lightimage3.webp",
-    alt: "Warm mood lights in a modern living room",
+    alt: "Warm mood lights creating a cozy modern living room ambiance",
+    title: "Smart Mood Lighting",
   },
 ];
 

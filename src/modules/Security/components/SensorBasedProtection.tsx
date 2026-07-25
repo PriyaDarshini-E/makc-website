@@ -14,9 +14,9 @@ const includesList = [
 ];
 
 const images = [
-  { src: "sensor.webp", alt: "Tactile wall-mounted smart glass and vibration intrusion sensor" },
-  { src: "service_security.webp", alt: "Wireless smoke detector and sirens installation" },
-  { src: "project_commercial.webp", alt: "Commercial building safety sensor network" },
+  { src: "service/SB1.webp", alt: "Live CCTV surveillance feed displayed on a smartphone for remote monitoring", title: "Mobile CCTV Monitoring" },
+  { src: "service/SB2.webp", alt: "Wireless smoke detector and alarm siren installed for smart fire safety", title: "Smart Smoke Detection System" },
+  { src: "project_commercial.webp", alt: "Commercial building equipped with an integrated smart safety and security sensor network", title: "Commercial Security System" },
 ];
 
 export default function SensorBasedProtection() {

@@ -56,11 +56,20 @@ const LOCAL_IMAGES: Record<string, string> = {
 export const getImageUrl = (filename: string) => {
   if (!filename) return "";
 
+  if (filename.startsWith("http://") || filename.startsWith("https://")) {
+    return filename;
+  }
+
   // Strip any accidental folder paths that might be passed in
   const baseName = filename.split("/").pop() || filename;
 
   if (LOCAL_IMAGES[baseName]) {
     return LOCAL_IMAGES[baseName];
+  }
+
+  if (filename.includes("service/")) {
+    const servicePath = filename.substring(filename.indexOf("service/"));
+    return `${REMOTE_IMAGE_BASE}/${servicePath}`;
   }
 
   return `${REMOTE_IMAGE_BASE}/${baseName}`;

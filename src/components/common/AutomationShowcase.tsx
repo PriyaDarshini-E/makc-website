@@ -38,6 +38,7 @@ export interface AutomationShowcaseSlide {
   description: string;
   image: string;
   imageAlt: string;
+  imageTitle?: string;
   icon: ComponentType<{ className?: string }>;
 }
 
@@ -49,7 +50,8 @@ const DEFAULT_SLIDES: AutomationShowcaseSlide[] = [
     description:
       "Transform your spaces with adaptive lighting scenes tailored to your daily routines.",
     image: getImageUrl("service_lighting.webp"),
-    imageAlt: "Smart lighting in a modern home",
+    imageAlt: "Smart lighting automation enhancing modern home interiors",
+    imageTitle: "Smart Lighting Automation",
     icon: Lightbulb,
   },
   {
@@ -59,7 +61,8 @@ const DEFAULT_SLIDES: AutomationShowcaseSlide[] = [
     description:
       "Fortify your home with integrated alarms, access control, and smart surveillance.",
     image: getImageUrl("service_security.webp"),
-    imageAlt: "Smart security for a modern home",
+    imageAlt: "Smart home security system with CCTV cameras and video door phone",
+    imageTitle: "Smart Home Security System",
     icon: ShieldCheck,
   },
   {
@@ -69,7 +72,8 @@ const DEFAULT_SLIDES: AutomationShowcaseSlide[] = [
     description:
       "Shape daylight, privacy, and ambience with a single, effortless routine.",
     image: "/images/curtain_automation.png",
-    imageAlt: "Luxury living room with automated curtains at dusk",
+    imageAlt: "Luxury living room featuring automated smart curtains at sunset",
+    imageTitle: "Smart Curtain Automation",
     icon: CurtainIcon,
   },
   {
@@ -79,7 +83,8 @@ const DEFAULT_SLIDES: AutomationShowcaseSlide[] = [
     description:
       "Optimize thermal comfort and energy savings with smart heating and cooling.",
     image: getImageUrl("service_automation.webp"),
-    imageAlt: "Comfortable, climate-controlled living space",
+    imageAlt: "Smart home automation control system with touch panel and connected devices",
+    imageTitle: "Smart Home Automation System",
     icon: Thermometer,
   },
 ];
@@ -177,6 +182,7 @@ export default function AutomationShowcase({
           key={tab.id}
           src={tab.image}
           alt={idx === cachedIndex ? tab.imageAlt : ""}
+          title={idx === cachedIndex ? (tab.imageTitle || tab.imageAlt) : ""}
           className={`absolute inset-y-0 right-0 h-full object-cover z-0 transition-all duration-1000 ease-in-out lg:w-1/2 w-full ${
             idx === cachedIndex
               ? "opacity-100 scale-100"
@@ -284,7 +290,7 @@ export default function AutomationShowcase({
               }`}
             >
               {/* Large glowing backdrop number */}
-              <span className="text-8xl lg:text-[110px] font-bold font-display tracking-[-0.04em] text-[rgba(var(--accent-color-rgb),0.3)] dark:text-[rgba(var(--accent-color-rgb),0.9)] select-none leading-none -ml-1.5 block">
+              <span className="text-6xl sm:text-8xl lg:text-[110px] font-bold font-display tracking-[-0.04em] text-[rgba(var(--accent-color-rgb),0.3)] dark:text-[rgba(var(--accent-color-rgb),0.9)] select-none leading-none -ml-1.5 block">
                 {activeTab.id}
               </span>
 

@@ -20,7 +20,8 @@ const LIGHTING_SLIDES = [
     description:
       "Transform your space instantly with pre-set lighting scenes. Easily switch between Morning, Evening, Movie, or Party modes to create the perfect atmosphere.",
     image: getImageUrl("lightimage1.webp"),
-    imageAlt: "Circadian ambient lighting layout",
+    imageAlt: "Circadian ambient lighting layout for a modern smart home",
+    imageTitle: "Circadian Smart Lighting",
     icon: Sparkles,
   },
   {
@@ -30,7 +31,8 @@ const LIGHTING_SLIDES = [
     description:
       "Express your style with millions of colors. Control brightness, warmth, and dynamic color-changing effects directly from your touch panel or smartphone.",
     image: getImageUrl("rgbmod.webp"),
-    imageAlt: "Color-changing RGB LED strip lights in modern living room",
+    imageAlt: "RGB smart LED lighting system with customizable color control",
+    imageTitle: "RGB Smart Lighting System",
     icon: Palette,
   },
   {
@@ -40,7 +42,8 @@ const LIGHTING_SLIDES = [
     description:
       "Smoothly adjust light intensity and color temperature from warm white to cool daylight, reducing eye strain and matching your natural circadian rhythm.",
     image: getImageUrl("dimeLight.webp"),
-    imageAlt: "Dimming and color tuning of LED lights in luxury lobby",
+    imageAlt: "Smart dimmable LED lighting control system for modern homes",
+    imageTitle: "Smart Dimmable Lighting",
     icon: SunDim,
   },
   {
@@ -50,7 +53,8 @@ const LIGHTING_SLIDES = [
     description:
       "Enhance home curb appeal and security with automated exterior lighting. Program garden, compound, and facade lights to sync with sunset and sunrise.",
     image: getImageUrl("outdoorImage1.webp"),
-    imageAlt: "Luxury villa entrance facade with automated exterior lighting",
+    imageAlt: "Luxury villa with automated outdoor landscape lighting",
+    imageTitle: "Smart Outdoor Lighting",
     icon: Trees,
   },
 ];

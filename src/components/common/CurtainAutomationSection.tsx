@@ -8,9 +8,9 @@ const types = [
 const features = ["Privacy control", "One-touch and voice commands"];
 
 const images = [
-  { src: "Curtain Automation.webp", alt: "Circadian curtain automation in master bedroom" },
-  { src: "service_automation.webp", alt: "Sleek automatic blind track details" },
-  { src: "project_villas.webp", alt: "Luxury villa bedroom with smart curtains" },
+  { src: "service/CA1.webp", alt: "Circadian curtain automation in master bedroom", title: "Smart Bedroom Curtain Automation" },
+  { src: "service/CA2.webp", alt: "Sleek automatic blind track details", title: "Motorized Smart Blinds" },
+  { src: "project_villas.webp", alt: "Luxury villa bedroom with smart curtains", title: "Luxury Smart Villa Bedroom" },
 ];
 
 export default function CurtainAutomationSection() {

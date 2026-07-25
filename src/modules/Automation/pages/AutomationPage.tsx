@@ -160,7 +160,7 @@ export default function AutomationPage() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="hero-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
+            <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
               Smart Home <br />
               Automation
             </h1>
@@ -174,8 +174,8 @@ export default function AutomationPage() {
                 expect from us.
                 <img
                   src={getImageUrl("star.webp")}
-                  alt=""
-                  aria-hidden="true"
+                  alt="Five-star rating icon representing premium home automation services"
+                  title="5 Star Home Automation Quality"
                   className="w-6 h-6 inline-block ml-2 mb-1 select-none"
                 />
               </p>
@@ -270,8 +270,6 @@ export default function AutomationPage() {
 
           </div>
         </section> */}
-
-        {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â SECTION 3 */}
         <section className="mb-28">
           {/* Header no eyebrow, strong typographic contrast */}
           {/* <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
@@ -290,6 +288,7 @@ export default function AutomationPage() {
               <img
                 src={serviceLightingImg}
                 alt="Personalized smart lighting atmosphere"
+                title="Personalized Smart Lighting"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
@@ -378,7 +377,7 @@ export default function AutomationPage() {
                   Experience
                 </span>
                 <div>
-                  <p className="text-text-main text-5xl font-bold leading-none">
+                  <p className="text-text-main text-4xl sm:text-5xl font-bold leading-none">
                     700
                     <span className="text-2xl font-semibold text-text-muted">
                       +
@@ -458,9 +457,10 @@ export default function AutomationPage() {
            
             <div className="flex flex-col gap-4">
               <div className="relative rounded-2xl overflow-hidden aspect-[16/9] group">
-                <img
+                  <img
                   src={whyChooseUsImg}
-                  alt="Smart home switch panel blending seamlessly into a modern interior"
+                  alt="Smart switches and panels setup"
+                  title="Home Automation Control Panel"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
@@ -565,6 +565,7 @@ export default function AutomationPage() {
                 <img
                   src={projectVillasImg}
                   alt="Smart luxury villa exterior"
+                  title="Luxury Smart Villa Exterior"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/75 to-black/60" />
@@ -602,11 +603,6 @@ export default function AutomationPage() {
             </div>
           </div>
         </section>
-
-        {/* <ConnectBanner
-          title="Connect With Us"
-          description="Our experts are ready to design your automated home. Contact us via phone or email for custom architecture pricing."
-        /> */}
       </div>
     </div>
   );

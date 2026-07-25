@@ -15,10 +15,11 @@ const features = [
 const images = [
   {
     src: "service_automation.webp",
-    alt: "Touch screen automation control panel",
+    alt: "Intelligent touchscreen automation panel for smart home management",
+    title: "Smart Home Control Interface",
   },
-  { src: "project_villas.webp", alt: "Wall-mounted smart switch controls" },
-  { src: "smarter_way_bg.webp", alt: "Living room automation setup" },
+  { src: "project_villas.webp", alt: "Wall-mounted smart switches for lighting and home automation control", title: "Smart Switch Control System" },
+  { src: "smarter_way_bg.webp", alt: "Modern living room with integrated smart home automation and entertainment controls", title: "Smart Living Room Automation" },
 ];
 
 export default function AudioControlsSection() {

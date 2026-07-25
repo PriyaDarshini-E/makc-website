@@ -14,11 +14,12 @@ const features = [
 
 const images = [
   {
-    src: "getAuto1.webp",
-    alt: "Gate automation static demonstration",
+    src: "service/GA1.webp",
+    alt: "Smart lighting automation enhancing modern home interiors",
+    title: "Smart Lighting Automation",
   },
-  { src: "getAuto2.webp", alt: "Automatic swing arm motors installed on driveway gates" },
-  { src: "getAuto3.webp", alt: "Automated rolling shutter garage door layout" },
+  { src: "service/GA2.webp", alt: "Automatic swing arm motors installed on driveway gates", title: "Automatic Swing Gate Automation" },
+  { src: "getAuto3.webp", alt: "Automated rolling shutter garage door layout", title: "Automatic Garage Door Automation" },
 ];
 
 export default function GateAutomationSection() {

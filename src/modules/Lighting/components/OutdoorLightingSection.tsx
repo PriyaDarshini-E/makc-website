@@ -9,16 +9,19 @@ const includesList = [
 
 const images = [
   {
-    src: "outdoorImage1.webp",
+    src: "service/OLL1.webp",
     alt: "Luxury villa entrance facade with automated exterior lighting",
+    title: "Automated Exterior Lighting",
   },
   {
-    src: "outdoorImage2.webp",
-    alt: "Warm spots and accent lighting in modern living room",
+    src: "service/OLL2.webp",
+    alt: "Warm spotlights and accent lighting in a contemporary living room",
+    title: "Accent Lighting Design",
   },
   {
     src: "service_lighting.webp",
-    alt: "Smart garden and facade lighting controls",
+    alt: "Smart garden and facade lighting controls for outdoor automation",
+    title: "Smart Outdoor Lighting Controls",
   },
 ];
 

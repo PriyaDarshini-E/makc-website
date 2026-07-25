@@ -15,9 +15,9 @@ const features = [
 ];
 
 const images = [
-  { src: "wiredNetwork.webp", alt: "Close-up of wall touch panel and outlets in autumn setting" },
-  { src: "service_networking.webp", alt: "Clean rack mount and cable layout" },
-  { src: "project_apartments.webp", alt: "Multi-floor Wi-Fi mesh planning schematic" },
+  { src: "service/WN1.webp", alt: "Clean network rack with organized cable management for smart home connectivity", title: "Smart Network Rack Installation" },
+  { src: "service/WN2.webp", alt: "Multi-floor Wi-Fi mesh network planning for seamless home connectivity", title: "Wi-Fi Mesh Network Solution" },
+  { src: "project_apartments.webp", alt: "Multi-floor Wi-Fi mesh network planning for seamless home connectivity", title: "Wi-Fi Mesh Network Solution" },
 ];
 
 export default function WiredNetworkSection() {

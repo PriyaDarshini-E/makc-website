@@ -51,7 +51,7 @@ export default function LightingHero() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="hero-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
+          <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
             Smart Lighting <br />
             Automation
           </h1>
@@ -64,11 +64,12 @@ export default function LightingHero() {
               making everyday living effortless. With professionally designed
               smart lighting automation in Bangalore, MAKc Automation helps you
               control every light in your space with ease.
-              <img
-                src={getImageUrl("star.webp")}
-                alt=""
-                aria-hidden="true"
-                className="w-6 h-6 inline-block ml-2 mb-1 select-none"
+                <img
+                 src={getImageUrl("star.webp")}
+                 alt="Five-star rating icon representing premium smart lighting solutions"
+                 title="5 Star Smart Lighting Quality"
+                 aria-hidden="true"
+                 className="w-6 h-6 inline-block ml-2 mb-1 select-none"
               />
             </p>
           </div>
