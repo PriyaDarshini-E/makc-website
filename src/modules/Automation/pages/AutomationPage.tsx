@@ -478,7 +478,8 @@ export default function AutomationPage() {
                 <div className="relative rounded-2xl overflow-hidden aspect-square group">
                   <img
                     src={serviceLightingImg}
-                    alt="Ambient smart lighting creating a warm living room atmosphere"
+                    alt="Industrial and Commercial Lighting Automation Solutions"
+                    title="Lighting Automation Services"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
@@ -581,7 +582,7 @@ export default function AutomationPage() {
                   </div>
                   <div className="space-y-3 mt-8">
                     <a
-                      href="tel:+919948432444"
+                      href="tel:+918197783287"
                       title="Call MAKc Automations at +91 99484 32444"
                       className="flex items-center justify-center gap-2 h-11 w-full rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-accent-blue/90 transition-all duration-200 hover:scale-[1.02] active:scale-[0.97]"
                     >

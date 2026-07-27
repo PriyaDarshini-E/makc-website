@@ -14,4 +14,5 @@ export interface HotspotType {
   icon: ComponentType<LucideProps>;
   color?: string;
   connectorColor?: string;
+  videoFile?: string;
 }

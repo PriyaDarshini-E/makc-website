@@ -8,9 +8,9 @@ const types = [
 ];
 
 const images = [
+  { src: "rgbmod.webp", alt: "Color-changing RGB LED strip lights installed in a modern apartment", title: "RGB LED Strip Lighting" },
   { src: "service/RGB1.webp", alt: "RGB smart LED lighting system with customizable color control", title: "RGB Smart Lighting System" },
   { src: "service/RGB2.webp", alt: "Warm mood lights creating a cozy modern living room ambiance", title: "Smart Mood Lighting" },
-  { src: "project_apartments.webp", alt: "Color-changing RGB LED strip lights installed in a modern apartment", title: "RGB LED Strip Lighting" },
 ];
 
 export default function RGBMoodLightingSection() {

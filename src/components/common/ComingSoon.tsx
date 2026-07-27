@@ -54,7 +54,7 @@ export default function ComingSoon({
           className="mt-6 mb-8"
         />
 
-        <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed max-w-sm mb-12">
+        <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed max-w-xl mb-12">
           {description}
         </p>
 

@@ -9,6 +9,11 @@ const benefits = [
 
 const images = [
   {
+    src: "netSolutionImage1.webp",
+    alt: "Smart video door phone and intercom system installed on a modern marble wall",
+    title: "Smart Video Door Phone System",
+  },
+  {
     src: "service/MW1.webp",
     alt: "Clean network rack with organized cable management for smart home connectivity",
     title: "Smart Network Rack Installation",
@@ -17,11 +22,6 @@ const images = [
     src: "service/MW2.webp",
     alt: "Wireless smart home networking hub with centralized connectivity controls",
     title: "Smart Home Networking Hub",
-  },
-  {
-    src: "netSolutionImage3.webp",
-    alt: "Smart video door phone and intercom system installed on a modern marble wall",
-    title: "Smart Video Door Phone System",
   },
 ];
 

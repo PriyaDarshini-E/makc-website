@@ -181,8 +181,8 @@ export default function AutomationShowcase({
         <img
           key={tab.id}
           src={tab.image}
-          alt={idx === cachedIndex ? tab.imageAlt : ""}
-          title={idx === cachedIndex ? (tab.imageTitle || tab.imageAlt) : ""}
+          alt={tab.imageAlt}
+          title={tab.imageTitle || tab.imageAlt}
           className={`absolute inset-y-0 right-0 h-full object-cover z-0 transition-all duration-1000 ease-in-out lg:w-1/2 w-full ${
             idx === cachedIndex
               ? "opacity-100 scale-100"

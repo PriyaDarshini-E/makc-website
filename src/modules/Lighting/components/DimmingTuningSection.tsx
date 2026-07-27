@@ -7,9 +7,9 @@ const types = [
 ];
 
 const images = [
+  { src: "dimeLight.webp", alt: "Dimmable architectural cove lighting in a luxury villa", title: "Architectural Cove Lighting" },
   { src: "service/DTL1.webp", alt: "Smart dimmable LED lighting control system for modern homes", title: "Smart Dimmable Lighting" },
   { src: "service/DTL2.webp", alt: "Smart light control interface panel for home automation", title: "Smart Lighting Control Panel" },
-  { src: "project_villas.webp", alt: "Dimmable architectural cove lighting in a luxury villa", title: "Architectural Cove Lighting" },
 ];
 
 export default function DimmingTuningSection() {

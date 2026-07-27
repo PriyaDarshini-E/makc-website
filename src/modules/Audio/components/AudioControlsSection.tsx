@@ -15,8 +15,8 @@ const features = [
 const images = [
   {
     src: "service_automation.webp",
-    alt: "Intelligent touchscreen automation panel for smart home management",
-    title: "Smart Home Control Interface",
+    alt: "Industrial Automation Solutions for Smart Manufacturing",
+    title: "Industrial Automation Services",
   },
   { src: "project_villas.webp", alt: "Wall-mounted smart switches for lighting and home automation control", title: "Smart Switch Control System" },
   { src: "smarter_way_bg.webp", alt: "Modern living room with integrated smart home automation and entertainment controls", title: "Smart Living Room Automation" },

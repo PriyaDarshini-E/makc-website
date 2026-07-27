@@ -69,19 +69,6 @@ export function SocialMediaBar() {
           />
         </a>
         <a
-          href="https://www.linkedin.com/company/makc-automations/"
-          title="Connect with MAKc Automations on LinkedIn"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Follow us on LinkedIn"
-          className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#0A66C2] hover:border-transparent hover:shadow-[0_0_15px_rgba(10,102,194,0.4)] transition-all duration-500"
-        >
-          <Linkedin
-            className="w-5 h-5 transition-transform duration-300 hover:scale-105"
-            aria-hidden="true"
-          />
-        </a>
-        <a
           href="https://www.facebook.com/makcautomation"
           title="Visit MAKc Automations on Facebook"
           target="_blank"
@@ -90,6 +77,19 @@ export function SocialMediaBar() {
           className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#1877F2] hover:border-transparent hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-all duration-500"
         >
           <Facebook
+            className="w-5 h-5 transition-transform duration-300 hover:scale-105"
+            aria-hidden="true"
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/company/makc-automations/"
+          title="Connect with MAKc Automations on LinkedIn"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Follow us on LinkedIn"
+          className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#0A66C2] hover:border-transparent hover:shadow-[0_0_15px_rgba(10,102,194,0.4)] transition-all duration-500"
+        >
+          <Linkedin
             className="w-5 h-5 transition-transform duration-300 hover:scale-105"
             aria-hidden="true"
           />

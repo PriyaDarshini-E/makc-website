@@ -18,7 +18,7 @@ const images = [
     alt: "High-performance home theatre speakers and immersive surround sound setup",
     title: "Home Theatre Audio System",
   },
-  { src: "service_automation.webp", alt: "Smart touchscreen control panel for home automation and entertainment", title: "Smart Automation Control Panel" },
+  { src: "service_automation.webp", alt: "Industrial Automation Solutions for Smart Manufacturing", title: "Industrial Automation Services" },
   { src: "project_villas.webp", alt: "Luxury villa living room with integrated multi-room audio entertainment system", title: "Multi-Room Audio System" },
 ];
 

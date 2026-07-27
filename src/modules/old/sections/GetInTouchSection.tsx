@@ -1,4 +1,14 @@
-import { Headphones, Calendar, ShieldCheck, Handshake, Phone, Mail, Globe, MapPin, ArrowRight } from "lucide-react";
+import {
+  Headphones,
+  Calendar,
+  ShieldCheck,
+  Handshake,
+  Phone,
+  Mail,
+  Globe,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import GlowingLine from "@/components/common/GlowingLine";
 import { getImageUrl } from "@/utils/image";
@@ -11,12 +21,14 @@ export default function GetInTouchSection() {
     {
       icon: Headphones,
       title: "Expert Support",
-      description: "Our team of specialists is here to guide you every step of the way.",
+      description:
+        "Our team of specialists is here to guide you every step of the way.",
     },
     {
       icon: Calendar,
       title: "Free Consultation",
-      description: "Book a free consultation and discover the perfect smart solutions for your home.",
+      description:
+        "Book a free consultation and discover the perfect smart solutions for your home.",
     },
     {
       icon: ShieldCheck,
@@ -31,7 +43,10 @@ export default function GetInTouchSection() {
   ];
 
   return (
-    <section id="contact" className="relative w-full bg-bg-main py-20 lg:py-28 border-t border-border-main overflow-hidden">
+    <section
+      id="contact"
+      className="relative w-full bg-bg-main py-20 lg:py-28 border-t border-border-main overflow-hidden"
+    >
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <picture>
@@ -53,13 +68,12 @@ export default function GetInTouchSection() {
 
       <div className="relative mx-auto max-w-8xl px-4 sm:px-12 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
           {/* Left Column: Heading and feature grids (Spans 8/12) */}
           <div className="lg:col-span-8 flex flex-col text-left">
             <span className="font-sans text-[10px] sm:text-xs font-bold tracking-[0.25em] text-accent-blue uppercase select-none mb-4">
-             GET IN TOUCH
+              GET IN TOUCH
             </span>
-            
+
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text-main tracking-tight leading-tight max-w-2xl">
               Ready to Transform <br className="hidden sm:inline" />
               Your Home?{" "}
@@ -76,7 +90,9 @@ export default function GetInTouchSection() {
             />
 
             <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed max-w-xl mb-12 lg:mb-16">
-              Have questions or want to explore the possibilities? Our smart living experts are just a message away. Let's build the future of your home—together.
+              Have questions or want to explore the possibilities? Our smart
+              living experts are just a message away. Let's build the future of
+              your home—together.
             </p>
 
             {/* 4 Feature Columns with dividers */}
@@ -90,8 +106,8 @@ export default function GetInTouchSection() {
                       index === 0
                         ? "lg:pr-6 lg:pl-0"
                         : index === features.length - 1
-                        ? "lg:pl-6 lg:pr-0"
-                        : "lg:px-6"
+                          ? "lg:pl-6 lg:pr-0"
+                          : "lg:px-6"
                     }`}
                   >
                     {/* Icon Circle */}
@@ -129,7 +145,7 @@ export default function GetInTouchSection() {
                       Phone
                     </span>
                     <a
-                      href="tel:+919948432444"
+                      href="tel:+918197783287"
                       className="font-sans text-xs font-semibold text-text-main hover:text-accent-blue transition-colors duration-200 mt-0.5"
                     >
                       +91 99484 32444
@@ -197,12 +213,13 @@ export default function GetInTouchSection() {
                 to="/contact"
                 className="w-full mt-8 py-3.5 px-4 apple-border-shine bg-accent-blue hover:bg-accent-blue/90 text-white font-bold text-[10px] sm:text-xs tracking-wide sm:tracking-widest uppercase rounded-full transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer shadow-[0_4px_15px_rgba(10,132,255,0.3)] text-center animate-none"
               >
-                <span className="leading-snug">Book a Free Smart Home Consultation</span>
+                <span className="leading-snug">
+                  Book a Free Smart Home Consultation
+                </span>
                 <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
-
         </div>
       </div>
     </section>

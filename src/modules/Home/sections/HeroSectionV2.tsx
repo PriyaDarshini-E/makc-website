@@ -15,9 +15,13 @@ import {
   Sliders,
   ShieldAlert,
   Blinds,
+  X,
 } from "lucide-react";
 
 const heroBg = getImageUrl("hero_bg.webp");
+
+const VIDEO_BASE_URL =
+  "https://agsdemo.in/macapi/public/assets/images/web_images/reels/";
 
 const hotspotsList: HotspotType[] = [
   {
@@ -26,6 +30,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 60.5, y: 25.5 },
     labelPos: { x: 75.2, y: 24 },
     icon: Blinds,
+    videoFile: "electrical_automation.mp4",
   },
   {
     id: "lighting",
@@ -33,6 +38,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 58.5, y: 36 },
     labelPos: { x: 72.6, y: 32.4 },
     icon: Lightbulb,
+    videoFile: "dimming_and _tunning_of_lights.mp4",
   },
   {
     id: "switches",
@@ -40,6 +46,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 77.2, y: 53 },
     labelPos: { x: 86.2, y: 43.5 },
     icon: ToggleLeft,
+    videoFile: "rgb_mood_lighting.mp4",
   },
   {
     id: "door",
@@ -47,6 +54,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 61.3, y: 65 },
     labelPos: { x: 68.2, y: 57.5 },
     icon: Sliders,
+    videoFile: "sensor_board_protection.mp4",
   },
   {
     id: "cctv",
@@ -54,6 +62,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 83, y: 69.5 },
     labelPos: { x: 89, y: 62 },
     icon: Video,
+    videoFile: "mesh_wifi_network_solutions.mp4",
   },
   {
     id: "security",
@@ -61,6 +70,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 78.3, y: 69 },
     labelPos: { x: 60.8, y: 74.5 },
     icon: ShieldCheck,
+    videoFile: "wired_network_planning_and_design.mp4",
   },
   {
     id: "gate",
@@ -68,10 +78,11 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 73.2, y: 78 },
     labelPos: { x: 83, y: 75 },
     icon: ShieldAlert,
+    videoFile: "gate_automation.mp4",
   },
 ];
 
-export default function HeroSectionV3() {
+export default function HeroSectionV2() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { isMobile, isTablet } = useResponsive();
 
@@ -270,6 +281,78 @@ export default function HeroSectionV3() {
           <div className="w-[4px] h-[6px] bg-gold-primary rounded-full animate-bounce" />
         </div>
       </div>
+
+      {/* Floating MP4 Video Preview Popup */}
+      <AnimatePresence>
+        {activeId && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed sm:absolute right-3 sm:right-6 lg:right-12 top-28 sm:top-32 z-[80] w-[310px] sm:w-[350px] md:w-[370px] bg-[#0c1017]/95 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col pointer-events-auto"
+          >
+            {/* Card Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
+              <div className="flex flex-col text-left">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#0A84FF]">
+                  MAKc Smart Living Showcase
+                </span>
+                <h3 className="text-sm font-semibold text-white font-sans truncate max-w-[240px]">
+                  {hotspotsList.find((h) => h.id === activeId)?.label}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveId(null)}
+                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close Video preview"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Video Player Container */}
+            <div className="relative w-full aspect-[4/5] max-h-[460px] bg-black flex items-center justify-center overflow-hidden rounded-b-2xl">
+              {(() => {
+                const activeHotspot = hotspotsList.find((h) => h.id === activeId);
+
+                if (activeHotspot?.videoFile) {
+                  const videoUrl = `${VIDEO_BASE_URL}${activeHotspot.videoFile}`;
+
+                  return (
+                    <video
+                      key={activeHotspot.id}
+                      src={videoUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover rounded-b-2xl pointer-events-auto"
+                    />
+                  );
+                }
+
+                const ActiveIcon = activeHotspot?.icon || Sliders;
+
+                return (
+                  <div className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
+                    <div className="w-16 h-16 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/30 text-[#0A84FF] flex items-center justify-center mb-4">
+                      <ActiveIcon className="w-8 h-8" />
+                    </div>
+                    <h4 className="text-base font-bold text-white mb-2">
+                      {activeHotspot?.label}
+                    </h4>
+                    <p className="text-xs text-white/70 max-w-xs leading-relaxed">
+                      Video showcase for this category is coming soon.
+                    </p>
+                  </div>
+                );
+              })()}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 }

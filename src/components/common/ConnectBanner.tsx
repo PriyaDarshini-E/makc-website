@@ -90,15 +90,6 @@ export default function ConnectBanner({
             <Instagram className="w-4 h-4" />
           </a>
           <a 
-            href="https://www.linkedin.com/company/makc-automations/" 
-            target="_blank" 
-            rel="noreferrer" 
-            aria-label="LinkedIn"
-            className="w-10 h-10 rounded-full border border-border-main bg-bg-main flex items-center justify-center text-text-muted hover:text-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300 apple-border-shine"
-          >
-            <Linkedin className="w-4 h-4" />
-          </a>
-          <a 
             href="https://www.facebook.com/makcautomation" 
             target="_blank" 
             rel="noreferrer" 
@@ -106,6 +97,15 @@ export default function ConnectBanner({
             className="w-10 h-10 rounded-full border border-border-main bg-bg-main flex items-center justify-center text-text-muted hover:text-[#1877F2] hover:border-[#1877F2] transition-all duration-300 apple-border-shine"
           >
             <Facebook className="w-4 h-4" />
+          </a>
+          <a 
+            href="https://www.linkedin.com/company/makc-automations/" 
+            target="_blank" 
+            rel="noreferrer" 
+            aria-label="LinkedIn"
+            className="w-10 h-10 rounded-full border border-border-main bg-bg-main flex items-center justify-center text-text-muted hover:text-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300 apple-border-shine"
+          >
+            <Linkedin className="w-4 h-4" />
           </a>
           <a 
             href="https://www.youtube.com/@MAKcAutomation01" 

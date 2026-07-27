@@ -16,12 +16,12 @@ const features = [
 
 const images = [
   {
-    src: "service/DA1.webp",
+    src: "service_security.webp",
     alt: "Smart door automation showing a video door bell and camera monitoring",
     title: "Video Door Phone & Smart Security",
   },
-  { src: "service/DA2.webp", alt: "Touch screen automation control panel", title: "Smart Touchscreen Automation Panel" },
-  { src: "project_villas.webp", alt: "Entrance gate of a modern smart villa", title: "Smart Villa Entrance" },
+  { src: "service/DA1.webp", alt: "Touch screen automation control panel", title: "Smart Touchscreen Automation Panel" },
+  { src: "service/DA2.webp", alt: "Entrance gate of a modern smart villa", title: "Smart Villa Entrance" },
 ];
 
 export default function DoorAutomationSection() {
