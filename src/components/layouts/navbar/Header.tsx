@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowUpRight, Phone } from "lucide-react";
+import { ArrowUpRight, Phone, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import BrandLogo from "@/components/common/BrandLogo";
 
 interface NavLink {
@@ -12,31 +13,83 @@ interface NavLink {
 
 const allLinks: NavLink[] = [
   { label: "Home", path: "/", title: "MAKc Automations Home" },
-  { label: "Automation", path: "/automation", title: "Smart Home Automation Services" },
+  {
+    label: "Automation",
+    path: "/automation",
+    title: "Smart Home Automation Services",
+  },
   { label: "Lighting", path: "/lighting", title: "Smart Lighting Solutions" },
-  { label: "Networking", path: "/networking", title: "Home Networking Solutions" },
-  { label: "Security", path: "/security", title: "Smart Home Security Systems" },
+  {
+    label: "Networking",
+    path: "/networking",
+    title: "Home Networking Solutions",
+  },
+  {
+    label: "Security",
+    path: "/security",
+    title: "Smart Home Security Systems",
+  },
   { label: "Audio", path: "/audio", title: "Home Audio Solutions" },
   { label: "Contact Us", path: "/contact", title: "Contact MAKc Automations" },
 ];
 
 const moreLinks = [
-  { label: "About", path: "/about", title: "About MAKc Automations", desc: "Our story & mission" },
-  { label: "Why Us", path: "/why-us", title: "Why Choose MAKc Automations", desc: "What sets us apart" },
-  { label: "Service", path: "/service", title: "Our Services", desc: "Full solution catalog" },
-  { label: "Blog", path: "/blog", title: "MAKc Automations Blog", desc: "Insights & updates" },
-  { label: "Experience", path: "/experience", title: "Experience Smart Living", desc: "Visit our experience zone" },
+  {
+    label: "About",
+    path: "/about",
+    title: "About MAKc Automations",
+    desc: "Our story & mission",
+  },
+  {
+    label: "Why Us",
+    path: "/why-us",
+    title: "Why Choose MAKc Automations",
+    desc: "What sets us apart",
+  },
+  {
+    label: "Service",
+    path: "/service",
+    title: "Our Services",
+    desc: "Full solution catalog",
+  },
+  {
+    label: "Blog",
+    path: "/blog",
+    title: "MAKc Automations Blog",
+    desc: "Insights & updates",
+  },
+  {
+    label: "Experience",
+    path: "/experience",
+    title: "Experience Smart Living",
+    desc: "Visit our experience zone",
+  },
 ];
 
 export default function Header() {
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setScrolled] = useState(
     () => typeof window !== "undefined" && window.scrollY > 20,
   );
   const [drawerOpen, setDrawer] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Pages that have a full-bleed dark hero image — white nav text is safe on these
-  const darkHeroRoutes = ["/", "/automation", "/lighting", "/networking", "/security", "/audio", "/about", "/why-us"];
+  const darkHeroRoutes = [
+    "/",
+    "/automation",
+    "/lighting",
+    "/networking",
+    "/security",
+    "/audio",
+    "/about",
+    "/why-us",
+  ];
   const hasDarkHero = darkHeroRoutes.includes(location.pathname);
 
   const close = () => {
@@ -44,13 +97,13 @@ export default function Header() {
     document.body.style.overflow = "";
   };
 
-  const toggle = () => {
-    setDrawer((open) => {
-      const next = !open;
-      document.body.style.overflow = next ? "hidden" : "";
-      return next;
-    });
-  };
+  // const toggle = () => {
+  //   setDrawer((open) => {
+  //     const next = !open;
+  //     document.body.style.overflow = next ? "hidden" : "";
+  //     return next;
+  //   });
+  // };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -67,25 +120,35 @@ export default function Header() {
     close();
   }, [location.pathname]);
 
-  useEffect(() => () => {
-    document.body.style.overflow = "";
-  }, []);
+  useEffect(
+    () => () => {
+      document.body.style.overflow = "";
+    },
+    [],
+  );
 
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full transition-[background,box-shadow,border-color] duration-300 ${
+        className={`fixed top-0 z-[200] w-full transition-[background,box-shadow,border-color] duration-300 ${
           isScrolled
             ? "bg-bg-surface/90 backdrop-blur-xl border-b border-border-main/40 shadow-[0_1px_30px_rgba(0,0,0,0.16)]"
             : "bg-transparent border-b border-transparent"
         }`}
       >
         <div className="mx-auto flex max-w-8xl h-24 items-center justify-between gap-4 px-4 sm:px-6 lg:px-16">
-          <Link to="/" title="MAKc Automations Home" className="flex items-center shrink-0 group">
+          <Link
+            to="/"
+            title="MAKc Automations Home"
+            className="flex items-center shrink-0 group"
+          >
             <BrandLogo className="h-10 w-auto transition-transform duration-300 group-hover:scale-[1.03]" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-0.5" aria-label="Primary navigation">
+          <nav
+            className="hidden lg:flex items-center gap-0.5"
+            aria-label="Primary navigation"
+          >
             {allLinks.map((link) => {
               const isActive = location.pathname === link.path;
               const className = `relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
@@ -114,17 +177,22 @@ export default function Header() {
               }
 
               return (
-                <Link key={link.label} to={link.path} title={link.title} className={className}>
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  title={link.title}
+                  className={className}
+                >
                   {link.label}
                 </Link>
               );
             })}
           </nav>
-
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-3.5 sm:gap-4 shrink-0">
+            {/* Call Button (Desktop) */}
             <a
-              href="tel:+919948432444"
-              title="Call MAKc Automations at +91 99484 32444"
+              href="tel:+918197783287"
+              title="Call MAKc Automations at +91 81977 83287"
               className="hidden sm:flex items-center gap-2 h-9 px-4 rounded-full bg-accent-blue text-[#ffffff] text-xs font-semibold tracking-wide hover:bg-accent-blue/90 hover:scale-[1.03] active:scale-95 transition-all duration-200 shadow-[0_4px_18px_rgba(10,132,255,0.35)] cursor-pointer"
               aria-label="Call MAKc Automation"
             >
@@ -132,43 +200,35 @@ export default function Header() {
               <span>Call Now</span>
             </a>
 
+            {/* Call Button (Mobile) */}
             <a
-              href="tel:+919948432444"
-              title="Call MAKc Automations at +91 99484 32444"
+              href="tel:+918197783287"
+              title="Call MAKc Automations at +91 81977 83287"
               className="flex sm:hidden h-9 w-9 items-center justify-center rounded-full bg-accent-blue text-[#ffffff] hover:scale-105 active:scale-95 transition-all duration-200 shadow-[0_4px_15px_rgba(10,132,255,0.35)] cursor-pointer"
               aria-label="Call MAKc Automation"
             >
               <Phone className="h-4 w-4 stroke-[1.8]" aria-hidden="true" />
             </a>
 
+            {/* Theme Toggle Button */}
             <button
               type="button"
-              onClick={toggle}
-              aria-label={drawerOpen ? "Close menu" : "Open menu"}
-              aria-expanded={drawerOpen}
-              className={`flex h-9 w-9 flex-col items-center justify-center rounded-full border transition-all duration-300 focus:outline-none cursor-pointer gap-[5px] ${
-                isScrolled || drawerOpen
-                  ? "border-border-main/60 hover:border-accent-blue/40 hover:bg-bg-surface"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-300 cursor-pointer shrink-0 ml-0.5 ${
+                isScrolled
+                  ? "border-border-main/60 text-text-main hover:bg-bg-surface hover:text-accent-blue"
                   : hasDarkHero
-                    ? "border-white/25 hover:border-white/50 hover:!bg-white/10"
-                    : "border-border-main/60 hover:border-accent-blue/40 hover:bg-bg-surface"
+                    ? "border-white/30 text-white hover:bg-white/10 hover:border-white/60"
+                    : "border-border-main/60 text-text-main hover:bg-bg-surface hover:text-accent-blue"
               }`}
+              title="Toggle Theme"
+              aria-label="Toggle Theme"
             >
-              <span
-                className={`block h-[1.5px] w-[18px] rounded-full origin-center transition-transform duration-300 ${
-                  drawerOpen ? "translate-y-[6.5px] rotate-45" : ""
-                } ${isScrolled || drawerOpen || !hasDarkHero ? "bg-text-main" : "bg-white"}`}
-              />
-              <span
-                className={`block h-[1.5px] w-[14px] rounded-full origin-center transition-all duration-200 ${
-                  drawerOpen ? "translate-x-2 opacity-0" : "opacity-100"
-                } ${isScrolled || drawerOpen || !hasDarkHero ? "bg-text-main" : "bg-white"}`}
-              />
-              <span
-                className={`block h-[1.5px] w-[18px] rounded-full origin-center transition-transform duration-300 ${
-                  drawerOpen ? "-translate-y-[6.5px] -rotate-45" : ""
-                } ${isScrolled || drawerOpen || !hasDarkHero ? "bg-text-main" : "bg-white"}`}
-              />
+              {mounted && theme === "dark" ? (
+                <Sun className="h-4 w-4 stroke-[1.8]" />
+              ) : (
+                <Moon className="h-4 w-4 stroke-[1.8]" />
+              )}
             </button>
           </div>
         </div>
@@ -177,20 +237,29 @@ export default function Header() {
       <div
         onClick={close}
         className={`fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
-          drawerOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+          drawerOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible pointer-events-none"
         }`}
       />
 
       <aside
         className={`fixed right-0 top-0 bottom-0 z-[70] w-[320px] max-w-[92vw] flex flex-col overflow-hidden transition-[transform,opacity,visibility] duration-500 ease-out ${
-          drawerOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
+          drawerOpen
+            ? "translate-x-0 opacity-100 visible"
+            : "translate-x-full opacity-0 invisible"
         }`}
         aria-hidden={!drawerOpen}
       >
         <div className="absolute inset-0 bg-bg-surface border-l border-border-main/30" />
 
         <div className="relative flex items-center justify-between px-6 pt-6 pb-5 border-b border-border-main/20">
-          <Link to="/" title="MAKc Automations Home" onClick={close} className="flex items-center">
+          <Link
+            to="/"
+            title="MAKc Automations Home"
+            onClick={close}
+            className="flex items-center"
+          >
             <BrandLogo className="h-7 w-auto" />
           </Link>
           <button
@@ -204,7 +273,10 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="relative flex-1 overflow-y-auto px-4 py-5" aria-label="Secondary navigation">
+        <nav
+          className="relative flex-1 overflow-y-auto px-4 py-5"
+          aria-label="Secondary navigation"
+        >
           {/* Primary nav links — only shown on mobile (hidden on lg+ where desktop nav renders them) */}
           <div className="lg:hidden">
             <p className="text-xs font-medium text-text-muted px-2 mb-3 uppercase tracking-widest">
@@ -225,7 +297,9 @@ export default function Header() {
                           : "text-text-main hover:bg-bg-main"
                       }`}
                     >
-                      <p className={`flex-1 text-sm font-semibold leading-tight ${isActive ? "text-accent-blue" : "text-text-main"}`}>
+                      <p
+                        className={`flex-1 text-sm font-semibold leading-tight ${isActive ? "text-accent-blue" : "text-text-main"}`}
+                      >
                         {link.label}
                       </p>
                       <ArrowUpRight
@@ -264,7 +338,9 @@ export default function Header() {
                     }`}
                   >
                     <div className="flex-1 min-w-0">
-                      <p className={`text-sm font-semibold leading-tight ${isActive ? "text-accent-blue" : "text-text-main"}`}>
+                      <p
+                        className={`text-sm font-semibold leading-tight ${isActive ? "text-accent-blue" : "text-text-main"}`}
+                      >
                         {link.label}
                       </p>
                       <p className="text-xs text-text-muted mt-0.5 leading-tight truncate">
@@ -288,7 +364,7 @@ export default function Header() {
 
         <div className="relative px-4 pb-7 pt-4 border-t border-border-main/20 space-y-2.5">
           <a
-            href="tel:+919948432444"
+            href="tel:+918197783287"
             title="Call MAKc Automations at +91 99484 32444"
             className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-accent-blue text-sm font-bold text-white transition-all duration-200 hover:bg-accent-blue/90 hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
           >

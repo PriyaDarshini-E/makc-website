@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import BrandLogo from "@/components/common/BrandLogo";
-import { Phone, Mail, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { Phone, Mail, X, Loader2, CheckCircle2, PhoneCall } from "lucide-react";
 import ContactStrip from "@/components/common/ContactStrip";
+import { toast } from "react-hot-toast";
+
+import { submitPhoneEnquiry } from "@/modules/Contact/api/contact.api";
 
 // Local SVG icon components for social media
 function Facebook({ className = "w-4.5 h-4.5" }: { className?: string }) {
@@ -80,23 +82,48 @@ function Youtube({
 }
 
 export default function Footer() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [isCallbackModalOpen, setIsCallbackModalOpen] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const digitsOnly = phone.replace(/\D/g, "");
+
+    const isValidIndianMobile = /^[6-9]\d{9}$/.test(digitsOnly);
+    const isAllSameDigit = /^(\d)\1{9}$/.test(digitsOnly);
+
+    if (!isValidIndianMobile || isAllSameDigit) {
+      setPhoneError("Please enter a valid 10-digit mobile number (e.g. 9876543210)");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setPhoneError("");
+    try {
+      await submitPhoneEnquiry(digitsOnly);
+      setIsSubmitted(true);
+      toast.success("Callback request submitted successfully!");
+    } catch (err: any) {
+      console.error("Callback API error:", err);
+      toast.error(err?.response?.data?.message || "Failed to submit request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer className="bg-bg-main border-t border-border-main">
       <div className="my-8 px-4">
         <ContactStrip />
       </div>
-      <div className="px-5 lg:px-10 py-10">
-        {/* 5 Column Layout with Vertical Dividers on Desktop */}
+      <div className="max-w-[1600px] mx-auto px-5 lg:px-10 py-10">
+        {/* Equal 5-Column Layout (Exact equal width per column) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-0 lg:divide-x lg:divide-border-main/40">
-          {/* Column 1: Logo & Description */}
-          <div className="flex flex-col text-left lg:pr-8 lg:pl-0">
+          {/* Column 1: Logo & Description (Equal width) */}
+          <div className="flex flex-col text-left lg:pr-6 lg:pl-0">
             <Link to="/" title="MAKc Automations Home" className="flex items-center">
               <BrandLogo className="h-11 w-auto" />
             </Link>
@@ -106,7 +133,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Solutions */}
+          {/* Column 2: Solutions (20% width) */}
           <div className="flex flex-col text-left lg:px-6">
             <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
               Solutions
@@ -160,7 +187,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Projects */}
+          {/* Column 3: Projects (Commented out as requested) */}
+          {/*
           <div className="flex flex-col text-left lg:px-6">
             <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
               Projects
@@ -213,8 +241,9 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          */}
 
-          {/* Column 4: About */}
+          {/* Column 3: About (20% width) */}
           <div className="flex flex-col text-left lg:px-6">
             <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
               About
@@ -259,7 +288,36 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 5: Let's Talk & Contact Info */}
+          {/* Column 4: Live Experience Centre Video & Visit Request (20% width) */}
+          <div className="flex flex-col text-left lg:px-6">
+            <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-4 select-none">
+              Live Experience Centre
+            </h3>
+            {/* Loop Video GIF */}
+            <div className="relative overflow-hidden rounded-xl border border-border-main bg-bg-surface/30 shadow-md group mb-3 aspect-video">
+              <video
+                src="/Video/living_room_animation.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105 pointer-events-none"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            {/* Like To Visit Button */}
+            <button
+              type="button"
+              onClick={() => setIsCallbackModalOpen(true)}
+              className="w-full cursor-pointer bg-accent-blue hover:bg-[#0070e0] text-white font-bold text-xs tracking-wider uppercase py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(10,132,255,0.3)] hover:shadow-[0_6px_20px_rgba(10,132,255,0.4)] hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>Like to Visit</span>
+            </button>
+          </div>
+
+          {/* Column 5: Let's Talk & Contact Info (20% width) */}
           <div className="flex flex-col text-left lg:pl-6 lg:pr-0">
             <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-4 select-none">
               Let’s Connect
@@ -312,16 +370,6 @@ export default function Footer() {
                   <Instagram />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/makc-automations/"
-                  title="Connect with MAKc Automations on LinkedIn"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="w-8 h-8 rounded-lg border border-border-main bg-bg-surface/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#0A66C2] hover:border-transparent hover:shadow-[0_0_10px_rgba(10,102,194,0.4)] transition-all duration-300"
-                >
-                  <Linkedin />
-                </a>
-                <a
                   href="https://www.facebook.com/makcautomation"
                   title="Visit MAKc Automations on Facebook"
                   target="_blank"
@@ -330,6 +378,16 @@ export default function Footer() {
                   className="w-8 h-8 rounded-lg border border-border-main bg-bg-surface/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#1877F2] hover:border-transparent hover:shadow-[0_0_10px_rgba(24,119,242,0.4)] transition-all duration-300"
                 >
                   <Facebook />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/makc-automations/"
+                  title="Connect with MAKc Automations on LinkedIn"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-8 h-8 rounded-lg border border-border-main bg-bg-surface/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#0A66C2] hover:border-transparent hover:shadow-[0_0_10px_rgba(10,102,194,0.4)] transition-all duration-300"
+                >
+                  <Linkedin />
                 </a>
                 <a
                   href="https://www.youtube.com/@MAKcAutomation01"
@@ -356,22 +414,6 @@ export default function Footer() {
             reserved.
           </p>
           <div className="flex gap-5 items-center">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex h-9 w-9 items-center justify-center border border-border-main text-text-main hover:bg-bg-surface hover:text-accent-blue transition-all duration-300 rounded-none shrink-0 cursor-pointer"
-              title="Toggle Theme"
-              aria-label="Toggle Theme"
-            >
-              {mounted && theme === "dark" ? (
-                <Sun className="h-5.5 w-5.5" />
-              ) : (
-                <Moon className="h-5.5 w-5.5" />
-              )}
-            </button>
-            <span className="text-border-main/50 text-[10px] select-none">
-              |
-            </span>
             <a
               href="/#privacy"
               title="Privacy Policy"
@@ -389,6 +431,106 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Callback Modal */}
+      {isCallbackModalOpen && (
+        <div
+          className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setIsCallbackModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-md bg-bg-surface border border-border-main rounded-3xl p-6 sm:p-8 shadow-2xl transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setIsCallbackModalOpen(false)}
+              className="absolute top-5 right-5 text-text-muted hover:text-text-main p-1.5 rounded-full hover:bg-bg-main/50 transition-colors"
+              aria-label="Close dialog"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {!isSubmitted ? (
+              <>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-accent-blue/10 border border-accent-blue/30 flex items-center justify-center text-accent-blue">
+                    <PhoneCall className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-serif font-bold text-text-main">Visit Live Experience Centre</h3>
+                    <p className="text-xs text-text-muted">Enter your mobile number to schedule your visit</p>
+                  </div>
+                </div>
+
+                <form onSubmit={handleCallbackSubmit} className="mt-5 space-y-4">
+                  <div>
+                    <label htmlFor="modal-phone" className="block text-text-muted text-[10px] font-bold uppercase tracking-wider mb-1.5">
+                      Mobile Number <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="modal-phone"
+                        type="tel"
+                        required
+                        maxLength={10}
+                        value={phone}
+                        onChange={(e) => {
+                          const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                          setPhone(cleaned);
+                          setPhoneError("");
+                        }}
+                        placeholder="9876543210"
+                        className="w-full bg-bg-main/60 border border-border-main focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 rounded-xl px-4 py-3 text-text-main text-sm outline-none transition-all font-mono tracking-wider"
+                      />
+                    </div>
+                    {phoneError && (
+                      <p className="text-red-500 text-xs mt-1.5 font-medium">{phoneError}</p>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full cursor-pointer bg-accent-blue hover:bg-[#0070e0] text-white font-bold text-xs tracking-wider uppercase py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(10,132,255,0.3)] hover:shadow-[0_8px_30px_rgba(10,132,255,0.5)]"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <span>Submit Request</span>
+                    )}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="text-center py-4 flex flex-col items-center">
+                <div className="w-14 h-14 rounded-full bg-green-500/10 border border-green-500/30 text-green-500 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-text-main mb-2">Request Received!</h3>
+                <p className="text-xs text-text-muted max-w-xs mb-6">
+                  Thank you! Our automation expert will call you back on <span className="font-semibold text-text-main">{phone}</span> shortly.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsCallbackModalOpen(false);
+                    setIsSubmitted(false);
+                    setPhone("");
+                  }}
+                  className="bg-bg-main hover:bg-border-main/50 text-text-main text-xs font-semibold px-6 py-2.5 rounded-xl border border-border-main transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

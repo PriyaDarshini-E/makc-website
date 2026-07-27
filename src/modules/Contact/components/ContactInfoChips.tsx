@@ -29,7 +29,7 @@ export function ContactInfoChips() {
         </div>
       </a>
       <a
-        href="https://wa.me/919948432444?text=Hi%20MAKc%20Team,%20I'm%20interested%20in%20your%20services!"
+        href="https://wa.me/918197783287?text=Hi%20MAKc%20Team,%20I'm%20interested%20in%20your%20services!"
         title="Call MAKc Automations at +91 99484 32444"
         target="_blank"
         rel="noopener noreferrer"
@@ -51,7 +51,7 @@ export function ContactInfoChips() {
             WhatsApp Us
           </p>
           <p className="text-lg font-semibold text-text-main leading-tight transition-colors group-hover:text-[#25D366] duration-300">
-            +91-9948432444
+            +91-8197783287
           </p>
           <p className="text-xs font-medium text-text-muted mt-0.5">
             Chat with our experts

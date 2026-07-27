@@ -260,7 +260,7 @@ export default function AutomationMosaicSection({
           </div>
 
           {/* 2nd Card: Top-right wider image */}
-          <div className={`${prefix}-img relative rounded-2xl overflow-hidden aspect-[4/3] group border border-border-main/20 shadow-md`}>
+          <div className={`${prefix}-img relative rounded-2xl overflow-hidden aspect-square group border border-border-main/20 shadow-md`}>
             <img
               src={getImageUrl(images[1]?.src || "")}
               alt={images[1]?.alt || `${title} secondary view`}
@@ -271,7 +271,7 @@ export default function AutomationMosaicSection({
           </div>
 
           {/* 3rd Card: Bottom-right wider image */}
-          <div className={`${prefix}-img relative rounded-2xl overflow-hidden aspect-[4/3] group border border-border-main/20 shadow-md`}>
+          <div className={`${prefix}-img relative rounded-2xl overflow-hidden aspect-square group border border-border-main/20 shadow-md`}>
             <img
               src={getImageUrl(images[2]?.src || "")}
               alt={images[2]?.alt || `${title} tertiary view`}

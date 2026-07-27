@@ -18,7 +18,7 @@ const images = [
     alt: "Smart speaker system seamlessly integrated into a modern interior design",
     title: "Smart Speaker Integration",
   },
-  { src: "service_automation.webp", alt: "Smart touchscreen panel for controlling home automation and media systems", title: "Home Automation Touch Panel" },
+  { src: "service_automation.webp", alt: "Industrial Automation Solutions for Smart Manufacturing", title: "Industrial Automation Services" },
   { src: "project_apartments.webp", alt: "Modern apartment living room featuring an immersive home audio setup", title: "Apartment Home Audio System" },
 ];
 

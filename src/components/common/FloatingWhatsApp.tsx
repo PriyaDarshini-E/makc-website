@@ -1,8 +1,8 @@
 export default function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/919948432444?text=Hi%MAKc%20Team,%20I'm%20interested%20in%20your%20services!"
-      title="Call MAKc Automations at +91 99484 32444"
+      href="https://wa.me/918197783287?text=Hi%20MAKc%20Team,%20I'm%20interested%20in%20your%20services!"
+      title="Chat with MAKc Automations on WhatsApp (+91 8197783287)"
       target="_blank"
       rel="noopener noreferrer"
       className="group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#25D366] !text-white shadow-lg shadow-[#25d366]/20 transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] hover:shadow-[#25d366]/40 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 dark:focus:ring-offset-[#061121]"
@@ -10,12 +10,12 @@ export default function FloatingWhatsApp() {
     >
       {/* Pulsing ring around button */}
       <span className="absolute inset-0 -z-10 rounded-full bg-[#25D366]/40 animate-ping group-hover:animate-none opacity-75 duration-1000" />
-      
+
       {/* Tooltip */}
       <span className="absolute right-14 sm:right-16 scale-0 group-hover:scale-100 bg-bg-surface text-text-main text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-md transition-all duration-200 origin-right border border-border-main pointer-events-none">
         Chat on WhatsApp
       </span>
-      
+
       {/* WhatsApp SVG Icon */}
       <svg
         className="h-6 w-6 fill-current transition-transform duration-300 group-hover:rotate-6"

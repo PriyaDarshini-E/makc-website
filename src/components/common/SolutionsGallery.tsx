@@ -61,7 +61,7 @@ export default function SolutionsGallery() {
       </div>
 
       {/* View More Button */}
-      <div className="flex justify-end mt-12 sm:mt-16">
+      <div className="flex justify-start mt-8">
         <Link 
           to="/experience" 
           title="Experience Smart Living"

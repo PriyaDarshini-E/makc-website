@@ -109,7 +109,7 @@ export default function WhatWeAutomateSection({
               <img
                 key={system.title}
                 src={system.img}
-                alt={isActive ? system.title : ""}
+                alt={system.title}
                 title={system.title}
                 aria-hidden={!isActive}
                 className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-700 ease-out ${
