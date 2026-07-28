@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import WaveButton from "@/components/common/WaveButton";
 import { getImageUrl } from "@/utils/image";
+import { IMAGE_BASE_URL } from "@/config/constants";
 import type { HotspotType } from "@/components/smarthome/types";
 import Hotspot from "@/components/smarthome/Hotspot";
 import Label from "@/components/smarthome/Label";
@@ -20,8 +21,7 @@ import {
 
 const heroBg = getImageUrl("hero_bg.webp");
 
-const VIDEO_BASE_URL =
-  "https://agsdemo.in/macapi/public/assets/images/web_images/reels/";
+const VIDEO_BASE_URL = `${IMAGE_BASE_URL}/reels/`;
 
 const hotspotsList: HotspotType[] = [
   {

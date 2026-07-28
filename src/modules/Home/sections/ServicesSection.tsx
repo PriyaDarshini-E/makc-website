@@ -148,7 +148,7 @@ export default function ServicesSection() {
               </h2>
             </div>
 
-            <p className="mt-8 lg:mt-0 font-sans text-xs sm:text-sm text-text-muted leading-relaxed">
+            <p className="mt-8 lg:mt-0 font-sans text-[13.2px] sm:text-[15.4px] lg:text-[17.6px] text-text-muted leading-relaxed">
               Every room should anticipate your needs. <br />
               Walk in. Lights welcome you. <br />
               Climate adjusts automatically. <br />

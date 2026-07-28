@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Bot, X, Sparkles, Send, RotateCcw } from "lucide-react";
+import { API_BASE_URL } from "@/config/constants";
 
 const BOT_QUOTES = [
   "Hey there! Looking to make your home smarter? 🏠✨",
@@ -120,7 +121,7 @@ export default function FloatingBot() {
     setInitialized(true);
     setIsTyping(true);
     try {
-      const res = await fetch("https://agsdemo.in/macapi/public/api/botman", {
+      const res = await fetch(`${API_BASE_URL}/botman`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -198,7 +199,7 @@ export default function FloatingBot() {
     setIsTyping(true);
     const activeUserId = userId;
     try {
-      const res = await fetch("https://agsdemo.in/macapi/public/api/botman", {
+      const res = await fetch(`${API_BASE_URL}/botman`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -292,7 +293,7 @@ export default function FloatingBot() {
     const activeUserId = userId;
 
     try {
-      const res = await fetch("https://agsdemo.in/macapi/public/api/botman", {
+      const res = await fetch(`${API_BASE_URL}/botman`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

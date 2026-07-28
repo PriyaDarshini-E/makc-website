@@ -20,9 +20,9 @@ import projectPenthouses from "@/assets/images/home_v2/project_penthouses.webp";
 import projectVillas from "@/assets/images/home_v2/project_villas.webp";
 import smarterWayBg from "@/assets/images/home_v2/smarter_way_bg.webp";
 import smarterWayBgAvif from "@/assets/images/home_v2/smarter_way_bg.avif";
+import { IMAGE_BASE_URL } from "@/config/constants";
 
-const REMOTE_IMAGE_BASE =
-  "https://agsdemo.in/macapi/public/assets/images/web_images";
+const REMOTE_IMAGE_BASE = IMAGE_BASE_URL;
 
 const LOCAL_IMAGES: Record<string, string> = {
   "hero_bg.webp": "/images/hero_bg.webp",

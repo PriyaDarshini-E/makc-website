@@ -140,49 +140,49 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-3 text-xs text-text-muted">
               <li>
-                <a
-                  href="/#solutions"
-                  title="Explore Smart Home Solutions"
+                <Link
+                  to="/automation"
+                  title="Smart Home Automation Services"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Automation
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/#solutions"
-                  title="Explore Smart Home Solutions"
+                <Link
+                  to="/lighting"
+                  title="Smart Lighting Solutions"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Lighting
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/#solutions"
-                  title="Explore Smart Home Solutions"
+                <Link
+                  to="/networking"
+                  title="Home Networking Solutions"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Networking
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/#solutions"
-                  title="Explore Smart Home Solutions"
+                <Link
+                  to="/security"
+                  title="Smart Home Security Systems"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Security
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/#solutions"
-                  title="Explore Smart Home Solutions"
+                <Link
+                  to="/audio"
+                  title="Home Audio Solutions"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Audio
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -250,40 +250,40 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-3 text-xs text-text-muted">
               <li>
-                <a
-                  href="/why-us#about"
+                <Link
+                  to="/about"
                   title="About Our Company"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   About MAKc
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/why-us#process"
+                <Link
+                  to="/why-us"
                   title="Our Work Process"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Our Process
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/#careers"
-                  title="Careers at MAKc Automations"
+                <Link
+                  to="/contact"
+                  title="Careers & Contact at MAKc Automations"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Careers
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/#blog"
+                <Link
+                  to="/blogs"
                   title="Read Our Blog"
                   className="hover:text-accent-blue transition-colors duration-200"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
