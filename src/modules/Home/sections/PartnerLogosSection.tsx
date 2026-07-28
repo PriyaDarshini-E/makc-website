@@ -112,7 +112,7 @@ export default function PartnerLogosSection() {
 
   return (
     <section className="relative w-full bg-bg-main py-14 lg:py-16 border-t border-border-main overflow-hidden">
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 flex flex-col items-center">
+      <div className="mx-auto max-w-8xl px-4 sm:px-6 flex flex-col gap-14 items-center">
         
         {/* Title */}
         <span className="font-bold tracking-[0.2em] text-accent-blue uppercase mb-8 select-none">

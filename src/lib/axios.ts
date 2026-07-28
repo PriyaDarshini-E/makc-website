@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { API_BASE_URL } from '@/config/constants';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://agsdemo.in/macapi/public/api',
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

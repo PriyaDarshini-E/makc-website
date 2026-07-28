@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { getImageUrl } from "@/utils/image";
+import { API_BASE_URL, IMAGE_BASE_URL } from "@/config/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +60,7 @@ export default function AutomationMosaicSection({
     if (VIDEO_MAP[serviceName]) {
       setMediaData({
         type: "Reel",
-        url: `https://agsdemo.in/macapi/public/assets/images/web_images/reels/${VIDEO_MAP[serviceName]}`,
+        url: `${IMAGE_BASE_URL}/reels/${VIDEO_MAP[serviceName]}`,
       });
       setLoading(false);
       return;
@@ -67,7 +68,7 @@ export default function AutomationMosaicSection({
 
     const fetchMedia = async () => {
       try {
-        const res = await fetch("https://agsdemo.in/macapi/public/api/getWebReel");
+        const res = await fetch(`${API_BASE_URL}/getWebReel`);
         if (!res.ok) throw new Error("API error");
         const json = await res.json();
         
@@ -78,7 +79,7 @@ export default function AutomationMosaicSection({
         if (serviceData) {
           const reelsBase = json.image_url?.find(
             (img: any) => img.image_for === "Reels"
-          )?.image_url || "https://agsdemo.in/macapi/public/assets/images/reels_images/";
+          )?.image_url || `${IMAGE_BASE_URL}/reels/`;
           
           const isFullUrl = serviceData.services_url_image.startsWith("http");
           const finalUrl = isFullUrl 

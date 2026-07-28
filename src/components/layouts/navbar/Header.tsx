@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowUpRight, Phone, Sun, Moon } from "lucide-react";
+import { ArrowUpRight, Phone, Sun, Moon, Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import BrandLogo from "@/components/common/BrandLogo";
 
@@ -97,13 +97,13 @@ export default function Header() {
     document.body.style.overflow = "";
   };
 
-  // const toggle = () => {
-  //   setDrawer((open) => {
-  //     const next = !open;
-  //     document.body.style.overflow = next ? "hidden" : "";
-  //     return next;
-  //   });
-  // };
+  const toggle = () => {
+    setDrawer((open) => {
+      const next = !open;
+      document.body.style.overflow = next ? "hidden" : "";
+      return next;
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -130,19 +130,19 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 z-[200] w-full transition-[background,box-shadow,border-color] duration-300 ${
+        className={`fixed top-0 z-[100] w-full transition-[background,box-shadow,border-color] duration-300 ${
           isScrolled
             ? "bg-bg-surface/90 backdrop-blur-xl border-b border-border-main/40 shadow-[0_1px_30px_rgba(0,0,0,0.16)]"
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-8xl h-24 items-center justify-between gap-4 px-4 sm:px-6 lg:px-16">
+        <div className="mx-auto flex max-w-8xl h-16 sm:h-20 lg:h-24 items-center justify-between gap-4 px-4 sm:px-6 lg:px-16">
           <Link
             to="/"
             title="MAKc Automations Home"
             className="flex items-center shrink-0 group"
           >
-            <BrandLogo className="h-10 w-auto transition-transform duration-300 group-hover:scale-[1.03]" />
+            <BrandLogo className="h-8 sm:h-9 lg:h-10 w-auto transition-transform duration-300 group-hover:scale-[1.03]" />
           </Link>
 
           <nav
@@ -230,13 +230,31 @@ export default function Header() {
                 <Moon className="h-4 w-4 stroke-[1.8]" />
               )}
             </button>
+
+            {/* Hamburger Toggle Button (Mobile / Small Screen Only) */}
+            <button
+              type="button"
+              onClick={toggle}
+              className={`flex lg:hidden h-9 w-9 items-center justify-center rounded-full border transition-all duration-300 cursor-pointer shrink-0 ml-0.5 ${
+                isScrolled
+                  ? "border-border-main/60 text-text-main hover:bg-bg-surface hover:text-accent-blue"
+                  : hasDarkHero
+                    ? "border-white/30 text-white hover:bg-white/10 hover:border-white/60"
+                    : "border-border-main/60 text-text-main hover:bg-bg-surface hover:text-accent-blue"
+              }`}
+              title={drawerOpen ? "Close Menu" : "Open Menu"}
+              aria-label={drawerOpen ? "Close Menu" : "Open Menu"}
+              aria-expanded={drawerOpen}
+            >
+              <Menu className="h-4 w-4 stroke-[1.8]" />
+            </button>
           </div>
         </div>
       </header>
 
       <div
         onClick={close}
-        className={`fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[250] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           drawerOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible pointer-events-none"
@@ -244,7 +262,7 @@ export default function Header() {
       />
 
       <aside
-        className={`fixed right-0 top-0 bottom-0 z-[70] w-[320px] max-w-[92vw] flex flex-col overflow-hidden transition-[transform,opacity,visibility] duration-500 ease-out ${
+        className={`fixed right-0 top-0 bottom-0 z-[300] w-[320px] max-w-[92vw] flex flex-col overflow-hidden transition-[transform,opacity,visibility] duration-500 ease-out ${
           drawerOpen
             ? "translate-x-0 opacity-100 visible"
             : "translate-x-full opacity-0 invisible"
@@ -279,9 +297,7 @@ export default function Header() {
         >
           {/* Primary nav links — only shown on mobile (hidden on lg+ where desktop nav renders them) */}
           <div className="lg:hidden">
-            <p className="text-xs font-medium text-text-muted px-2 mb-3 uppercase tracking-widest">
-              Pages
-            </p>
+           
             <ul className="space-y-0.5 mb-6">
               {allLinks.map((link) => {
                 const isActive = location.pathname === link.path;
