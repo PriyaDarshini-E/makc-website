@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import BrandLogo from "@/components/common/BrandLogo";
 import { Phone, Mail, X, Loader2, CheckCircle2, PhoneCall } from "lucide-react";
@@ -6,6 +6,7 @@ import ContactStrip from "@/components/common/ContactStrip";
 import { toast } from "react-hot-toast";
 
 import { submitPhoneEnquiry } from "@/modules/Contact/api/contact.api";
+import { useLocation } from "react-router-dom";
 
 // Local SVG icon components for social media
 function Facebook({ className = "w-4.5 h-4.5" }: { className?: string }) {
@@ -87,6 +88,16 @@ export default function Footer() {
   const [phoneError, setPhoneError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const location = useLocation();
+
+  const handleHomeLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === "/" && location.hash === "#home-top") {
+      event.preventDefault();
+      document.getElementById("home-top")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
 
   const handleCallbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,7 +135,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-0 lg:divide-x lg:divide-border-main/40">
           {/* Column 1: Logo & Description (Equal width) */}
           <div className="flex flex-col text-left lg:pr-6 lg:pl-0">
-            <Link to="/" title="MAKc Automations Home" className="flex items-center">
+            <Link
+              to="/#home-top"
+              title="MAKc Automations Home"
+              className="flex items-center"
+              onClick={handleHomeLogoClick}
+            >
               <BrandLogo className="h-11 w-auto" />
             </Link>
             <p className="mt-5 text-xs text-text-muted leading-relaxed">
@@ -133,159 +149,110 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Solutions (20% width) */}
-          <div className="flex flex-col text-left lg:px-6">
-            <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
-              Solutions
-            </h3>
-            <ul className="flex flex-col gap-3 text-xs text-text-muted">
-              <li>
-                <Link
-                  to="/automation"
-                  title="Smart Home Automation Services"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Automation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/lighting"
-                  title="Smart Lighting Solutions"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Lighting
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/networking"
-                  title="Home Networking Solutions"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Networking
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/security"
-                  title="Smart Home Security Systems"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Security
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/audio"
-                  title="Home Audio Solutions"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Audio
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Column 2 & 3: Solutions & About (Aligned side-by-side on all mobile/small screens) */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:contents col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2">
+            {/* Column 2: Solutions */}
+            <div className="flex flex-col text-left px-0 lg:px-6">
+              <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
+                Solutions
+              </h3>
+              <ul className="flex flex-col gap-3 text-xs text-text-muted">
+                <li>
+                  <Link
+                    to="/automation"
+                    title="Smart Home Automation Services"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Automation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/lighting"
+                    title="Smart Lighting Solutions"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Lighting
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/networking"
+                    title="Home Networking Solutions"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Networking
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/security"
+                    title="Smart Home Security Systems"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Security
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/audio"
+                    title="Home Audio Solutions"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Audio
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Column 3: Projects (Commented out as requested) */}
-          {/*
-          <div className="flex flex-col text-left lg:px-6">
-            <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
-              Projects
-            </h3>
-            <ul className="flex flex-col gap-3 text-xs text-text-muted">
-              <li>
-                <a
-                  href="/#projects"
-                  title="View Our Projects"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Luxury Villas
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#projects"
-                  title="View Our Projects"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Apartments
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#projects"
-                  title="View Our Projects"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Farmhouses
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#projects"
-                  title="View Our Projects"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Penthouses
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#projects"
-                  title="View Our Projects"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Commercial Spaces
-                </a>
-              </li>
-            </ul>
-          </div>
-          */}
-
-          {/* Column 3: About (20% width) */}
-          <div className="flex flex-col text-left lg:px-6">
-            <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
-              About
-            </h3>
-            <ul className="flex flex-col gap-3 text-xs text-text-muted">
-              <li>
-                <Link
-                  to="/about"
-                  title="About Our Company"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  About MAKc
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/why-us"
-                  title="Our Work Process"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Our Process
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  title="Careers & Contact at MAKc Automations"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/blogs"
-                  title="Read Our Blog"
-                  className="hover:text-accent-blue transition-colors duration-200"
-                >
-                  Blog
-                </Link>
-              </li>
-            </ul>
+            {/* Column 3: About (Positioned on the right side of Solutions) */}
+            <div className="flex flex-col text-left px-0 lg:px-6">
+              <h3 className="text-[11px] font-bold tracking-[0.25em] text-accent-blue uppercase mb-6 select-none">
+                About
+              </h3>
+              <ul className="flex flex-col gap-3 text-xs text-text-muted">
+                <li>
+                  <Link
+                    to="/about"
+                    title="About Our Company"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    About MAKc
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/why-us"
+                    title="Our Work Process"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Our Process
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    title="Careers & Contact at MAKc Automations"
+                    className="hover:text-accent-blue transition-colors duration-200"
+                  >
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toast("Blog coming soon!");
+                    }}
+                    title="MAKc Automations Blog"
+                    className="hover:text-accent-blue transition-colors duration-200 cursor-pointer text-left bg-transparent border-0 p-0 font-inherit text-xs text-text-muted"
+                  >
+                    Blog
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Column 4: Live Experience Centre Video & Visit Request (20% width) */}
@@ -310,7 +277,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={() => setIsCallbackModalOpen(true)}
-              className="w-full cursor-pointer bg-accent-blue hover:bg-[#0070e0] text-white font-bold text-xs tracking-wider uppercase py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(10,132,255,0.3)] hover:shadow-[0_6px_20px_rgba(10,132,255,0.4)] hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full cursor-pointer bg-accent-blue hover:bg-[#0070e0] text-white! font-bold text-xs tracking-wider uppercase py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(10,132,255,0.3)] hover:shadow-[0_6px_20px_rgba(10,132,255,0.4)] hover:-translate-y-0.5 active:translate-y-0"
             >
               <PhoneCall className="w-3.5 h-3.5" />
               <span>Like to Visit</span>

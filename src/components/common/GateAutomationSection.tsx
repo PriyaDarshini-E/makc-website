@@ -7,33 +7,30 @@ const types = [
 ];
 
 const features = [
-  "Remote & app-based access",
-  "Smooth and silent operation",
-  "Safety sensors & obstruction detection",
-];
-
-const images = [
-  {
-    src: "getAuto1.webp",
-    alt: "Automated rolling shutter garage door layout",
-    title: "Automatic Garage Door Automation",
-  },
-  { src: "service/GA1.webp", alt: "Automatic swing arm motors installed on driveway gates", title: "Automatic Swing Gate Automation" },
-  { src: "service/GA2.webp", alt: "Automatic sliding gate automation system on a residential driveway", title: "Automatic Sliding Gate Automation" },
+  "Remote & App-Based Access",
+  "Smooth and Silent Operation",
+  "Safety Sensors & Obstruction Detection",
 ];
 
 export default function GateAutomationSection() {
   return (
     <AutomationMosaicSection
       title="Gate Automation"
-      description="Automate your gates and shutters for security, safety, and convenience."
+      description="Automate your Gates and Shutters for Security, Safety, and Convenience."
       types={types}
       features={features}
-      suitableText="Perfect for residential gates, commercial shutters, security checkpoints, and private driveways."
-      images={images}
+      suitableText="Perfect for Residential Gates, Commercial Shutters, Security Checkpoints, and Private Driveways."
       imagePosition="left"
       prefix="gate"
       serviceName="Gate Automation"
+      reels={[
+        "https://www.instagram.com/reel/DZPzLdESjt3/",
+        "https://www.instagram.com/reel/C4liWxmSUuc/",
+      ]}
+      reelTitles={[
+        "Watch Electrical Automation & Smart Switches Reel on Instagram",
+        "Watch Curtain Automation Reel 1 on Instagram",
+      ]}
     />
   );
 }

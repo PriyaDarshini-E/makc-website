@@ -1,17 +1,17 @@
 import AutomationMosaicSection from "@/components/common/AutomationMosaicSection";
 
 const types = [
-  "Home Mesh solutions",
-  "Wired LAN networking",
-  "Hybrid setups",
-  "Dead-zone elimination",
+  "Home Mesh Solutions",
+  "Wired LAN Networking",
+  "Hybrid Setups",
+  "Dead-zone Elimination",
 ];
 
 const features = [
-  "Site inspection & requirement analysis",
-  "Coverage and load planning",
-  "Scalable network design",
-  "Clean and efficient layouts",
+  "Site Inspection & Requirement analysis",
+  "Coverage and Load Planning",
+  "Scalable Network Design",
+  "Clean and Efficient Layouts",
 ];
 
 const images = [
@@ -24,14 +24,22 @@ export default function WiredNetworkSection() {
   return (
     <AutomationMosaicSection
       title="Wired Network Planning & Design"
-      description="Reliable connectivity designed for modern usage."
+      description="Reliable Connectivity Designed for Modern Usage."
       types={types}
       features={features}
-      suitableText="Ideal for smooth browsing, streaming, smart devices, and work-from-home setups."
+      suitableText="Ideal for Smooth Browsing, Streaming, Smart Devices, and Work-From-Home Setups."
       images={images}
       imagePosition="right"
       prefix="wn"
       serviceName="Wired Network"
+      reels={[
+        "https://www.instagram.com/reel/DKeUhreyEct/",
+        "https://www.instagram.com/reel/DJwWg10qD_r/",
+      ]}
+      reelTitles={[
+        "Watch Luxury Smart Lighting Reel on Instagram",
+        "Watch Smart Lighting Solutions Reel on Instagram",
+      ]}
     />
   );
 }

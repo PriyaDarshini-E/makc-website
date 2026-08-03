@@ -9,7 +9,7 @@ export default function CtaSection() {
           description="Smart Home Automation Solutions Starting from INR 1,20,000"
           cta={{
             label: "Book a Free Smart Home Consultation",
-            href: "/contact",
+            href: "/#contact-enquiry",
           }}
         />
       </div>

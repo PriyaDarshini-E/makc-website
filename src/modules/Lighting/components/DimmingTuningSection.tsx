@@ -1,9 +1,9 @@
 import AutomationMosaicSection from "@/components/common/AutomationMosaicSection";
 
 const types = [
-  "Smooth dimming control",
-  "Preset brightness levels",
-  "Night-friendly low-light modes",
+  "Smooth Dimming Control",
+  "Preset Brightness Levels",
+  "Night-Friendly Low-Light Modes",
 ];
 
 const images = [
@@ -16,13 +16,15 @@ export default function DimmingTuningSection() {
   return (
     <AutomationMosaicSection
       title="Dimming & Tuning of Lights"
-      description="Adjust lighting intensity smoothly for comfort and mood."
+      description="Adjust Lighting Intensity Smoothly for Comfort and Mood."
       types={types}
-      suitableText="Perfect for bedrooms, living rooms, and conference areas."
+      suitableText="Perfect for Bedrooms, Living rooms, and Conference areas."
       images={images}
-      imagePosition="left"
+      imagePosition="right"
       prefix="dt"
       serviceName="Dimming & Tuning of Lights"
+      reelUrl="https://www.instagram.com/reel/DMcsd9Pyetv/"
+      reelTitles={["Watch Home Audio System Installation Reel on Instagram"]}
     />
   );
 }

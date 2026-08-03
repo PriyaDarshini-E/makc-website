@@ -544,6 +544,32 @@ html.lenis body {
   transform: translateY(0) rotate(0deg) scaleX(1.2);
 }
 
+/* Home Wave CTA — Inverse: starts filled, drains to empty on hover */
+.home-wave-cta--drain {
+  background: var(--cta-accent, var(--accent));
+  border-color: var(--cta-accent, var(--accent));
+  color: var(--cta-foreground, var(--accent-foreground));
+  transition:
+    background 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-wave-cta--drain::before {
+  background: var(--cta-accent, var(--accent));
+  border-radius: 0;
+  transform: translateY(0) rotate(0deg) scaleX(1.08);
+}
+
+.home-wave-cta--drain:is(:hover, :focus-visible) {
+  background: transparent;
+  color: var(--cta-accent, var(--accent)) !important;
+}
+
+.home-wave-cta--drain:is(:hover, :focus-visible)::before {
+  border-radius: 45% 55% 0 0;
+  transform: translateY(80%) rotate(-2deg) scaleX(1.08);
+}
+
 /* Scroll Entrance Animations */
 .reveal-on-scroll {
   opacity: 1;

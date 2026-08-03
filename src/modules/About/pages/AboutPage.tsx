@@ -68,13 +68,17 @@ export default function AboutPage() {
           title="About MAKc Automations"
           className="absolute inset-0 w-full h-full object-cover scale-102 filter brightness-[45%] contrast-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-bg-main/30 to-bg-main" />
+        {/* Left side overlay with theme mode aware light and dark */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-main via-bg-main/95 sm:via-bg-main/80 lg:via-bg-main/60 to-transparent pointer-events-none transition-colors duration-300" />
+
+        {/* Bottom gradient blend into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-t from-bg-main to-transparent pointer-events-none z-[5]" />
         
         <div className="relative z-10 max-w-5xl mx-auto text-center px-4 pt-16 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-bold font-serif tracking-tight text-white drop-shadow-md">
+          <h1 className="text-5xl md:text-7xl font-bold font-serif tracking-tight text-text-main drop-shadow-md">
             About Us
           </h1>
-          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow">
+          <p className="text-sm sm:text-base text-text-muted max-w-2xl mx-auto leading-relaxed font-medium drop-shadow">
             MAKc Automation is locally owned and operated, being the best automation, security system, networking and lighting provider in the region.
           </p>
         </div>

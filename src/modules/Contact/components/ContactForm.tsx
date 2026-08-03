@@ -142,7 +142,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto bg-accent-blue hover:bg-[#0055d4] text-white font-bold tracking-wide py-3.5 px-10 rounded-xl transition-all duration-300 flex justify-center items-center shadow-[0_4px_20px_rgba(10,132,255,0.35)] hover:shadow-[0_6px_25px_rgba(10,132,255,0.55)] hover:-translate-y-0.5 disabled:opacity-60 disabled:pointer-events-none disabled:shadow-none disabled:translate-y-0 apple-border-shine cursor-pointer"
+            className="w-full sm:w-auto bg-accent-blue hover:bg-[#0055d4] text-white! font-bold tracking-wide py-3.5 px-10 rounded-xl transition-all duration-300 flex justify-center items-center shadow-[0_4px_20px_rgba(10,132,255,0.35)] hover:shadow-[0_6px_25px_rgba(10,132,255,0.55)] hover:-translate-y-0.5 disabled:opacity-60 disabled:pointer-events-none disabled:shadow-none disabled:translate-y-0 apple-border-shine cursor-pointer"
           >
             {isSubmitting ? (
               <>

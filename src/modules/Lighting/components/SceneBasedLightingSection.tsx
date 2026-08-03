@@ -31,13 +31,21 @@ export default function SceneBasedLightingSection() {
   return (
     <AutomationMosaicSection
       title="Scene-Based Lighting"
-      description="Create different lighting environments for any occasion or time of day."
+      description="Create different Lighting Environments for any occasion or time of day."
       types={scenes}
-      suitableText="Perfect for creating relaxing environments, productivity zones, dinner parties, and automated night schedules."
+      suitableText="Perfect for creating Relaxing Environments, Productivity Zones, Dinner Parties, and Automated Night Schedules."
       images={images}
       imagePosition="left"
       prefix="sbl"
       serviceName="Scene-Based Lighting"
+      reels={[
+        "https://www.instagram.com/reel/DPbMLdFDSGw/",
+        "https://www.instagram.com/reel/DZICTA9KjuW/",
+      ]}
+      reelTitles={[
+        "Watch Home Audio Solutions Reel on Instagram",
+        "Watch Premium Audio Setup Reel on Instagram",
+      ]}
     />
   );
 }

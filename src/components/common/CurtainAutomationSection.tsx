@@ -1,30 +1,31 @@
 import AutomationMosaicSection from "./AutomationMosaicSection";
 
 const types = [
-  "Automatic open and close",
-  "Time-based and sunlight-based control",
+  "Automatic Open and Close",
+  "Time-Based and Sunlight-Based control",
 ];
 
-const features = ["Privacy control", "One-touch and voice commands"];
-
-const images = [
-  { src: "Curtain Automation.webp", alt: "Circadian curtain automation in master bedroom", title: "Smart Bedroom Curtain Automation" },
-  { src: "service/CA1.webp", alt: "Sleek automatic blind track details", title: "Motorized Smart Blinds" },
-  { src: "service/CA2.webp", alt: "Luxury villa bedroom with smart curtains", title: "Luxury Smart Villa Bedroom" },
-];
+const features = ["Privacy Control", "One-Touch and Voice Commands"];
 
 export default function CurtainAutomationSection() {
   return (
     <AutomationMosaicSection
       title="Curtain Automation"
-      description="Automate curtains and blinds for comfort, privacy, and energy efficiency."
+      description="Automate Curtains and Blinds for Comfort, Privacy, and Energy Efficiency."
       types={types}
       features={features}
-      suitableText="Perfect for bedrooms, living rooms, conference rooms, and large window areas."
-      images={images}
+      suitableText="Perfect for Bedrooms, Living rooms, Conference rooms, and Large Window areas."
       imagePosition="left"
       prefix="curt"
       serviceName="Curtain Automation"
+      reels={[
+        "https://www.instagram.com/reel/DV00thoEp7q/",
+        "https://www.instagram.com/reel/DZ19tDvSAsN/",
+      ]}
+      reelTitles={[
+        "Watch Gate Automation Reel 1 on Instagram",
+        "Watch Gate Automation Reel 2 on Instagram",
+      ]}
     />
   );
 }

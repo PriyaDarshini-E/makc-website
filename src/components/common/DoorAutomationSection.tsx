@@ -8,10 +8,10 @@ const types = [
 ];
 
 const features = [
-  "Two-way communication with visitors",
-  "Unlock doors from anywhere in the world",
-  "Instant mobile notifications",
-  "Secure app-based, PIN, or biometric access",
+  "Two-way Communication with visitors",
+  "Unlock Doors from anywhere in the world",
+  "Instant Mobile Notifications",
+  "Secure App-Based, PIN, or Biometric Access",
 ];
 
 const images = [
@@ -28,14 +28,16 @@ export default function DoorAutomationSection() {
   return (
     <AutomationMosaicSection
       title="Door Automation"
-      description="Manage access to your space from anywhere with smart door automation."
+      description="Manage Access to your space from anywhere with Smart Door Automation."
       types={types}
       features={features}
-      suitableText="Suitable for homes, offices, and controlled-entry commercial properties."
+      suitableText="Suitable for Homes, Offices, and Controlled-Entry Commercial properties."
       images={images}
       imagePosition="right"
       prefix="door"
       serviceName="Door Automation"
+      reelUrl="https://www.instagram.com/reel/DN-RMfTkqCx/"
+      reelTitles={["Watch Door Automation Reel on Instagram"]}
     />
   );
 }

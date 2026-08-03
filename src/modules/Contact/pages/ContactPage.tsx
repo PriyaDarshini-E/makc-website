@@ -69,11 +69,11 @@ export default function ContactPage() {
                 <div className="w-9 h-9 rounded-lg bg-accent-blue/20 text-accent-blue flex items-center justify-center backdrop-blur-md border border-accent-blue/30">
                   <MapPin className="w-4.5 h-4.5" aria-hidden="true" />
                 </div>
-                <h4 className="text-white text-xl font-serif font-bold drop-shadow-md">
+                <h4 className="text-white! text-xl font-serif font-bold drop-shadow-md">
                   Smart Experience Center
                 </h4>
               </div>
-              <p className="text-white/80 text-sm drop-shadow font-light border-accent-blue pl-4 ml-7.5">
+              <p className="text-white/80! text-sm drop-shadow font-light border-accent-blue pl-4 ml-7.5">
                 141/6, 4th Main, 12th Cross Rd, <br />
                 BEML Layout, Brookefield, <br />
                 Bengaluru, Karnataka 560066
@@ -81,8 +81,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* 4-card row — all chips + social in one flex nowrap row */}
-          <div className="lg:col-span-12 flex flex-col sm:flex-row sm:flex-nowrap gap-4 lg:gap-6">
+          {/* 4-card responsive grid layout: spans full width on md and lg */}
+          <div className="md:col-span-2 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             <ContactInfoChips />
             <SocialMediaBar />
           </div>

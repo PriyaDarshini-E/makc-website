@@ -10,16 +10,18 @@ import Connector from "@/components/smarthome/Connector";
 import { useResponsive } from "@/components/smarthome/hooks";
 import {
   Lightbulb,
-  Video,
   ShieldCheck,
   ToggleLeft,
   Sliders,
   ShieldAlert,
   Blinds,
+  Wifi,
   X,
 } from "lucide-react";
+import InstagramEmbed from "@/components/common/InstagramEmbed";
 
-const heroBg = getImageUrl("hero_bg.webp");
+const heroBgDark = getImageUrl("hero_bg.webp");
+const heroBgLight = getImageUrl("hero_bg-light.webp");
 
 const VIDEO_BASE_URL = `${IMAGE_BASE_URL}/reels/`;
 
@@ -30,7 +32,9 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 60.5, y: 25.5 },
     labelPos: { x: 75.2, y: 24 },
     icon: Blinds,
-    videoFile: "electrical_automation.mp4",
+
+    videoFile:
+      "https://www.instagram.com/reel/DQ38odUkpZr/?igsh=MTB0dmQ3NnVibXgzYQ==",
   },
   {
     id: "lighting",
@@ -38,7 +42,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 58.5, y: 36 },
     labelPos: { x: 72.6, y: 32.4 },
     icon: Lightbulb,
-    videoFile: "dimming_and _tunning_of_lights.mp4",
+    videoFile: "https://www.instagram.com/reel/DZICTA9KjuW/",
   },
   {
     id: "switches",
@@ -46,7 +50,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 77.2, y: 53 },
     labelPos: { x: 86.2, y: 43.5 },
     icon: ToggleLeft,
-    videoFile: "rgb_mood_lighting.mp4",
+    videoFile: "https://www.instagram.com/reel/DKHEqiVSl4-/",
   },
   {
     id: "door",
@@ -54,15 +58,16 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 61.3, y: 65 },
     labelPos: { x: 68.2, y: 57.5 },
     icon: Sliders,
-    videoFile: "sensor_board_protection.mp4",
+    videoFile:
+      "https://www.instagram.com/reel/DDE2L2ByII8/?igsh=bjJhaDltcW8yaW9r",
   },
   {
-    id: "cctv",
-    label: "CCTV",
+    id: "networking",
+    label: "Networking",
     anchor: { x: 83, y: 69.5 },
     labelPos: { x: 89, y: 62 },
-    icon: Video,
-    videoFile: "mesh_wifi_network_solutions.mp4",
+    icon: Wifi,
+    videoFile: "https://www.instagram.com/reel/DKeUhreyEct/",
   },
   {
     id: "security",
@@ -70,7 +75,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 78.3, y: 69 },
     labelPos: { x: 60.8, y: 74.5 },
     icon: ShieldCheck,
-    videoFile: "wired_network_planning_and_design.mp4",
+    videoFile: "https://www.instagram.com/reel/DTJNMgzk284/",
   },
   {
     id: "gate",
@@ -78,7 +83,8 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 73.2, y: 78 },
     labelPos: { x: 83, y: 75 },
     icon: ShieldAlert,
-    videoFile: "gate_automation.mp4",
+    videoFile:
+      "https://www.instagram.com/reel/DTp5xiDj82a/?igsh=MTZldWR6cm01OWFr",
   },
 ];
 
@@ -100,16 +106,32 @@ export default function HeroSectionV2() {
       id="home"
       onViewportEnter={() => setIsInView(true)}
       viewport={{ once: true, amount: 0.1 }}
-      className="group relative w-full min-h-screen bg-bg-main flex items-center justify-between overflow-hidden py-24 sm:py-32 transition-colors duration-300 no-reveal"
+      className="group relative w-full min-h-screen bg-bg-main flex items-center justify-between overflow-hidden py-20 sm:py-28 transition-colors duration-300 no-reveal"
     >
-      {/* Background Image Container */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+      {/* Background Image Container with Smooth Crossfade between Dark (Night) and Light (Day) Themes */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+        {/* Dark Theme Hero Background (Night Villa) */}
         <img
-          src={heroBg}
-          alt="Smart Home Automation Installation in Bangalore"
+          src={heroBgDark}
+          alt="Smart Home Automation Installation in Bangalore - Night View"
           title="Smart Home Automation Installation in Bangalore"
-          className="w-full h-full object-cover object-center pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out dark:opacity-100 opacity-0"
+          loading="eager"
         />
+        {/* Light Theme Hero Background (Day Villa) */}
+        <img
+          src={heroBgLight}
+          alt="Smart Home Automation Installation in Bangalore - Day View"
+          title="Smart Home Automation Installation in Bangalore"
+          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out dark:opacity-0 opacity-100"
+          loading="eager"
+        />
+
+        {/* Left side overlay with theme mode aware light and dark */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-main via-bg-main/95 sm:via-bg-main/80 lg:via-bg-main/60 to-transparent pointer-events-none transition-colors duration-300" />
+
+        {/* Bottom gradient blend into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-t from-bg-main to-transparent pointer-events-none z-[5]" />
       </div>
 
       {/* Shared SVG Connector Layer */}
@@ -208,61 +230,57 @@ export default function HeroSectionV2() {
       )}
 
       {/* Left-Side Content overlays above background and hotspots */}
-      <div className="relative z-40 mx-auto max-w-8xl w-full px-4 sm:px-14 flex flex-col lg:flex-row items-start lg:items-stretch justify-between gap-12 sm:gap-16 pointer-events-none">
+      <div className="relative z-40 mx-auto  max-w-8xl w-full px-4 sm:px-14 flex flex-col lg:flex-row lg:items-stretch justify-between gap-12 sm:gap-16 pointer-events-none">
         {/* Hero Left Content */}
         <div
           className="flex-1 flex flex-col justify-center text-left max-w-2xl reveal-on-scroll reveal-left pointer-events-auto"
           data-reveal-duration="0.9s"
         >
-          <div className="mb-4">
-            <div className="inline-flex items-center gap-2.5 border border-white/20 backdrop-blur-md rounded-full px-3 py-1.5 select-none pointer-events-none">
+          <div className="mb-3">
+            <div className="inline-flex items-center gap-2.5 border border-border-main/60 bg-bg-surface/50 backdrop-blur-md rounded-full px-3 py-1.5 select-none pointer-events-none">
               <img
                 src="/images/iso-image.svg"
                 alt="ISO Certified Logo"
                 title="ISO Certified Home Automation Company"
                 className="h-5.5 w-5.5 object-contain"
               />
-              <span className="text-[11px] sm:text-xs font-sans font-medium tracking-wide !text-white leading-none">
+              <span className="text-[11px] sm:text-xs font-sans font-medium tracking-wide text-text-main leading-none">
                 ISO <span className="text-[#00A551] font-semibold">2015</span>{" "}
                 Certified Company
               </span>
             </div>
           </div>
 
-          <h1 className="mt-4 sm:mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold !text-white tracking-tight leading-[1.15]">
-            Experience the <br />
-            <span className="italic font-normal text-gold-primary">
-              Smart Living
+          <h1 className="mt-3 sm:mt-4 text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-text-main tracking-tight leading-[1.15]">
+            <span className="block text-nowrap">Smart Home Automation</span>
+            <span className="block italic font-normal text-gold-primary">
+              Company in Bangalore
             </span>
           </h1>
 
-          <p className="mt-6 text-sm sm:text-base !text-white/80 font-body leading-relaxed max-w-lg">
-            Experience a new standard of living with intelligent automation,
-            luxury lighting, world-class security, and seamless connectivity—all
-            designed exclusively for premium residences.
+          <p className="mt-4 text-[0.8rem] sm:text-base text-text-muted font-body leading-relaxed max-w-lg">
+            Smart homes are not about gadgets — they are about how you live.
+            With almost a decade of experience and 800+ projects delivered
+            across homes and select commercial spaces, here's what you can
+            expect from us.
           </p>
 
-          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <a
-              href="#contact"
+          <div className="mt-12 sm:mt-14">
+            <WaveButton
+              href="#contact-enquiry"
               title="Contact MAKc Automations"
-              className="w-full text-nowrap sm:w-auto px-4 py-3.5 sm:px-8 sm:py-4 bg-[#006ed6] text-white! font-bold text-xs tracking-wide sm:tracking-[0.15em] uppercase hover:bg-[#005fba] transition-colors duration-300 rounded-none shadow-[0_4px_20px_rgba(10,132,255,0.35)] flex items-center justify-center gap-2 group text-center"
+              accentColor="#006ed6"
+              foregroundColor="#fff"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("contact-enquiry")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="home-wave-cta--drain rounded-none px-8 py-3 w-fit md:text-nowrap hover:text-white! border font-bold text-[0.65rem] tracking-wide sm:tracking-[0.15em] uppercase shadow-[0_4px_20px_rgba(10,132,255,0.35)] flex items-center justify-center gap-2 text-center"
             >
               <span className="leading-snug">
                 Book a Free Smart Home Consultation
-              </span>
-            </a>
-
-            <WaveButton
-              href="#solutions"
-              title="View Smart Home Solutions"
-              accentColor="var(--color-gold-primary)"
-              foregroundColor="#fff"
-              className="px-6 py-3.5 sm:px-8 sm:py-4 text-nowrap border border-gold-primary text-gold-primary font-bold text-[10px] sm:text-xs tracking-[0.15em] uppercase transition-all duration-300 rounded-none flex items-center gap-2 group"
-            >
-              EXPLORE SMART HOMES
-              <span className="font-mono text-xs transition-transform duration-300 group-hover:translate-x-1">
-                &gt;
               </span>
             </WaveButton>
           </div>
@@ -305,7 +323,7 @@ export default function HeroSectionV2() {
               <button
                 type="button"
                 onClick={() => setActiveId(null)}
-                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="w-7 h-7 rounded-full text-white! flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close Video preview"
               >
                 <X className="w-4 h-4" />
@@ -315,15 +333,41 @@ export default function HeroSectionV2() {
             {/* Video Player Container */}
             <div className="relative w-full aspect-[4/5] max-h-[460px] bg-black flex items-center justify-center overflow-hidden rounded-b-2xl">
               {(() => {
-                const activeHotspot = hotspotsList.find((h) => h.id === activeId);
+                const activeHotspot = hotspotsList.find(
+                  (h) => h.id === activeId,
+                );
 
                 if (activeHotspot?.videoFile) {
-                  const videoUrl = `${VIDEO_BASE_URL}${activeHotspot.videoFile}`;
+                  if (activeHotspot.videoFile.includes("instagram.com")) {
+                    return (
+                      <div className="relative w-full h-full bg-black flex flex-col items-center justify-center">
+                        <InstagramEmbed reelUrl={activeHotspot.videoFile} />
+                        <a
+                          href={activeHotspot.videoFile}
+                          title={
+                            activeHotspot.videoFile.includes("DZICTA9KjuW")
+                              ? "Watch Premium Audio Setup Reel on Instagram"
+                              : `Watch ${activeHotspot.label} on Instagram`
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute bottom-3 right-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg hover:opacity-90 transition-opacity z-10 flex items-center gap-1.5"
+                        >
+                          <span>Watch on Instagram</span>
+                        </a>
+                      </div>
+                    );
+                  }
+
+                  const videoUrl = activeHotspot.videoFile.startsWith("http")
+                    ? activeHotspot.videoFile
+                    : `${VIDEO_BASE_URL}${activeHotspot.videoFile}`;
 
                   return (
                     <video
                       key={activeHotspot.id}
                       src={videoUrl}
+                      title={`MAKc ${activeHotspot.label} Video Showcase`}
                       autoPlay
                       loop
                       muted

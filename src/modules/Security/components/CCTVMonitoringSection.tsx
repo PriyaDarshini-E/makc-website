@@ -1,10 +1,10 @@
 import AutomationMosaicSection from "@/components/common/AutomationMosaicSection";
 
 const checklist = [
-  "HD indoor & outdoor CCTV cameras",
-  "Night vision monitoring",
-  "Motion-triggered recording",
-  "Live and recorded access via mobile app",
+  "HD Indoor & Outdoor CCTV cameras",
+  "Night Vision monitoring",
+  "Motion-Triggered recording",
+  "Live and Recorded Access via Mobile app",
 ];
 
 const images = [
@@ -28,14 +28,16 @@ const images = [
 export default function CCTVMonitoringSection() {
   return (
     <AutomationMosaicSection
-      title="CCTV & Video Monitoring"
-      description="24×7 smart surveillance for complete peace of mind."
+      title="Smart Security & Video Surveillance"
+      description="24×7 Smart Surveillance and Intrusion Alerts for complete peace of mind."
       types={checklist}
-      suitableText="Suitable for homes, offices, retail outlets, warehouses, and commercial premises."
+      suitableText="Suitable for Homes, Offices, Retail Outlets, Warehouses, and Commercial Premises."
       images={images}
       imagePosition="left"
       prefix="cctv"
       serviceName="CCTV & Video"
+      reelUrl="https://www.instagram.com/reel/DALj2GhS-kV/"
+      reelTitles={["Watch Home Networking Installation Reel on Instagram"]}
     />
   );
 }

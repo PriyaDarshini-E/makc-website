@@ -47,24 +47,24 @@ function Instagram({ className = "w-5 h-5" }: { className?: string }) {
 export function SocialMediaBar() {
   return (
     <div
-      className="flex-1 min-w-0 bg-bg-surface/50 backdrop-blur-xl border border-border-main/70 rounded-3xl p-5 sm:p-6 flex flex-col justify-center gap-3 shadow-[0_4px_15px_rgba(0,0,0,0.015)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] reveal-on-scroll reveal-up"
+      className="h-full min-w-0 bg-bg-surface/50 backdrop-blur-xl border border-border-main/70 rounded-3xl p-5 sm:p-6 flex flex-col justify-center gap-3 shadow-[0_4px_15px_rgba(0,0,0,0.015)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] reveal-on-scroll reveal-up"
       data-reveal-delay="300ms"
       data-reveal-duration="0.6s"
     >
-      <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest text-center sm:text-left">
+      <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest text-left truncate">
         Follow Us On
       </p>
-      <div className="flex items-center justify-center sm:justify-start gap-3">
+      <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
         <a
           href="https://www.instagram.com/mak_automation/"
           title="Follow MAKc Automations on Instagram"
           target="_blank"
           rel="noreferrer"
           aria-label="Follow us on Instagram"
-          className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:shadow-[0_0_15px_rgba(238,42,123,0.4)] transition-all duration-500"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:shadow-[0_0_15px_rgba(238,42,123,0.4)] transition-all duration-500 shrink-0"
         >
           <Instagram
-            className="w-5 h-5 transition-transform duration-300 hover:scale-105"
+            className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform duration-300 hover:scale-105"
             aria-hidden="true"
           />
         </a>
@@ -74,10 +74,10 @@ export function SocialMediaBar() {
           target="_blank"
           rel="noreferrer"
           aria-label="Follow us on Facebook"
-          className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#1877F2] hover:border-transparent hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-all duration-500"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#1877F2] hover:border-transparent hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-all duration-500 shrink-0"
         >
           <Facebook
-            className="w-5 h-5 transition-transform duration-300 hover:scale-105"
+            className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform duration-300 hover:scale-105"
             aria-hidden="true"
           />
         </a>
@@ -87,10 +87,10 @@ export function SocialMediaBar() {
           target="_blank"
           rel="noreferrer"
           aria-label="Follow us on LinkedIn"
-          className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#0A66C2] hover:border-transparent hover:shadow-[0_0_15px_rgba(10,102,194,0.4)] transition-all duration-500"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#0A66C2] hover:border-transparent hover:shadow-[0_0_15px_rgba(10,102,194,0.4)] transition-all duration-500 shrink-0"
         >
           <Linkedin
-            className="w-5 h-5 transition-transform duration-300 hover:scale-105"
+            className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform duration-300 hover:scale-105"
             aria-hidden="true"
           />
         </a>
@@ -100,9 +100,9 @@ export function SocialMediaBar() {
           target="_blank"
           rel="noreferrer"
           aria-label="Follow us on YouTube"
-          className="w-11 h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#FF0000] hover:border-transparent hover:shadow-[0_0_15px_rgba(255,0,0,0.4)] transition-all duration-500"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-border-main bg-bg-main/30 flex items-center justify-center text-text-muted hover:text-white hover:bg-[#FF0000] hover:border-transparent hover:shadow-[0_0_15px_rgba(255,0,0,0.4)] transition-all duration-500 shrink-0"
         >
-          <YoutubeIcon className="w-5 h-5 transition-transform duration-300 hover:scale-105" />
+          <YoutubeIcon className="w-4.5 h-4.5 sm:w-5 sm:h-5 transition-transform duration-300 hover:scale-105" />
         </a>
       </div>
     </div>

@@ -4,7 +4,6 @@ import Layout from "./components/common/Layout";
 import HomeV2Page from "./modules/Home/pages/HomePage";
 
 // Lazy load secondary pages to shrink the initial JS bundle
-const HomePage = lazy(() => import("./modules/Home/pages/HomePage"));
 const AutomationPage = lazy(
   () => import("./modules/Automation/pages/AutomationPage"),
 );
@@ -36,7 +35,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<HomeV2Page />} />
-        <Route path="/v1" element={<HomePage />} />
+        <Route path="/v1" element={<HomeV2Page />} />
         <Route path="/old" element={<OldPage />} />
 
         {/* Solutions routes */}
