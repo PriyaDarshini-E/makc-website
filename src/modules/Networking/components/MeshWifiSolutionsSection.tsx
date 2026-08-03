@@ -1,10 +1,10 @@
 import AutomationMosaicSection from "@/components/common/AutomationMosaicSection";
 
 const benefits = [
-  "Uniform Wi-Fi coverage",
-  "Seamless roaming across rooms",
+  "Uniform Wi-Fi Coverage",
+  "Seamless Network across rooms",
   "No signal drops or buffering",
-  "Scalable network design",
+  "Scalable Network Design",
 ];
 
 const images = [
@@ -29,13 +29,15 @@ export default function MeshWifiSolutionsSection() {
   return (
     <AutomationMosaicSection
       title="Mesh Wi-Fi Solutions"
-      description="Establish seamless, high-speed Wi-Fi across every corner of your home."
+      description="Establish Seamless, High-Speed Wi-Fi across every corner of your home."
       types={benefits}
-      suitableText="Perfect for streaming, working, online gaming, and connecting multiple smart devices concurrently without bottlenecks."
+      suitableText="Perfect for Streaming, Working, Online Gaming, and Connecting Multiple Smart Devices Concurrently without bottlenecks."
       images={images}
       imagePosition="left"
       prefix="mws"
       serviceName="Mesh Wi-Fi Network"
+      reelUrl="https://www.instagram.com/reel/DCl9TiByn2F/"
+      reelTitles={["Watch Smart Lighting Installation Reel on Instagram"]}
     />
   );
 }

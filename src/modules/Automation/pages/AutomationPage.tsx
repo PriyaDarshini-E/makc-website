@@ -137,40 +137,40 @@ export default function AutomationPage() {
       {/* FULL-WIDTH HERO SECTION */}
       <section
         ref={heroRef}
-        className="dark relative min-h-[90vh] lg:min-h-screen w-full flex items-center justify-start bg-cover bg-center bg-no-repeat"
+        className="relative min-h-[90vh] lg:min-h-screen w-full flex items-center justify-start bg-cover bg-center bg-no-repeat transition-colors duration-300"
         style={{
-          backgroundImage: `url('${getImageUrl("automation_banner.webp")}')`,
+          backgroundImage: `url('${getImageUrl("automation_banner.png")}')`,
         }}
       >
-        {/* Dark overlay for contrast */}
-        {/* <div className="absolute inset-0 bg-black/65" /> */}
+        {/* Left side overlay with theme mode aware light and dark */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-main via-bg-main/95 sm:via-bg-main/80 lg:via-bg-main/60 to-transparent pointer-events-none transition-colors duration-300" />
 
-        {/* Smooth transition gradient to blend into the next section */}
-        {/* <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-bg-main to-transparent pointer-events-none" /> */}
+        {/* Bottom gradient blend into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-36 bg-gradient-to-t from-bg-main to-transparent pointer-events-none z-[5]" />
 
         {/* Hero content container */}
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-20 flex flex-col justify-center min-h-[90vh] lg:min-h-screen">
-          <div className="max-w-3xl space-y-6 md:space-y-8">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-20 flex flex-col justify-center min-h-[90vh] lg:min-h-screen">
+          <div className="max-w-3xl space-y-6">
             {/* Badge */}
-            <div className="hero-badge text-[11px] sm:text-xs tracking-widest uppercase font-bold text-white/90 flex items-center gap-1.5">
+            <div className="hero-badge text-[11px] sm:text-xs tracking-widest uppercase font-bold text-text-muted flex items-center gap-1.5">
               <span className="text-emerald-500 font-extrabold text-sm">
                 #1
               </span>{" "}
-              Choice for Home Automation
+              Choice for Smart Automation
             </div>
 
             {/* Main Heading */}
-            <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-white leading-[1.05]">
+            <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold font-sans tracking-tight text-text-main leading-[1.05]">
               Smart Home <br />
               Automation
             </h1>
 
             {/* Subtitle */}
             <div className="hero-subtitle max-w-2xl">
-              <p className="text-base sm:text-lg text-white/80 leading-relaxed">
-                Smart homes aren't about gadgets — they're about how you live.
+              <p className="text-base sm:text-lg text-text-muted leading-relaxed">
+                Smart homes are not about gadgets — they are about how you live.
                 With almost a decade of experience and 700+ projects delivered
-                across homes and select commercial spaces, here's what you can
+                across homes and select commercial spaces, here is what you can
                 expect from us.
                 <img
                   src={getImageUrl("star.webp")}
@@ -184,12 +184,12 @@ export default function AutomationPage() {
             {/* Features check list */}
             <div className="space-y-4 pt-2">
               {[
-                "Thoughtful design & planning",
-                "Professional execution, installation & configuration",
-                "Seamless delivery with reliable after-sales support",
+                "Thoughtful Design & Planning",
+                "Professional Execution, Installation and Configuration",
+                "Seamless Delivery with Reliable After-Sales Support",
               ].map((text, idx) => (
                 <div key={idx} className="hero-check flex items-center gap-3">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-white shrink-0 shadow-md">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-white! shrink-0 shadow-md">
                     <svg
                       className="w-3.5 h-3.5 stroke-[3]"
                       fill="none"
@@ -203,7 +203,7 @@ export default function AutomationPage() {
                       />
                     </svg>
                   </div>
-                  <span className="text-white/90 font-medium text-sm sm:text-base">
+                  <span className="text-text-main font-medium text-sm sm:text-base">
                     {text}
                   </span>
                 </div>
@@ -331,7 +331,7 @@ export default function AutomationPage() {
                       onClick={() => setActiveFeature(feat.id)}
                       className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
                         isActive
-                          ? "bg-accent-blue text-white shadow-[0_2px_10px_rgba(10,132,255,0.25)]"
+                          ? "bg-accent-blue text-white! shadow-[0_2px_10px_rgba(10,132,255,0.25)]"
                           : "text-text-muted hover:text-text-main bg-bg-main border border-border-main/50 hover:border-border-main"
                       }`}
                     >
@@ -378,7 +378,7 @@ export default function AutomationPage() {
                 </span>
                 <div>
                   <p className="text-text-main text-4xl sm:text-5xl font-bold leading-none">
-                    700
+                    800
                     <span className="text-2xl font-semibold text-text-muted">
                       +
                     </span>
@@ -395,7 +395,7 @@ export default function AutomationPage() {
                   Ready to start?
                 </span>
                 <div>
-                  <p className="text-white text-base font-bold leading-snug mb-4">
+                  <p className="text-white! text-base font-bold leading-snug mb-4">
                     Build your custom automation layout
                   </p>
                   <Link
@@ -582,9 +582,9 @@ export default function AutomationPage() {
                   </div>
                   <div className="space-y-3 mt-8">
                     <a
-                      href="tel:+918197783287"
-                      title="Call MAKc Automations at +91 99484 32444"
-                      className="flex items-center justify-center gap-2 h-11 w-full rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-accent-blue/90 transition-all duration-200 hover:scale-[1.02] active:scale-[0.97]"
+                      href="tel:+919324226077"
+                      title="Call MAKc Automations at +91 9324226077"
+                      className="flex items-center justify-center gap-2 h-11 w-full rounded-xl bg-accent-blue text-white! text-sm font-bold hover:bg-accent-blue/90 transition-all duration-200 hover:scale-[1.02] active:scale-[0.97]"
                     >
                       Call Us Now
                     </a>
@@ -596,7 +596,7 @@ export default function AutomationPage() {
                       Send an Email
                     </a>
                     <p className="text-center text-white/40 text-xs tracking-wider">
-                      +91 99484 32444
+                      +91 9324226077
                     </p>
                   </div>
                 </div>

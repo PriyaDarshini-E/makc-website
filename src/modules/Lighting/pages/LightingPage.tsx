@@ -53,7 +53,8 @@ const LIGHTING_SLIDES = [
     description:
       "Enhance home curb appeal and security with automated exterior lighting. Program garden, compound, and facade lights to sync with sunset and sunrise.",
     image: getImageUrl("outdoorImage1.webp"),
-    imageAlt: "Outdoor LED Lighting Solution for Commercial and Industrial Spaces",
+    imageAlt:
+      "Outdoor LED Lighting Solution for Commercial and Industrial Spaces",
     imageTitle: "Outdoor Lighting Solutions",
     icon: Trees,
   },
@@ -64,7 +65,8 @@ export default function LightingPage() {
     title: "Smart Lighting Solutions in Bangalore | MAKc Automations",
     description:
       "Transform your home ambience with MAKc Automations - expert smart lighting installation, RGB mood scenes, dimming & landscape lighting controls in Bangalore.",
-    keywords: "smart lighting solutions, smart lighting installation bangalore, led lights for home, home smart light",
+    keywords:
+      "smart lighting solutions, smart lighting installation bangalore, led lights for home, home smart light",
     canonicalUrl: "https://makcautomations.com/lighting",
     robots:
       "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
@@ -91,14 +93,14 @@ export default function LightingPage() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-16">
+        {/* DIMMING & TUNING OF LIGHTS SECTION */}
+        <DimmingTuningSection />
+
         {/* Mood-Based Lighting SECTION */}
         <SceneBasedLightingSection />
 
         {/* RGB SECTION */}
         <RGBMoodLightingSection />
-
-        {/* DIMMING & TUNING OF LIGHTS SECTION */}
-        <DimmingTuningSection />
 
         {/* OUTDOOR & LANDSCAPE LIGHTING SECTION */}
         <OutdoorLightingSection />

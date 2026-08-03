@@ -1,10 +1,10 @@
 import AutomationMosaicSection from "@/components/common/AutomationMosaicSection";
 
 const types = [
-  "Bedrooms & kids rooms",
+  "Bedrooms & Kids rooms",
   "Living rooms",
   "Home theatres",
-  "Accent walls & false ceilings",
+  "Accent Walls & False ceilings",
 ];
 
 const images = [
@@ -17,13 +17,21 @@ export default function RGBMoodLightingSection() {
   return (
     <AutomationMosaicSection
       title="RGB Lighting"
-      description="Create ambience and personality with dynamic lighting."
+      description="Create Ambience and Personality with Dynamic Lighting."
       types={types}
-      suitableText="Choose colours, brightness, and effects directly from your phone or panel."
+      suitableText="Choose Colours, Brightness, and Effects Directly from your Phone or Panel."
       images={images}
       imagePosition="right"
       prefix="rgb"
       serviceName="RGB Lighting"
+      reels={[
+        "https://www.instagram.com/reel/DPWD8CPjVm6/",
+        "https://www.instagram.com/reel/DJmErhkSlL0/",
+      ]}
+      reelTitles={[
+        "Watch Smart Home Audio Experience Reel on Instagram",
+        "Watch Home Audio Installation Reel on Instagram",
+      ]}
     />
   );
 }

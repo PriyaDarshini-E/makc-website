@@ -145,10 +145,10 @@ export default function GetInTouchSection() {
                       Phone
                     </span>
                     <a
-                      href="tel:+918197783287"
+                      href="tel:+919324226077"
                       className="font-sans text-xs font-semibold text-text-main hover:text-accent-blue transition-colors duration-200 mt-0.5"
                     >
-                      +91 99484 32444
+                      +91 9324226077
                     </a>
                   </div>
                 </div>

@@ -27,6 +27,8 @@ const REMOTE_IMAGE_BASE = IMAGE_BASE_URL;
 const LOCAL_IMAGES: Record<string, string> = {
   "hero_bg.webp": "/images/hero_bg.webp",
   "hero_bg.avif": "/images/hero_bg.avif",
+  "hero_bg-light.webp": "/images/hero_bg-light.webp",
+  "automation_banner.png": "/images/automation_banner.png",
   "service_automation.webp": serviceAutomation,
   "service_automation.avif": serviceAutomationAvif,
   "service_energy.webp": serviceEnergy,

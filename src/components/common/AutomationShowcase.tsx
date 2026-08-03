@@ -186,16 +186,16 @@ export default function AutomationShowcase({
           className={`absolute inset-y-0 right-0 h-full object-cover z-0 transition-all duration-1000 ease-in-out lg:w-1/2 w-full ${
             idx === cachedIndex
               ? "opacity-100 scale-100"
-              : "opacity-0 scale-105 pointer-events-none"
+              : "opacity-0 pointer-events-none"
           }`}
           style={{ transitionProperty: "opacity, transform" }}
         />
       ))}
 
       {/* Responsive Dark Overlay (Left-to-right fade for desktop, top-to-bottom fade for mobile) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-bg-surface via-bg-surface/90 to-bg-surface/55 dark:from-black dark:via-black/85 dark:to-transparent z-10 hidden lg:block" />
+      <div className="absolute inset-0 bg-gradient-to-r from-bg-surface via-bg-surface/20 to-bg-surface/55 dark:from-black dark:via-black/85  dark:to-transparent z-10 hidden lg:block" />
       {/* desktop transition fade on the image left edge */}
-      <div className="absolute inset-y-0 left-1/2 w-32 bg-gradient-to-r from-bg-surface to-bg-surface/55 dark:from-black dark:to-transparent z-15 hidden lg:block" />
+      <div className="absolute inset-y-0 left-1/2 w-32 bg-gradient-to-r from-bg-surface -to-bg-surface/55 dark:from-black dark:to-transparent z-15 hidden lg:block" />
       {/* mobile fade overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-bg-surface/95 via-bg-surface/85 to-bg-surface/95 dark:from-black/95 dark:via-black/75 dark:to-black/95 z-10 lg:hidden" />
 
@@ -290,7 +290,7 @@ export default function AutomationShowcase({
               }`}
             >
               {/* Large glowing backdrop number */}
-              <span className="text-6xl sm:text-8xl lg:text-[110px] font-bold font-display tracking-[-0.04em] text-[rgba(var(--accent-color-rgb),0.3)] dark:text-[rgba(var(--accent-color-rgb),0.9)] select-none leading-none -ml-1.5 block">
+              <span className="text-6xl sm:text-8xl lg:text-[110px] font-bold font-display tracking-[-0.04em] text-[rgba(var(--accent-color-rgb))] dark:text-[rgba(var(--accent-color-rgb),0.9)] select-none leading-none -ml-1.5 block">
                 {activeTab.id}
               </span>
 

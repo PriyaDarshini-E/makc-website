@@ -8,9 +8,9 @@ const checklist = [
 ];
 
 const includesList = [
-  "High-volume indoor & outdoor sirens",
-  "Automatic alerts during intrusion or emergencies",
-  "Weather-resistant and reliable devices",
+  "High-Volume Indoor & Outdoor Sirens",
+  "Automatic Alerts during Intrusion or Emergencies",
+  "Weather-Resistant and Reliable Devices",
 ];
 
 const images = [
@@ -22,15 +22,17 @@ const images = [
 export default function SensorBasedProtection() {
   return (
     <AutomationMosaicSection
-      title="Sensor-Based Protection"
-      description="Detect security risks before they turn into emergencies."
+      title="Sensor-Based Protection & Intrusion Security"
+      description="Detect Security risks and Intruders before they turn into emergencies."
       types={checklist}
       features={includesList}
-      suitableText="These smart sensors operate continuously and send real-time alerts for both residential and commercial environments."
+      suitableText="These Smart Sensors operate continuously and send Real-Time alerts for both Residential and Commercial environments."
       images={images}
       imagePosition="right"
       prefix="sbp"
       serviceName="Sensor-Based"
+      reelUrl="https://www.instagram.com/reel/DSC30D1jZ1h/"
+      reelTitles={["Watch Home Networking Solutions Reel on Instagram"]}
     />
   );
 }

@@ -1,16 +1,16 @@
 import AutomationMosaicSection from "./AutomationMosaicSection";
 
 const types = [
-  "Smart switch boards",
-  "Fan speed control",
-  "Appliance automation",
-  "RGB and mood lighting",
+  "Smart Switch Boards",
+  "Fan Speed Control",
+  "Appliance Automation",
+  "RGB and Mood Lighting",
 ];
 
 const features = [
-  "Scheduling and load management",
-  "Sensor-based lights",
-  "Mood-Based Lighting control",
+  "Scheduling and Load Management",
+  "Sensor-Based Lights",
+  "Mood-Based Lighting Control",
 ];
 
 const images = [
@@ -26,15 +26,17 @@ const images = [
 export default function ElectricalAutomationSection() {
   return (
     <AutomationMosaicSection
-      title="Electrical Automation"
-      description="Control your lighting and electrical systems with ease using touch panels, mobile apps, or voice commands."
+      title="Electrical Automation & Smart Switches"
+      description="Control your Lighting and Electrical Systems with ease using Touch Panels, Mobile Apps, or Voice Commands."
       types={types}
       features={features}
-      suitableText="Works for new homes, retrofit automation projects, and small commercial spaces such as offices and studios."
+      suitableText="Works for New Homes, Retrofit Automation Projects, and Commercial Spaces such as Offices and Studios."
       images={images}
       imagePosition="right"
       prefix="elec"
       serviceName="Electrical Automation"
+      reelUrl="https://www.instagram.com/reel/DJB_6dCyJ6H/"
+      reelTitles={["Watch Curtain Automation Reel 2 on Instagram"]}
     />
   );
 }

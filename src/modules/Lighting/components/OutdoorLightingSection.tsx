@@ -2,9 +2,9 @@ import AutomationMosaicSection from "@/components/common/AutomationMosaicSection
 
 const includesList = [
   "Garden lighting",
-  "Compound & pathway lights",
-  "Facade & elevation lighting",
-  "Time-based outdoor lighting",
+  "Compound & Pathway lights",
+  "Facade & Elevation lighting",
+  "Time-Based Outdoor lighting",
 ];
 
 const images = [
@@ -29,11 +29,11 @@ export default function OutdoorLightingSection() {
   return (
     <AutomationMosaicSection
       title="Outdoor & Landscape Lighting"
-      description="Automate exterior lights for security and aesthetics."
+      description="Automate Exterior Lights for Security and Aesthetics."
       types={includesList}
-      suitableText="Lights operate automatically based on time, daylight intensity, or custom schedules."
+      suitableText="Lights Operate Automatically based on Time, Daylight Intensity, or Custom Schedules."
       images={images}
-      imagePosition="right"
+      imagePosition="left"
       prefix="out"
       serviceName="Outdoor & Landscape Lighting"
     />

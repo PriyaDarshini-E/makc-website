@@ -65,9 +65,10 @@ export default function ConnectBanner({
           <div className="flex flex-col items-center p-5 bg-bg-main/50 rounded-2xl border border-border-main/60 hover:-translate-y-0.5 transition-all">
             <Phone className="w-6 h-6 text-accent-blue mb-3" />
             <span className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1.5">Direct Line</span>
-            <a href="tel:+918197783287" className="text-sm font-semibold text-text-main hover:text-accent-blue transition-colors">+91-8197783287</a>
-            <a href="tel:+919324226077" className="text-xs text-text-muted mt-1 hover:text-accent-blue transition-colors">+91-9324226077</a>
+            <a href="tel:+919324226077" className="text-sm font-semibold text-text-main hover:text-accent-blue transition-colors">+91-9324226077</a>
+            <a href="tel:+918197783287" className="text-xs text-text-muted mt-1 hover:text-accent-blue transition-colors">+91-8197783287</a>
           </div>
+
 
           {/* Email */}
           <div className="flex flex-col items-center p-5 bg-bg-main/50 rounded-2xl border border-border-main/60 hover:-translate-y-0.5 transition-all">

@@ -139,11 +139,10 @@ export default function ServicesSection() {
               </span>
 
               <h2 className="mt-4 font-serif text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight leading-tight">
-                The Future <br />
-                Doesn't Wait. <br />
+                Complete Smart  <br />
+                
                 <span className="font-serif italic font-normal text-text-main">
-                  Neither Should <br />
-                  Your Home.
+                 Home Automation Solutions
                 </span>
               </h2>
             </div>

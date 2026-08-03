@@ -1,5 +1,6 @@
 import { Calendar, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { type MouseEvent } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 interface ContactStripProps {
   title?: string;
@@ -16,19 +17,31 @@ export default function ContactStrip({
   description = "Book a free consultation and take the first step toward a smarter tomorrow.",
   cta = {
     label: "Book Your Free Consultation",
-    href: "/contact",
+    href: "/#contact-enquiry",
   },
   className = "",
 }: ContactStripProps) {
+  const location = useLocation();
+
+  const handleInternalAnchorClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+  ) => {
+    if (!cta.href.startsWith("/#")) return;
+
+    const anchorHash = cta.href.slice(1);
+    if (location.pathname === "/" && location.hash === anchorHash) {
+      event.preventDefault();
+      document.getElementById(anchorHash.slice(1))?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className={`relative w-full ${className}`}>
       {/* Premium Glassmorphic Outer Card container with glowing corners */}
       <div className="relative w-full bg-white/70 dark:bg-[#061121]/50 backdrop-blur-xl border border-border-main/50 dark:border-[#0A84FF]/25 shadow-[0_0_15px_rgba(10,132,255,0.08),inset_0_0_8px_rgba(10,132,255,0.03)] dark:shadow-[0_0_20px_rgba(10,132,255,0.15),inset_0_0_12px_rgba(10,132,255,0.08)] rounded-2xl p-6 sm:p-8 md:p-10 overflow-hidden transition-all duration-300">
         {/* Glow corner highlights */}
-        <div className="absolute top-[-1px] left-[-1px] w-6 h-6 border-t-2 border-l-2 border-[#0A84FF]/40 rounded-tl-2xl shadow-[0_-2px_10px_rgba(10,132,255,0.15)] pointer-events-none" />
-        <div className="absolute top-[-1px] right-[-1px] w-6 h-6 border-t-2 border-r-2 border-[#0A84FF]/40 rounded-tr-2xl shadow-[0_-2px_10px_rgba(10,132,255,0.15)] pointer-events-none" />
-        <div className="absolute bottom-[-1px] left-[-1px] w-6 h-6 border-b-2 border-l-2 border-[#0A84FF]/40 rounded-bl-2xl shadow-[0_2px_10px_rgba(10,132,255,0.15)] pointer-events-none" />
-        <div className="absolute bottom-[-1px] right-[-1px] w-6 h-6 border-b-2 border-r-2 border-[#0A84FF]/40 rounded-br-2xl shadow-[0_2px_10px_rgba(10,132,255,0.15)] pointer-events-none" />
 
         {/* Flex layout for row alignment */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 z-10 relative">
@@ -52,7 +65,9 @@ export default function ContactStrip({
 
           {/* Right Side: Call to Action Button */}
           <div className="flex items-center justify-center shrink-0 w-full lg:w-auto mt-2 lg:mt-0">
-            {cta.href.startsWith("http") || cta.href.startsWith("mailto:") || cta.href.startsWith("tel:") ? (
+            {cta.href.startsWith("http") ||
+            cta.href.startsWith("mailto:") ||
+            cta.href.startsWith("tel:") ? (
               <a
                 href={cta.href}
                 title="Contact MAKc Automations"
@@ -65,6 +80,7 @@ export default function ContactStrip({
               <Link
                 to={cta.href}
                 title="Contact MAKc Automations"
+                onClick={handleInternalAnchorClick}
                 className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#0055ff] to-[#0A84FF] text-white! font-bold text-xs sm:text-sm tracking-wider uppercase rounded-xl shadow-[0_4px_20px_rgba(10,132,255,0.45)] hover:shadow-[0_6px_25px_rgba(10,132,255,0.65)] hover:scale-[1.02] hover:border-[#0A84FF]/80 transition-all duration-300 flex items-center justify-center gap-3 group cursor-pointer"
               >
                 <span>{cta.label}</span>

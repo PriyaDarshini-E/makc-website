@@ -1,0 +1,69 @@
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+/* Optimize scroller for window scroll */
+.scroll-stack-scroller.use-window {
+  overflow-y: visible;
+  height: auto;
+}
+
+.scroll-stack-inner {
+  padding: 6vh 0 15rem; /* balanced breathing room padding */
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-stack-card-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-stack-card {
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--text-main) 10%, transparent);
+  height: 24rem; /* exact original height */
+  width: 100%; /* exact original width */
+  margin: 20px 0;
+  border-radius: 16px;
+  box-sizing: border-box;
+  background: var(--bg-card);
+  border: 1px solid var(--border-main);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* stack vertically on mobile */
+  padding: 0; /* Remove padding to keep split-image flush */
+  /* Improve mobile performance */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+
+@media (min-width: 768px) {
+  .scroll-stack-card {
+    flex-direction: row; /* row layout on tablet/desktop */
+  }
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 1px;
+}

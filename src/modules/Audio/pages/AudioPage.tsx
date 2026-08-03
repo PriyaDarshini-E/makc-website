@@ -1,7 +1,45 @@
 import useSEO from "@/hooks/useSEO";
 import AudioHero from "../components/AudioHero";
 import GlowingLine from "@/components/common/GlowingLine";
-import { Hourglass } from "lucide-react";
+import { Hourglass, Music, Speaker, Volume2 } from "lucide-react";
+import AutomationShowcase from "@/components/common/AutomationShowcase";
+import { getImageUrl } from "@/utils/image";
+
+const AUDIO_SLIDES = [
+  {
+    id: "01",
+    title: "Centralized Audio Distribution",
+    shortTitle: "Centralized\nAudio",
+    description:
+      "Distribute your favorite music streams, playlists, or radio channels seamlessly to different rooms and customized sound zones with ease.",
+    image: getImageUrl("service_theatre.webp"),
+    imageAlt: "Centralized multi-room smart audio distribution system",
+    imageTitle: "Multi-Room Audio Distribution",
+    icon: Music,
+  },
+  {
+    id: "02",
+    title: "Invisible Architectural Speakers",
+    shortTitle: "Architectural\nSpeakers",
+    description:
+      "High-fidelity, in-wall, or in-ceiling speakers that blend completely into your interior design while producing crystal-clear acoustic sound.",
+    image: getImageUrl("smarter_way_bg.webp"),
+    imageAlt: "In-ceiling architectural speaker installation",
+    imageTitle: "Architectural Speaker Solutions",
+    icon: Speaker,
+  },
+  {
+    id: "03",
+    title: "Immersive Home Theater Sound",
+    shortTitle: "Theater\nSound",
+    description:
+      "Design custom surround sound experiences with subwoofers, soundbars, and Dolby Atmos calibration to recreate cinema-grade quality.",
+    image: getImageUrl("service_theatre.webp"),
+    imageAlt: "Luxury home cinema theater seating and sound system",
+    imageTitle: "Smart Home Theater Sound",
+    icon: Volume2,
+  },
+];
 
 export default function AudioPage() {
   useSEO({
@@ -15,6 +53,21 @@ export default function AudioPage() {
     <div className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300">
       {/* HERO BANNER - UNCHANGED */}
       <AudioHero />
+
+      {/* FULL WIDTH AUTOMATION SHOWCASE SECTION */}
+      <AutomationShowcase
+        slides={AUDIO_SLIDES}
+        initialSlideId="01"
+        eyebrow="Smart Audio"
+        heading={
+          <>
+            Intelligent audio control <br />
+            for a <span className="text-[#0A84FF]">smarter sound</span>
+          </>
+        }
+        introduction="Elevate your home's acoustic experience with seamless multi-room audio distribution and high-fidelity architectural sound systems."
+        accentColor="#0A84FF"
+      />
 
       {/* COMING SOON SECTION */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 text-center flex flex-col items-center">
@@ -36,7 +89,7 @@ export default function AudioPage() {
         />
 
         <p className="font-sans text-sm sm:text-base text-text-muted leading-relaxed max-w-2xl">
-          We're working on exciting new features and improvements to enhance your experience. Stay tuned as we prepare to launch something new that will bring even more value and functionality. We appreciate your patience and look forward to sharing these updates with you soon.
+          We are working on exciting new features and improvements to enhance your experience. Stay tuned as we prepare to launch something new that will bring even more value and functionality. We appreciate your patience and look forward to sharing these updates with you soon.
         </p>
       </div>
     </div>
