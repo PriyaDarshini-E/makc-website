@@ -75,7 +75,7 @@ export default function SecurityPage() {
         accentColor="#0A84FF"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
         {/* CCTV & VIDEO MONITORING SECTION */}
         <CCTVMonitoringSection />
 

@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
   // Info,
@@ -12,7 +13,7 @@ import {
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 // Import custom UI components
 import {
@@ -38,7 +39,7 @@ const projectVillasImg = getImageUrl("project_villas.webp");
 import useSEO from "@/hooks/useSEO";
 import { getImageUrl } from "@/utils/image";
 
-export default function AutomationPage() {
+export default function AutomationPageV2() {
   useSEO({
     title: "Smart Home Automation Services in Bangalore | MAKc Automations",
     description:
@@ -53,7 +54,16 @@ export default function AutomationPage() {
   const [activeFeature, setActiveFeature] = useState("scheduling");
 
   const heroRef = useRef<HTMLElement>(null);
+  const mainContainerRef = useRef<HTMLDivElement>(null);
+  const showcaseRef = useRef<HTMLDivElement>(null);
+  const electricalRef = useRef<HTMLDivElement>(null);
+  const gateRef = useRef<HTMLDivElement>(null);
+  const doorRef = useRef<HTMLDivElement>(null);
+  const curtainRef = useRef<HTMLDivElement>(null);
+  const bentoRef = useRef<HTMLElement>(null);
+  const faqCtaRef = useRef<HTMLElement>(null);
 
+  /* HERO SECTION: Load animation only. Static on scroll (no parallax / no scroll movement) */
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -96,7 +106,279 @@ export default function AutomationPage() {
     { scope: heroRef },
   );
 
-  // Mock video player states
+  /* CLEARLY VISIBLE PARALLAX SCROLLING EFFECT: Applied to all sections below the banner */
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          isDesktop: "(min-width: 768px)",
+          isMobile: "(max-width: 767px)",
+          reduceMotion: "(prefers-reduced-motion: reduce)",
+        },
+        (context) => {
+          const { isMobile, reduceMotion } = context.conditions || {};
+          if (reduceMotion) return;
+
+          const scrubVal = 0.5;
+
+          // Parallax for Automation Showcase Section
+          if (showcaseRef.current) {
+            gsap.fromTo(
+              showcaseRef.current,
+              { y: isMobile ? 30 : 75 },
+              {
+                y: isMobile ? -30 : -75,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: showcaseRef.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: scrubVal,
+                },
+              },
+            );
+          }
+
+          // Parallax for Electrical Automation Section (slides UP as you scroll down)
+          if (electricalRef.current) {
+            gsap.fromTo(
+              electricalRef.current,
+              { y: isMobile ? 40 : 90 },
+              {
+                y: isMobile ? -40 : -90,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: electricalRef.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: scrubVal,
+                },
+              },
+            );
+          }
+
+          // Parallax for Gate Automation Section (opposing float effect)
+          if (gateRef.current) {
+            gsap.fromTo(
+              gateRef.current,
+              { y: isMobile ? -30 : -70 },
+              {
+                y: isMobile ? 30 : 70,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: gateRef.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: scrubVal,
+                },
+              },
+            );
+          }
+
+          // Parallax for Door Automation Section (slides UP)
+          if (doorRef.current) {
+            gsap.fromTo(
+              doorRef.current,
+              { y: isMobile ? 40 : 90 },
+              {
+                y: isMobile ? -40 : -90,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: doorRef.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: scrubVal,
+                },
+              },
+            );
+          }
+
+          // Parallax for Curtain Automation Section (opposing float)
+          if (curtainRef.current) {
+            gsap.fromTo(
+              curtainRef.current,
+              { y: isMobile ? -30 : -70 },
+              {
+                y: isMobile ? 30 : 70,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: curtainRef.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: scrubVal,
+                },
+              },
+            );
+          }
+
+          // Dynamic Parallax for Bento Grid Section
+          if (bentoRef.current) {
+            const bentoEl = bentoRef.current;
+
+            // Background image parallax inside the card frame
+            const bentoImg = bentoEl.querySelector(".bento-img");
+            if (bentoImg) {
+              gsap.fromTo(
+                bentoImg,
+                { yPercent: isMobile ? -12 : -25 },
+                {
+                  yPercent: isMobile ? 12 : 25,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: bentoEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+
+            // Left Tall Image Card
+            const bentoCard = bentoEl.querySelector(".bento-img-card");
+            if (bentoCard) {
+              gsap.fromTo(
+                bentoCard,
+                { y: isMobile ? 35 : 80 },
+                {
+                  y: isMobile ? -35 : -80,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: bentoEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+
+            // Feature Control Hub card (counter-moving parallax)
+            const bentoHub = bentoEl.querySelector(".bento-hub");
+            if (bentoHub) {
+              gsap.fromTo(
+                bentoHub,
+                { y: isMobile ? -30 : -60 },
+                {
+                  y: isMobile ? 30 : 60,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: bentoEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+
+            // Stat card (800+ Projects)
+            const bentoStat = bentoEl.querySelector(".bento-stat");
+            if (bentoStat) {
+              gsap.fromTo(
+                bentoStat,
+                { y: isMobile ? 40 : 90 },
+                {
+                  y: isMobile ? -20 : -40,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: bentoEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+
+            // CTA Card (Build your custom layout)
+            const bentoCta = bentoEl.querySelector(".bento-cta");
+            if (bentoCta) {
+              gsap.fromTo(
+                bentoCta,
+                { y: isMobile ? -20 : -50 },
+                {
+                  y: isMobile ? 40 : 80,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: bentoEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+          }
+
+          // Dynamic Parallax for FAQ & CTA Section
+          if (faqCtaRef.current) {
+            const faqEl = faqCtaRef.current;
+
+            // FAQ left container
+            const faqContainer = faqEl.querySelector(".faq-container");
+            if (faqContainer) {
+              gsap.fromTo(
+                faqContainer,
+                { y: isMobile ? 30 : 75 },
+                {
+                  y: isMobile ? -30 : -75,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: faqEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+
+            // FAQ right CTA card (counter-moving parallax)
+            const faqCtaCard = faqEl.querySelector(".faq-cta-card");
+            if (faqCtaCard) {
+              gsap.fromTo(
+                faqCtaCard,
+                { y: isMobile ? -30 : -70 },
+                {
+                  y: isMobile ? 30 : 70,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: faqEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+
+            // Inner image parallax for FAQ CTA card
+            const faqCtaImg = faqEl.querySelector(".faq-cta-img");
+            if (faqCtaImg) {
+              gsap.fromTo(
+                faqCtaImg,
+                { yPercent: isMobile ? -15 : -30 },
+                {
+                  yPercent: isMobile ? 15 : 30,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: faqEl,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: scrubVal,
+                  },
+                },
+              );
+            }
+          }
+        },
+      );
+    },
+    { scope: mainContainerRef },
+  );
 
   const features = [
     {
@@ -133,8 +415,11 @@ export default function AutomationPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300">
-      {/* FULL-WIDTH HERO SECTION */}
+    <div
+      ref={mainContainerRef}
+      className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300"
+    >
+      {/* FULL-WIDTH HERO SECTION (STATIC - NO PARALLAX MOVEMENT ON SCROLL) */}
       <section
         ref={heroRef}
         className="relative min-h-[90vh] lg:min-h-screen w-full flex items-center justify-start bg-cover bg-center bg-no-repeat transition-colors duration-300"
@@ -213,85 +498,44 @@ export default function AutomationPage() {
         </div>
       </section>
 
-      {/* FULL WIDTH AUTOMATION SHOWCASE SECTION */}
-      <AutomationShowcase accentColor="#00A551" />
+      {/* FULL WIDTH AUTOMATION SHOWCASE SECTION WITH CLEAR PARALLAX */}
+      <div ref={showcaseRef} className="will-change-transform">
+        <AutomationShowcase accentColor="#00A551" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24">
-        {/* ── ELECTRICAL AUTOMATION SECTION ── */}
-        <ElectricalAutomationSection />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ── ELECTRICAL AUTOMATION SECTION WITH PARALLAX ── */}
+        <div ref={electricalRef} className="will-change-transform">
+          <ElectricalAutomationSection />
+        </div>
 
-        {/* ── GATE AUTOMATION SECTION ── */}
-        <GateAutomationSection />
+        {/* ── GATE AUTOMATION SECTION WITH OPPOSING PARALLAX ── */}
+        <div ref={gateRef} className="will-change-transform">
+          <GateAutomationSection />
+        </div>
 
-        {/* ── DOOR AUTOMATION SECTION ── */}
-        <DoorAutomationSection />
+        {/* ── DOOR AUTOMATION SECTION WITH PARALLAX ── */}
+        <div ref={doorRef} className="will-change-transform">
+          <DoorAutomationSection />
+        </div>
 
-        {/* ── CURTAIN AUTOMATION SECTION ── */}
-        <CurtainAutomationSection />
+        {/* ── CURTAIN AUTOMATION SECTION WITH OPPOSING PARALLAX ── */}
+        <div ref={curtainRef} className="will-change-transform">
+          <CurtainAutomationSection />
+        </div>
 
-        {/* CORE CONCEPTS SECTION */}
-
-        {/* HOW SMART DEVICES OPERATE SECTION */}
-        {/* <section className="mb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            
-            
-            <div className="bg-accent-blue/5 border border-accent-blue/15 hover:border-accent-blue/35 hover:-translate-y-1 p-8 sm:p-10 rounded-3xl flex flex-col justify-between transition-all duration-500 shadow-md hover:shadow-xl group">
-              <div>
-                <div className="w-12 h-12 rounded-full bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-accent-blue mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-text-main mb-4 font-sans">How Smart Devices Operate?</h3>
-                <p className="text-sm text-text-muted leading-relaxed font-medium">
-                  Smart devices act as digital helpers, talking to a central hub or phone via wireless protocols like Wi-Fi, Zigbee, or Bluetooth. Equipped with internal sensors and processors, they collect ambient data, process it in real-time, and act instantly. Whether it's a thermostat auto-tuning your climate or a lock verifying your identity, it happens with zero friction.
-                </p>
-              </div>
-              <div className="mt-8 pt-4 border-t border-border-main/40 flex items-center gap-2 text-xs font-bold text-accent-blue tracking-wider uppercase">
-                <span>Local Edge Computing</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-              </div>
-            </div>
-
-            <div className="bg-bg-surface border border-border-main hover:border-border-main/80 hover:-translate-y-1 p-8 sm:p-10 rounded-3xl flex flex-col justify-between transition-all duration-500 shadow-md hover:shadow-xl group">
-              <div>
-                <div className="w-12 h-12 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-500 mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Info className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-text-main mb-4 font-sans">MAKc Automation Offerings</h3>
-                <p className="text-sm text-text-muted leading-relaxed font-medium">
-                  MAKc Automation delivers highly-scalable Smart Home Devices designed to unify security, climate, lighting, and everyday tasks. We focus on seamless protocol integrations to tie your entire layout together. Control your whole environment from a single responsive screen or with simple hands-free voice requests.
-                </p>
-              </div>
-              <div className="mt-8 pt-4 border-t border-border-main/40 flex items-center gap-2 text-xs font-bold text-cyan-500 tracking-wider uppercase">
-                <span>Multi-Protocol Integrations</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-              </div>
-            </div>
-
-          </div>
-        </section> */}
-        <section className="mb-28">
-          {/* Header no eyebrow, strong typographic contrast */}
-          {/* <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold text-text-main leading-[1.1] tracking-tight max-w-sm">
-              Do More with Our Smart Solutions
-            </h2>
-            <p className="text-text-muted text-sm leading-relaxed max-w-[28ch] sm:text-right">
-              Where control meets customization every feature designed around how you actually live.
-            </p>
-          </div> */}
-
-          {/* Bento grid 3-col, left spans 2 rows */}
+        {/* BENTO GRID SECTION WITH MULTI-DEPTH PARALLAX */}
+        <section ref={bentoRef} className="mb-28">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            {/* Left: tall image card no ghost border+shadow, image IS the card */}
-            <div className="lg:row-span-2 relative rounded-2xl overflow-hidden min-h-[400px] lg:min-h-0 group">
+            {/* Left: tall image card */}
+            <div className="bento-img-card lg:row-span-2 relative rounded-2xl overflow-hidden min-h-[400px] lg:min-h-0 group will-change-transform">
               <img
                 src={serviceLightingImg}
                 alt="Industrial and Commercial Lighting Automation Solutions"
                 title="Lighting Automation Services"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                className="bento-img absolute inset-0 w-full h-[140%] -top-[20%] object-cover transition-transform duration-700 group-hover:scale-[1.04] will-change-transform"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
               <div className="absolute bottom-7 left-7 right-7">
                 <span className="inline-block text-[11px] text-white/60 font-medium uppercase tracking-widest mb-3">
                   Live Scene
@@ -309,7 +553,7 @@ export default function AutomationPage() {
             </div>
 
             {/* Right top: Feature hub panel */}
-            <div className="lg:col-span-2 bg-bg-surface border border-border-main/40 rounded-2xl p-7">
+            <div className="bento-hub lg:col-span-2 bg-bg-surface border border-border-main/40 rounded-2xl p-7 will-change-transform">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-base font-semibold text-text-main">
                   Feature Control Hub
@@ -371,8 +615,8 @@ export default function AutomationPage() {
 
             {/* Right bottom: two side-by-side info cells */}
             <div className="lg:col-span-2 grid grid-cols-2 gap-4">
-              {/* Stat plain surface, no gradient hero-metric */}
-              <div className="bg-bg-surface border border-border-main/40 rounded-2xl p-6 flex flex-col justify-between">
+              {/* Stat plain surface */}
+              <div className="bento-stat bg-bg-surface border border-border-main/40 rounded-2xl p-6 flex flex-col justify-between will-change-transform">
                 <span className="text-text-muted text-xs font-medium mb-4">
                   Experience
                 </span>
@@ -390,7 +634,7 @@ export default function AutomationPage() {
               </div>
 
               {/* CTA cell */}
-              <div className="bg-accent-blue rounded-2xl p-6 flex flex-col justify-between">
+              <div className="bento-cta bg-accent-blue rounded-2xl p-6 flex flex-col justify-between will-change-transform">
                 <span className="text-white/70 text-xs font-medium mb-4">
                   Ready to start?
                 </span>
@@ -412,102 +656,11 @@ export default function AutomationPage() {
           </div>
         </section>
 
-        {/* ---------------------------------------------------- SECTION 4 */}
-        {/* <section className="mb-28">
-          
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2
-              className="text-4xl sm:text-5xl font-bold text-text-main mb-4 leading-[1.1] tracking-tight"
-              style={{ textWrap: "balance" } as React.CSSProperties}
-            >
-              One Touch. Total Control.
-            </h2>
-            <p className="text-text-muted text-base leading-relaxed">
-              MAKc smart home devices make your life easier, safer, and more
-              enjoyable. Elevate every room, every routine.
-            </p>
-          </div>
-
-         
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-           
-            <div className="divide-y divide-border-main/40">
-              {oneTouchItems.map((item, idx) => {
-                const IconComponent = item.icon;
-                return (
-                  <div key={idx} className="flex items-start gap-5 py-6 group">
-                    <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center border shrink-0 mt-0.5 transition-transform duration-200 group-hover:scale-105 ${item.iconColorClass}`}
-                    >
-                      <IconComponent className="w-[18px] h-[18px]" />
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-semibold text-text-main mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-text-muted leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-           
-            <div className="flex flex-col gap-4">
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] group">
-                  <img
-                  src={whyChooseUsImg}
-                  alt="Smart switches and panels setup"
-                  title="Home Automation Control Panel"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <h3 className="text-white text-lg font-bold leading-snug">
-                    Blends Any Interior
-                  </h3>
-                  <p className="text-white/85 text-sm mt-1 leading-relaxed">
-                    Customized to match your finishes and palette perfectly.
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative rounded-2xl overflow-hidden aspect-square group">
-                  <img
-                    src={serviceLightingImg}
-                    alt="Industrial and Commercial Lighting Automation Solutions"
-                    title="Lighting Automation Services"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-                  <p className="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold leading-snug">
-                    Seamless Control
-                  </p>
-                </div>
-                <div className="relative rounded-2xl overflow-hidden aspect-square group">
-                  <img
-                    src={projectVillasImg}
-                    alt="Luxury smart villa exterior with automated lighting at entrance"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-                  <p className="absolute bottom-4 left-4 right-4 text-white text-xs font-semibold leading-snug">
-                    Luxurious Finish
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
-        {/* FAQ + CTA */}
-        <section className="mb-24">
+        {/* FAQ + CTA SECTION WITH OPPOSING PARALLAX */}
+        <section ref={faqCtaRef} className="mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
             {/* FAQ left 3 cols */}
-            <div className="lg:col-span-3">
+            <div className="faq-container lg:col-span-3 will-change-transform">
               <h2 className="text-3xl font-bold text-text-main mb-2 tracking-tight">
                 Common Questions
               </h2>
@@ -561,15 +714,15 @@ export default function AutomationPage() {
             </div>
 
             {/* CTA card right 2 cols */}
-            <div className="lg:col-span-2 lg:sticky lg:top-28">
+            <div className="faq-cta-card lg:col-span-2 lg:sticky lg:top-28 will-change-transform">
               <div className="relative rounded-2xl overflow-hidden">
                 <img
                   src={projectVillasImg}
                   alt="Smart luxury villa exterior"
                   title="Luxury Smart Villa Exterior"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="faq-cta-img absolute inset-0 w-full h-[140%] -top-[20%] object-cover will-change-transform"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/75 to-black/60" />
+                <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/75 to-black/60 pointer-events-none" />
                 <div className="relative z-10 p-8 flex flex-col min-h-[380px] justify-between">
                   <div>
                     <h3 className="text-white! text-2xl font-bold leading-tight mb-3">
@@ -608,3 +761,5 @@ export default function AutomationPage() {
     </div>
   );
 }
+
+

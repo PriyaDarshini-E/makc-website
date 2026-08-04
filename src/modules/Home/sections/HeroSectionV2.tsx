@@ -342,19 +342,6 @@ export default function HeroSectionV2() {
                     return (
                       <div className="relative w-full h-full bg-black flex flex-col items-center justify-center">
                         <InstagramEmbed reelUrl={activeHotspot.videoFile} />
-                        <a
-                          href={activeHotspot.videoFile}
-                          title={
-                            activeHotspot.videoFile.includes("DZICTA9KjuW")
-                              ? "Watch Premium Audio Setup Reel on Instagram"
-                              : `Watch ${activeHotspot.label} on Instagram`
-                          }
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="absolute bottom-3 right-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg hover:opacity-90 transition-opacity z-10 flex items-center gap-1.5"
-                        >
-                          <span>Watch on Instagram</span>
-                        </a>
                       </div>
                     );
                   }

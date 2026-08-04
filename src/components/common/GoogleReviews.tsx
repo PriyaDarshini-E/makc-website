@@ -42,7 +42,7 @@ const GOOGLE_REVIEWS_URL =
 
 export default function GoogleReviews() {
   return (
-    <section className="relative w-full py-20 lg:py-28 border-t border-border-main overflow-hidden bg-bg-main">
+    <section className="relative w-full py-20 border-t border-border-main overflow-hidden bg-bg-main">
       {/* Subtle glow overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(10,132,255,0.04)_0%,transparent_60%)] pointer-events-none" />
 
@@ -149,7 +149,7 @@ export default function GoogleReviews() {
         </div>
 
         {/* View More Reviews CTA */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-8">
           <a
             href={GOOGLE_REVIEWS_URL}
             target="_blank"

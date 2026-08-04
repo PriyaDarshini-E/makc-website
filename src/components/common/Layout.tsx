@@ -45,16 +45,8 @@ function FloatingActionsWhenIdle() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const show = () => setVisible(true);
-    const timer = window.setTimeout(show, 10000);
-    window.addEventListener("pointerdown", show, { once: true, passive: true });
-    window.addEventListener("keydown", show, { once: true });
-
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener("pointerdown", show);
-      window.removeEventListener("keydown", show);
-    };
+    const timer = window.setTimeout(() => setVisible(true), 500);
+    return () => window.clearTimeout(timer);
   }, []);
 
   return visible ? (
