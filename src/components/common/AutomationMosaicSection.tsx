@@ -5,7 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { getImageUrl } from "@/utils/image";
 import { API_BASE_URL, IMAGE_BASE_URL } from "@/config/constants";
-import { ExternalLink } from "lucide-react";
+// import { ExternalLink } from "lucide-react";
+import InstagramEmbed from "./InstagramEmbed";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,28 +58,28 @@ interface AutomationMosaicSectionProps {
   reelTitles?: string[]; // Optional titles for reel links (SEO/accessibility)
 }
 
-function InstagramLinkCard({ reelUrl, title, linkTitle }: { reelUrl: string; title: string; linkTitle?: string }) {
-  return (
-    <a
-      href={reelUrl}
-      title={linkTitle}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-purple-900/90 via-pink-900/80 to-orange-900/70 relative overflow-hidden group cursor-pointer"
-    >
-      <div className="flex flex-col items-center gap-3 p-6 text-center z-10">
-        <div className="w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </div>
-        <span className="text-white text-xs font-semibold tracking-wide">Watch on Instagram</span>
-        <ExternalLink className="w-3.5 h-3.5 text-white/60 group-hover:text-white/90 transition-colors" />
-      </div>
-      <span className="absolute top-4 left-4 text-white/40 text-[10px] font-medium uppercase tracking-widest">{title}</span>
-    </a>
-  );
-}
+// function InstagramLinkCard({ reelUrl, title, linkTitle }: { reelUrl: string; title: string; linkTitle?: string }) {
+//   return (
+//     <a
+//       href={reelUrl}
+//       title={linkTitle}
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-purple-900/90 via-pink-900/80 to-orange-900/70 relative overflow-hidden group cursor-pointer"
+//     >
+//       <div className="flex flex-col items-center gap-3 p-6 text-center z-10">
+//         <div className="w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+//           <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+//             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+//           </svg>
+//         </div>
+//         <span className="text-white text-xs font-semibold tracking-wide">Watch on Instagram</span>
+//         <ExternalLink className="w-3.5 h-3.5 text-white/60 group-hover:text-white/90 transition-colors" />
+//       </div>
+//       <span className="absolute top-4 left-4 text-white/40 text-[10px] font-medium uppercase tracking-widest">{title}</span>
+//     </a>
+//   );
+// }
 
 export default function AutomationMosaicSection({
   title,
@@ -92,7 +93,7 @@ export default function AutomationMosaicSection({
   serviceName,
   reelUrl,
   reels,
-  reelTitles,
+  // reelTitles,
 }: AutomationMosaicSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [mediaData, setMediaData] = useState<{
@@ -115,7 +116,7 @@ export default function AutomationMosaicSection({
       if (!cancelled) setMediaData(media);
     };
 
-    // 1. Priority: reelUrl prop or REEL_MAP
+    // 1. Priority: reelUrl prop or REEL_MAP (Instagram Reel Embeds)
     const targetReel = reelUrl || REEL_MAP[serviceName];
     if (targetReel) {
       if (targetReel.includes("instagram.com")) {
@@ -140,11 +141,12 @@ export default function AutomationMosaicSection({
       }
     }
 
-    // 2. Fallback: VIDEO_MAP
-    if (VIDEO_MAP[serviceName]) {
+    // 2. Priority: VIDEO_MAP fallback
+    const targetMp4 = VIDEO_MAP[serviceName];
+    if (targetMp4) {
       setMediaIfActive({
         type: "Reel",
-        url: `${IMAGE_BASE_URL}/reels/${VIDEO_MAP[serviceName]}`,
+        url: targetMp4.startsWith("http") ? targetMp4 : `${IMAGE_BASE_URL}/reels/${targetMp4}`,
       });
       if (!cancelled) setLoading(false);
       return;
@@ -173,19 +175,6 @@ export default function AutomationMosaicSection({
             ? serviceData.services_url_image 
             : `${reelsBase}${serviceData.services_url_image}`;
 
-          if (finalUrl.includes("instagram.com")) {
-            const match = finalUrl.match(/\/(?:reel|p)\/([A-Za-z0-9_-]+)/);
-            const reelCode = match ? match[1] : "";
-            if (reelCode) {
-              setMediaIfActive({
-                type: "Instagram",
-                url: finalUrl,
-                embedUrl: `https://www.instagram.com/reel/${reelCode}/embed/`,
-              });
-              return;
-            }
-          }
-
           const isDirectVideo = finalUrl.toLowerCase().endsWith(".mp4") || 
             (serviceData.services_type === "Reel" && 
              !finalUrl.includes("instagram.com") && 
@@ -197,6 +186,17 @@ export default function AutomationMosaicSection({
               type: "Reel",
               url: finalUrl,
             });
+          } else if (finalUrl.includes("instagram.com")) {
+            const match = finalUrl.match(/\/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+            const reelCode = match ? match[1] : "";
+            if (reelCode) {
+              setMediaIfActive({
+                type: "Instagram",
+                url: finalUrl,
+                embedUrl: `https://www.instagram.com/reel/${reelCode}/embed/`,
+              });
+              return;
+            }
           } else {
             setMediaIfActive({
               type: "Image",
@@ -313,7 +313,6 @@ export default function AutomationMosaicSection({
             <ul className="space-y-2.5 mb-5">
               {features.map((feat) => (
                 <li key={feat} className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-blue shrink-0" />
                   <span className="text-sm text-text-muted">{feat}</span>
                 </li>
               ))}
@@ -340,40 +339,51 @@ export default function AutomationMosaicSection({
             /* ── Double-Reel Layout ── */
             <>
               {reels.map((reel, idx) => (
-                  <div
-                    key={idx}
-                    className={`${prefix}-img relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner`}
-                  >
-                    <div className="absolute inset-0 overflow-hidden">
-                      <InstagramLinkCard reelUrl={reel} title={`${title} Reel ${idx + 1}`} linkTitle={reelTitles?.[idx]} />
-                    </div>
-                    <div className="aspect-[9/16]" />
-                  </div>
-                ))}
+                <div
+                  key={idx}
+                  className={`${prefix}-img relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner min-h-[360px] sm:min-h-[420px]`}
+                >
+                  <InstagramEmbed reelUrl={reel} />
+                </div>
+              ))}
             </>
           ) : (
             /* ── Original 3-Image Mosaic Layout ── */
             <>
               {/* 1st Card: Tall left image (Dynamic content, Reel or Image from the API) */}
-              <div className={`${prefix}-img row-span-2 relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner`}>
+              <div className={`${prefix}-img row-span-2 relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner min-h-[360px] sm:min-h-[420px]`}>
                 <div className="absolute inset-0 overflow-hidden">
                   {loading ? (
                     <div className="w-full h-full flex items-center justify-center bg-bg-surface">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue" />
                     </div>
                   ) : mediaData?.type === "Instagram" && mediaData.embedUrl ? (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-black/95 relative overflow-hidden">
-                      <InstagramLinkCard reelUrl={mediaData.url} title={title} linkTitle={reelTitles?.[0]} />
-                    </div>
+                    <InstagramEmbed reelUrl={mediaData.url} />
                   ) : mediaData?.type === "Reel" ? (
-                    <video
-                      src={mediaData.url}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="relative w-full h-full">
+                      <video
+                        src={mediaData.url}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                      {(reelUrl || REEL_MAP[serviceName]) && (
+                        <a
+                          href={reelUrl || REEL_MAP[serviceName]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Watch on Instagram"
+                          className="absolute bottom-3 right-3 z-10 bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg hover:scale-105 transition-all duration-200 flex items-center gap-1.5 opacity-90 hover:opacity-100"
+                        >
+                          <svg className="w-3.5 h-3.5 fill-current text-white" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                          </svg>
+                          <span>Watch on Instagram</span>
+                        </a>
+                      )}
+                    </div>
                   ) : (
                     <img
                       src={mediaData?.url || getImageUrl(images[0]?.src || "")}

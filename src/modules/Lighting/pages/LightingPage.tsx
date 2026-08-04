@@ -92,7 +92,7 @@ export default function LightingPage() {
         accentColor="#00A551"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
         {/* DIMMING & TUNING OF LIGHTS SECTION */}
         <DimmingTuningSection />
 

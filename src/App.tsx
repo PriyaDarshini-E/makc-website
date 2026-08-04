@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/common/Layout";
 import HomeV2Page from "./modules/Home/pages/HomePage";
+import AutomationPageV2 from "@/modules/test-pages/AutomationPageV2";
 
 // Lazy load secondary pages to shrink the initial JS bundle
 const AutomationPage = lazy(
@@ -52,6 +53,8 @@ export default function App() {
         <Route path="/service" element={<ServicePage />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/automation-v2" element={<AutomationPageV2 />} />
+
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
