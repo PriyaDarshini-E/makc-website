@@ -340,7 +340,7 @@ export default function HeroSectionV2() {
                 if (activeHotspot?.videoFile) {
                   if (activeHotspot.videoFile.includes("instagram.com")) {
                     return (
-                      <div className="relative w-full h-full bg-black flex flex-col items-center justify-center">
+                      <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] bg-black flex flex-col items-center justify-center">
                         <InstagramEmbed reelUrl={activeHotspot.videoFile} />
                       </div>
                     );

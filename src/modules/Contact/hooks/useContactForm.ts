@@ -23,6 +23,9 @@ export const useContactForm = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
+    control,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -63,5 +66,9 @@ export const useContactForm = () => {
     handleSubmit: handleSubmit(onSubmit),
     errors,
     isSubmitting: mutation.isPending,
+    setValue,
+    watch,
+    control,
+    reset,
   };
 };

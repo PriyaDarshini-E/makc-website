@@ -14,12 +14,12 @@ const images = [
     title: "Smart Outdoor Lighting Controls",
   },
   {
-    src: "service/OLL1.webp",
+    src: "service/ol1.webp",
     alt: "Luxury villa entrance facade with automated exterior lighting",
     title: "Automated Exterior Lighting",
   },
   {
-    src: "service/OLL2.webp",
+    src: "service/OLLa2.webp",
     alt: "Warm spotlights and accent lighting in a contemporary living room",
     title: "Accent Lighting Design",
   },

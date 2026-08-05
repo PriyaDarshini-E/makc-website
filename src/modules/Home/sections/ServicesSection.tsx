@@ -2,12 +2,13 @@ import { Sun, ShieldCheck, Volume2, Wifi, Zap, ArrowRight } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import StatsSectionV2 from "./StatsSection";
+import { IMAGE_BASE_URL } from "@/config/constants";
 
 // New images paths from public/images
 const imgAutomation = "/images/automation.avif";
 const imgLighting = "/images/ligting.avif";
 const imgSecurity = "/images/security.avif";
-const imgNetworking = "/images/networking.avif";
+const imgNetworking = `${IMAGE_BASE_URL}/service/networking.webp`;
 const imgAudio = "/images/audio.avif";
 const imgElectricals = "/images/electricals.avif";
 
@@ -139,10 +140,9 @@ export default function ServicesSection() {
               </span>
 
               <h2 className="mt-4 font-serif text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight leading-tight">
-                Complete Smart  <br />
-                
+                Complete Smart <br />
                 <span className="font-serif italic font-normal text-text-main">
-                 Home Automation Solutions
+                  Home Automation Solutions
                 </span>
               </h2>
             </div>
@@ -178,11 +178,19 @@ export default function ServicesSection() {
                       <source
                         media="(max-width: 640px)"
                         srcSet={service.avifImageMobile}
-                        type="image/avif"
+                        type={
+                          service.avifImageMobile.endsWith(".webp")
+                            ? "image/webp"
+                            : "image/avif"
+                        }
                       />
                       <source
                         srcSet={service.avifImageDesktop}
-                        type="image/avif"
+                        type={
+                          service.avifImageDesktop.endsWith(".webp")
+                            ? "image/webp"
+                            : "image/avif"
+                        }
                       />
                       <img
                         src={service.bgImage}
@@ -197,7 +205,7 @@ export default function ServicesSection() {
                       />
                     </picture>
                     {/* Shadow overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-bg-main via-bg-main/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-l dark:bg-gradient-to-r dark:from-bg-main from-bg-[#000]  dark:via-bg-main/80 via-bg-main/5 dark:to-transparent to-[#000]" />
                   </div>
 
                   <div className="relative z-10 w-full flex-1 flex flex-col justify-start">
@@ -210,17 +218,17 @@ export default function ServicesSection() {
 
                     {/* Card Body: Text info (Stacked right below icon) */}
                     <div className="text-left mt-4 flex flex-col justify-start w-full max-w-[210px]">
-                      <h3 className="font-sans text-lg font-bold text-text-main group-hover:text-accent-blue transition-colors duration-300 max-w-[160px]">
+                      <h3 className="font-sans text-lg font-bold dark:text-text-main text-white! group-hover:text-accent-blue transition-colors duration-300 max-w-[160px]">
                         {service.title}
                       </h3>
-                      <p className="mt-3 font-sans text-xs sm:text-[13px] text-text-muted leading-relaxed font-normal group-hover:text-text-main transition-colors duration-300">
+                      <p className="mt-3 font-sans text-xs sm:text-[13px] dark:text-text-muted leading-relaxed font-normal text-ma-gray-9 transition-colors duration-300">
                         {service.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Card Bottom: View More Button */}
-                  <div className="relative z-10 mt-6 flex items-center gap-1.5 text-xs font-bold tracking-wider text-accent-blue group-hover:text-accent-blue/80 transition-colors duration-300 uppercase">
+                  <div className="relative z-10 mt-6 flex items-center gap-1.5 text-xs font-bold tracking-wider text-white! dark:text-accent-blue group-hover:text-accent-blue/80 transition-colors duration-300 uppercase">
                     <span>View More</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>

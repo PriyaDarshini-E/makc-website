@@ -31,7 +31,7 @@ import GateAutomationSection from "@/components/common/GateAutomationSection";
 import DoorAutomationSection from "@/components/common/DoorAutomationSection";
 
 // Import images
-const serviceLightingImg = getImageUrl("service_lighting.webp");
+const serviceLightingImg = getImageUrl("service/fhha.webp");
 
 const projectVillasImg = getImageUrl("project_villas.webp");
 
@@ -169,8 +169,8 @@ export default function AutomationPage() {
             <div className="hero-subtitle max-w-2xl">
               <p className="text-base sm:text-lg text-text-muted leading-relaxed">
                 Smart homes are not about gadgets — they are about how you live.
-                With almost a decade of experience and 700+ projects delivered
-                across homes and select commercial spaces, here is what you can
+                With almost a decade of experience and 800+ projects delivered
+                across homes and select commercial spaces, here's what you can
                 expect from us.
                 <img
                   src={getImageUrl("star.webp")}
