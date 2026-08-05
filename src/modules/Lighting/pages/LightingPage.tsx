@@ -26,6 +26,17 @@ const LIGHTING_SLIDES = [
   },
   {
     id: "02",
+    title: "Dimming Tuning ",
+    shortTitle: "Dimming &\nTuning",
+    description:
+      "Smoothly adjust light intensity and color temperature from warm white to cool daylight, reducing eye strain and matching your natural circadian rhythm.",
+    image: getImageUrl("dimeLight.webp"),
+    imageAlt: "Smart Dimmable LED Lighting Control Solution",
+    imageTitle: "Dimmable LED Lighting System",
+    icon: SunDim,
+  },
+  {
+    id: "03",
     title: "RGB Lighting",
     shortTitle: "RGB\nLighting",
     description:
@@ -36,23 +47,12 @@ const LIGHTING_SLIDES = [
     icon: Palette,
   },
   {
-    id: "03",
-    title: "Dimming & Tuning of Lights",
-    shortTitle: "Dimming &\nTuning",
-    description:
-      "Smoothly adjust light intensity and color temperature from warm white to cool daylight, reducing eye strain and matching your natural circadian rhythm.",
-    image: getImageUrl("dimeLight.webp"),
-    imageAlt: "Smart Dimmable LED Lighting Control Solution",
-    imageTitle: "Dimmable LED Lighting System",
-    icon: SunDim,
-  },
-  {
     id: "04",
     title: "Outdoor & Landscape Lighting",
     shortTitle: "Outdoor\nLighting",
     description:
       "Enhance home curb appeal and security with automated exterior lighting. Program garden, compound, and facade lights to sync with sunset and sunrise.",
-    image: getImageUrl("outdoorImage1.webp"),
+    image: getImageUrl("service/ol1.webp"),
     imageAlt:
       "Outdoor LED Lighting Solution for Commercial and Industrial Spaces",
     imageTitle: "Outdoor Lighting Solutions",

@@ -13,10 +13,10 @@ export default function InstagramEmbed({ reelUrl }: { reelUrl: string }) {
   const embedUrl = getReelEmbedUrl(reelUrl);
 
   return (
-    <div className="relative w-full h-full min-h-[320px] sm:min-h-[420px] bg-black flex items-center justify-center overflow-hidden rounded-xl group">
+    <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[640px] bg-black flex items-center justify-center overflow-hidden rounded-xl group">
       <iframe
         src={embedUrl}
-        className="w-full h-full min-h-[320px] sm:min-h-[420px] border-0 rounded-xl"
+        className="w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[640px] border-0 rounded-xl"
         frameBorder="0"
         scrolling="no"
         allowTransparency={true}

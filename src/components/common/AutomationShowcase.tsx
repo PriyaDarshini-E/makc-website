@@ -45,44 +45,44 @@ export interface AutomationShowcaseSlide {
 const DEFAULT_SLIDES: AutomationShowcaseSlide[] = [
   {
     id: "01",
-    title: "Lighting Automation",
+    title: "Electrical Automation & Smart Switches",
     shortTitle: "Lighting\nAutomation",
     description:
       "Transform your spaces with adaptive lighting scenes tailored to your daily routines.",
-    image: getImageUrl("service_lighting.webp"),
+    image: getImageUrl("/service/ha1.1.webp"),
     imageAlt: "Industrial and Commercial Lighting Automation Solutions",
     imageTitle: "Lighting Automation Services",
     icon: Lightbulb,
   },
   {
     id: "02",
-    title: "Security Automation",
+    title: "Gate Automation",
     shortTitle: "Security\nAutomation",
     description:
       "Fortify your home with integrated alarms, access control, and smart surveillance.",
-    image: getImageUrl("service_security.webp"),
+    image: getImageUrl("/service/ha1.2.webp"),
     imageAlt: "Industrial Security and Surveillance Automation Solutions",
-    imageTitle: "Security Automation Services",
+    imageTitle: "Gate Automation Services",
     icon: ShieldCheck,
   },
   {
     id: "03",
-    title: "Curtain Automation",
-    shortTitle: "Curtain\nAutomation",
+    title: "Door Automation",
+    shortTitle: "Door\nAutomation",
     description:
       "Shape daylight, privacy, and ambience with a single, effortless routine.",
-    image: "/images/curtain_automation.png",
-    imageAlt: "Luxury living room featuring automated smart curtains at sunset",
-    imageTitle: "Smart Curtain Automation",
+    image: getImageUrl("/service/ha1.3.webp"),
+    imageAlt: "Luxury living room featuring automated smart Doors at sunset",
+    imageTitle: "Smart Door Automation",
     icon: CurtainIcon,
   },
   {
     id: "04",
-    title: "Climate Automation",
-    shortTitle: "Climate\nAutomation",
+    title: "Curtain  Automation",
+    shortTitle: "Curtain \nAutomation",
     description:
       "Optimize thermal comfort and energy savings with smart heating and cooling.",
-    image: getImageUrl("service_automation.webp"),
+    image: getImageUrl(""),
     imageAlt: "Industrial Automation Solutions for Smart Manufacturing",
     imageTitle: "Industrial Automation Services",
     icon: Thermometer,
@@ -175,7 +175,10 @@ export default function AutomationShowcase({
   };
 
   return (
-    <section style={accentStyle} className="w-full relative overflow-hidden bg-bg-surface dark:bg-black py-16 lg:py-24 min-h-[600px] lg:h-[650px] flex items-center border-b border-border-main/40 select-none">
+    <section
+      style={accentStyle}
+      className="w-full relative overflow-hidden bg-bg-surface dark:bg-black py-16 lg:py-24 min-h-[600px] lg:h-[650px] flex items-center border-b border-border-main/40 select-none"
+    >
       {/* Background Images Crossfade Layer (Only on the right half for desktop, full background for mobile) */}
       {slides.map((tab, idx) => (
         <img
@@ -247,7 +250,9 @@ export default function AutomationShowcase({
                       >
                         <Icon
                           className={`w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-300 group-hover:scale-110 ${
-                            isActive ? "text-[var(--accent-color)]" : "text-text-muted dark:text-white/50 group-hover:text-text-main dark:group-hover:text-white"
+                            isActive
+                              ? "text-[var(--accent-color)]"
+                              : "text-text-muted dark:text-white/50 group-hover:text-text-main dark:group-hover:text-white"
                           }`}
                         />
                       </button>

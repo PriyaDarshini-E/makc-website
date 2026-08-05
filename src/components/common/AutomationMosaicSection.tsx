@@ -341,7 +341,7 @@ export default function AutomationMosaicSection({
               {reels.map((reel, idx) => (
                 <div
                   key={idx}
-                  className={`${prefix}-img relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner min-h-[360px] sm:min-h-[420px]`}
+                  className={`${prefix}-img relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px]`}
                 >
                   <InstagramEmbed reelUrl={reel} />
                 </div>
@@ -351,8 +351,8 @@ export default function AutomationMosaicSection({
             /* ── Original 3-Image Mosaic Layout ── */
             <>
               {/* 1st Card: Tall left image (Dynamic content, Reel or Image from the API) */}
-              <div className={`${prefix}-img row-span-2 relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner min-h-[360px] sm:min-h-[420px]`}>
-                <div className="absolute inset-0 overflow-hidden">
+              <div className={`${prefix}-img row-span-2 relative rounded-2xl overflow-hidden bg-bg-surface border border-border-main/30 shadow-inner w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px]`}>
+                <div className="absolute inset-0 overflow-hidden w-full h-full">
                   {loading ? (
                     <div className="w-full h-full flex items-center justify-center bg-bg-surface">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue" />
@@ -360,14 +360,14 @@ export default function AutomationMosaicSection({
                   ) : mediaData?.type === "Instagram" && mediaData.embedUrl ? (
                     <InstagramEmbed reelUrl={mediaData.url} />
                   ) : mediaData?.type === "Reel" ? (
-                    <div className="relative w-full h-full">
+                    <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px]">
                       <video
                         src={mediaData.url}
                         autoPlay
                         loop
                         muted
                         playsInline
-                        className="w-full h-full object-cover"
+                        className="w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] object-cover"
                       />
                       {(reelUrl || REEL_MAP[serviceName]) && (
                         <a
@@ -393,7 +393,7 @@ export default function AutomationMosaicSection({
                     />
                   )}
                 </div>
-                <div className="aspect-[9/16] lg:aspect-[3/4]" />
+                <div className="w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px]" />
               </div>
 
               {/* 2nd Card: Top-right wider image */}

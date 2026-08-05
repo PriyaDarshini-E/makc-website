@@ -47,7 +47,7 @@ export default function SecurityHero() {
           {/* Badge */}
           <div className="hero-badge text-[11px] sm:text-xs tracking-widest uppercase font-bold text-text-muted flex items-center gap-1.5">
             <span className="text-emerald-500 font-extrabold text-sm">#1</span>{" "}
-            Choice for Home Automation
+            Choice for smart security
           </div>
 
           {/* Main Heading */}
