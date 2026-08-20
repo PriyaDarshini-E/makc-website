@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/config/seoData";
 
-interface SEOProps {
+export interface SEOProps {
   title: string;
   description: string;
   keywords?: string;
@@ -8,44 +9,65 @@ interface SEOProps {
   robots?: string;
   author?: string;
   publisher?: string;
+  ogType?: string;
+  ogImage?: string;
+  schemaGraph?: any[];
 }
 
 export default function useSEO({
   title,
   description,
   keywords,
-  canonicalUrl,
-  robots,
+  canonicalUrl = `${SITE_URL}/`,
+  robots = "index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
   author = "MAKc Automations",
   publisher = "MAKc Automations",
+  ogType = "website",
+  ogImage = DEFAULT_OG_IMAGE,
+  schemaGraph,
 }: SEOProps) {
   useEffect(() => {
     // 1. Set Title
     document.title = title;
 
-    // 2. Set Description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      metaDesc.setAttribute("name", "description");
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute("content", description);
-
-    // 3. Set Keywords
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (keywords) {
-      if (!metaKeywords) {
-        metaKeywords = document.createElement("meta");
-        metaKeywords.setAttribute("name", "keywords");
-        document.head.appendChild(metaKeywords);
+    // Helper for <meta name="...">
+    const setMetaName = (name: string, content?: string) => {
+      let tag = document.querySelector(`meta[name="${name}"]`);
+      if (content) {
+        if (!tag) {
+          tag = document.createElement("meta");
+          tag.setAttribute("name", name);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute("content", content);
+      } else if (tag) {
+        tag.remove();
       }
-      metaKeywords.setAttribute("content", keywords);
-    } else if (metaKeywords) {
-      metaKeywords.remove();
-    }
+    };
 
-    // 4. Set Canonical URL
+    // Helper for <meta property="...">
+    const setMetaProperty = (property: string, content?: string) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      if (content) {
+        if (!tag) {
+          tag = document.createElement("meta");
+          tag.setAttribute("property", property);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute("content", content);
+      } else if (tag) {
+        tag.remove();
+      }
+    };
+
+    // 2. Standard Meta Tags
+    setMetaName("description", description);
+    setMetaName("keywords", keywords);
+    setMetaName("robots", robots);
+    setMetaName("author", author);
+    setMetaName("publisher", publisher);
+
+    // 3. Canonical Link
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (canonicalUrl) {
       if (!linkCanonical) {
@@ -58,35 +80,43 @@ export default function useSEO({
       linkCanonical.remove();
     }
 
-    // 5. Set Robots Tag
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (robots) {
-      if (!metaRobots) {
-        metaRobots = document.createElement("meta");
-        metaRobots.setAttribute("name", "robots");
-        document.head.appendChild(metaRobots);
+    // 4. OpenGraph Tags
+    setMetaProperty("og:type", ogType);
+    setMetaProperty("og:title", title);
+    setMetaProperty("og:description", description);
+    setMetaProperty("og:url", canonicalUrl);
+    setMetaProperty("og:image", ogImage);
+
+    // 5. Twitter Card Tags
+    setMetaName("twitter:card", "summary_large_image");
+    setMetaName("twitter:title", title);
+    setMetaName("twitter:description", description);
+    setMetaName("twitter:image", ogImage);
+
+    // 6. JSON-LD Schema Tag
+    if (schemaGraph && schemaGraph.length > 0) {
+      let scriptTag = document.querySelector('script#route-jsonld') as HTMLScriptElement | null;
+      if (!scriptTag) {
+        scriptTag = document.createElement("script");
+        scriptTag.id = "route-jsonld";
+        scriptTag.type = "application/ld+json";
+        document.head.appendChild(scriptTag);
       }
-      metaRobots.setAttribute("content", robots);
-    } else if (metaRobots) {
-      metaRobots.remove();
+      scriptTag.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": schemaGraph,
+      });
     }
-
-    // 6. Set Author Tag
-    let metaAuthor = document.querySelector('meta[name="author"]');
-    if (!metaAuthor) {
-      metaAuthor = document.createElement("meta");
-      metaAuthor.setAttribute("name", "author");
-      document.head.appendChild(metaAuthor);
-    }
-    metaAuthor.setAttribute("content", author);
-
-    // 7. Set Publisher Tag
-    let metaPublisher = document.querySelector('meta[name="publisher"]');
-    if (!metaPublisher) {
-      metaPublisher = document.createElement("meta");
-      metaPublisher.setAttribute("name", "publisher");
-      document.head.appendChild(metaPublisher);
-    }
-    metaPublisher.setAttribute("content", publisher);
-  }, [title, description, keywords, canonicalUrl, robots, author, publisher]);
+  }, [
+    title,
+    description,
+    keywords,
+    canonicalUrl,
+    robots,
+    author,
+    publisher,
+    ogType,
+    ogImage,
+    schemaGraph,
+  ]);
 }

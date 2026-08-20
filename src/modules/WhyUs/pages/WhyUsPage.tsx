@@ -1,18 +1,13 @@
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import WhyChooseUsSection from "../sections/WhyChooseUsSection";
 import LifestyleSection from "../sections/LifestyleSection";
 import ProcessSection from "../sections/ProcessSection";
 import ConnectBanner from "@/components/common/ConnectBanner";
 import { getImageUrl } from "@/utils/image";
 
-
 export default function WhyUsPage() {
-  useSEO({
-    title: "Why Choose MAKc Automations | Smart Home Experts Bangalore",
-    description: "Discover why homeowners choose MAKc Automations: custom smart home integration, premium materials, and a refined multi-phase installation process.",
-    keywords: "why choose makc automations, home automation experts bangalore",
-    canonicalUrl: "https://makcautomations.com/why-us",
-  });
+  useSEO(SEO_ROUTES["/why-us"]);
 
   return (
     <div className="relative bg-bg-main min-h-screen text-text-main overflow-hidden">

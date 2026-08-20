@@ -1,8 +1,8 @@
-// Import module-specific components
 import MeshWifiSolutionsSection from "../components/MeshWifiSolutionsSection";
 import NetworkingHero from "../components/NetworkingHero";
 import WiredNetworkSection from "../components/WiredNetworkSection";
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import AutomationShowcase from "@/components/common/AutomationShowcase";
 import { Wifi, Network } from "lucide-react";
 import { getImageUrl } from "@/utils/image";
@@ -33,16 +33,7 @@ const NETWORKING_SLIDES = [
 ];
 
 export default function NetworkingPage() {
-  useSEO({
-    title: "Home Networking Solutions in Bangalore | MAKc Automations",
-    description:
-      "MAKc Automations offers enterprise-grade home networking solutions in Bangalore, including mesh Wi-Fi systems, high-speed wired networks & seamless coverage for luxury villas.",
-    keywords:
-      "home networking solutions in bangalore, mesh wireless network, high speed home wifi, enterprise networking bangalore",
-    canonicalUrl: "https://makcautomations.com/networking",
-    robots:
-      "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
-  });
+  useSEO(SEO_ROUTES["/networking"]);
 
   return (
     <div className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300">

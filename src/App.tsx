@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/common/Layout";
 import HomeV2Page from "./modules/Home/pages/HomePage";
 import AutomationPageV2 from "@/modules/test-pages/AutomationPageV2";
@@ -54,6 +54,14 @@ export default function App() {
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/automation-v2" element={<AutomationPageV2 />} />
+
+        {/* Redirect aliases to canonical URLs */}
+        <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
+        <Route path="/contact-us/" element={<Navigate to="/contact" replace />} />
+        <Route path="/experience-center" element={<Navigate to="/experience" replace />} />
+        <Route path="/experience-center/" element={<Navigate to="/experience" replace />} />
+        <Route path="/services" element={<Navigate to="/service" replace />} />
+        <Route path="/services/" element={<Navigate to="/service" replace />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

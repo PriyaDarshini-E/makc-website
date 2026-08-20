@@ -1,4 +1,5 @@
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import AudioHero from "../components/AudioHero";
 import GlowingLine from "@/components/common/GlowingLine";
 import { Hourglass, Music, Speaker, Volume2 } from "lucide-react";
@@ -42,12 +43,7 @@ const AUDIO_SLIDES = [
 ];
 
 export default function AudioPage() {
-  useSEO({
-    title: "Home Audio Solutions in Bangalore | MAKc Automations",
-    description: "High-performance multi-room audio, invisible architectural speakers, and smart sound controls for luxury residences in Bangalore by MAKc Automations.",
-    keywords: "home audio solutions, multi room audio bangalore, architectural speakers, high fidelity sound, MAKc Automations",
-    canonicalUrl: "https://makcautomations.com/audio",
-  });
+  useSEO(SEO_ROUTES["/audio"]);
 
   return (
     <div className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300">

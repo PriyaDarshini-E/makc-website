@@ -39,6 +39,8 @@ function Instagram({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+import { COMPANY_INFO } from "@/config/constants";
+
 interface ConnectBannerProps {
   title?: string;
   description?: string;
@@ -65,16 +67,15 @@ export default function ConnectBanner({
           <div className="flex flex-col items-center p-5 bg-bg-main/50 rounded-2xl border border-border-main/60 hover:-translate-y-0.5 transition-all">
             <Phone className="w-6 h-6 text-accent-blue mb-3" />
             <span className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1.5">Direct Line</span>
-            <a href="tel:+919324226077" className="text-sm font-semibold text-text-main hover:text-accent-blue transition-colors">+91-9324226077</a>
-            <a href="tel:+918197783287" className="text-xs text-text-muted mt-1 hover:text-accent-blue transition-colors">+91-8197783287</a>
+            <a href={`tel:${COMPANY_INFO.phones.primary.digits}`} className="text-sm font-semibold text-text-main hover:text-accent-blue transition-colors">{COMPANY_INFO.phones.primary.number}</a>
+            <a href={`tel:${COMPANY_INFO.phones.support.digits}`} className="text-xs text-text-muted mt-1 hover:text-accent-blue transition-colors">{COMPANY_INFO.phones.support.number}</a>
           </div>
-
 
           {/* Email */}
           <div className="flex flex-col items-center p-5 bg-bg-main/50 rounded-2xl border border-border-main/60 hover:-translate-y-0.5 transition-all">
             <Mail className="w-6 h-6 text-accent-blue mb-3" />
             <span className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1.5">Email Support</span>
-            <a href="mailto:info@makcautomations.com" className="text-sm font-semibold text-text-main hover:text-accent-blue transition-colors truncate w-full px-2">info@makcautomations.com</a>
+            <a href={`mailto:${COMPANY_INFO.email}`} className="text-sm font-semibold text-text-main hover:text-accent-blue transition-colors truncate w-full px-2">{COMPANY_INFO.email}</a>
           </div>
 
         </div>
@@ -82,7 +83,7 @@ export default function ConnectBanner({
         {/* Social icons - wrapped in rounded-full apple-border-shine */}
         <div className="flex items-center justify-center gap-4 pt-8">
           <a 
-            href="https://www.instagram.com/mak_automation/" 
+            href={COMPANY_INFO.socials.instagram} 
             target="_blank" 
             rel="noreferrer" 
             aria-label="Instagram"
@@ -91,7 +92,7 @@ export default function ConnectBanner({
             <Instagram className="w-4 h-4" />
           </a>
           <a 
-            href="https://www.facebook.com/makcautomation" 
+            href={COMPANY_INFO.socials.facebook} 
             target="_blank" 
             rel="noreferrer" 
             aria-label="Facebook"
@@ -100,7 +101,7 @@ export default function ConnectBanner({
             <Facebook className="w-4 h-4" />
           </a>
           <a 
-            href="https://www.linkedin.com/company/makc-automations/" 
+            href={COMPANY_INFO.socials.linkedin} 
             target="_blank" 
             rel="noreferrer" 
             aria-label="LinkedIn"
@@ -109,7 +110,7 @@ export default function ConnectBanner({
             <Linkedin className="w-4 h-4" />
           </a>
           <a 
-            href="https://www.youtube.com/@MAKcAutomation01" 
+            href={COMPANY_INFO.socials.youtube} 
             target="_blank" 
             rel="noreferrer" 
             aria-label="YouTube"

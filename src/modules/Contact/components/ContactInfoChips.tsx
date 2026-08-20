@@ -1,11 +1,12 @@
 import { Phone, Mail } from "lucide-react";
+import { COMPANY_INFO } from "@/config/constants";
 
 export function ContactInfoChips() {
   return (
     <>
       <a
-        href="tel:+918197783287"
-        title="Call MAKc Automations at +91 81977 83287"
+        href={`tel:${COMPANY_INFO.phones.primary.digits}`}
+        title={`Call ${COMPANY_INFO.name} at ${COMPANY_INFO.phones.primary.display}`}
         className="h-full min-w-0 bg-bg-surface/50 backdrop-blur-xl border border-border-main/70 rounded-2xl p-3.5 sm:p-4 lg:p-5 flex items-center gap-3 lg:gap-4 group cursor-pointer transition-all hover:-translate-y-1 duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.015)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:border-accent-blue/40 hover:shadow-[0_8px_20px_rgba(10,132,255,0.06)] reveal-on-scroll reveal-up"
         data-reveal-delay="100ms"
         data-reveal-duration="0.6s"
@@ -21,17 +22,17 @@ export function ContactInfoChips() {
             Call Us Directly
           </p>
           <p className="text-sm sm:text-base font-semibold text-text-main leading-tight transition-colors group-hover:text-accent-blue duration-300 whitespace-nowrap">
-            +91-8197783287
+            {COMPANY_INFO.phones.primary.number}
           </p>
           <p className="text-xs font-medium text-text-muted mt-0.5 whitespace-nowrap">
-            +91-9324226077
+            {COMPANY_INFO.phones.support.number}
           </p>
         </div>
       </a>
 
       <a
-        href="https://wa.me/918197783287?text=Hi%20MAKc%20Team,%20I'm%20interested%20in%20your%20services!"
-        title="Chat with MAKc Automations on WhatsApp"
+        href={COMPANY_INFO.whatsapp.url}
+        title={`Chat with ${COMPANY_INFO.name} on WhatsApp`}
         target="_blank"
         rel="noopener noreferrer"
         className="h-full min-w-0 bg-bg-surface/50 backdrop-blur-xl border border-border-main/70 rounded-2xl p-3.5 sm:p-4 lg:p-5 flex items-center gap-3 lg:gap-4 group cursor-pointer transition-all hover:-translate-y-1 duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.015)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:border-[#25D366]/40 hover:shadow-[0_8px_20px_rgba(37,211,102,0.06)] reveal-on-scroll reveal-up"
@@ -52,7 +53,7 @@ export function ContactInfoChips() {
             WhatsApp Us
           </p>
           <p className="text-sm sm:text-base font-semibold text-text-main leading-tight transition-colors group-hover:text-[#25D366] duration-300 whitespace-nowrap">
-            +91-8197783287
+            {COMPANY_INFO.whatsapp.number}
           </p>
           <p className="text-xs font-medium text-text-muted mt-0.5 whitespace-nowrap">
             Chat with our experts
@@ -61,8 +62,8 @@ export function ContactInfoChips() {
       </a>
 
       <a
-        href="mailto:info@makcautomations.com"
-        title="Email MAKc Automations"
+        href={`mailto:${COMPANY_INFO.email}`}
+        title={`Email ${COMPANY_INFO.name}`}
         className="h-full min-w-0 bg-bg-surface/50 backdrop-blur-xl border border-border-main/70 rounded-2xl p-3.5 sm:p-4 lg:p-5 flex items-center gap-3 lg:gap-4 group cursor-pointer transition-all hover:-translate-y-1 duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.015)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:border-accent-blue/40 hover:shadow-[0_8px_20px_rgba(10,132,255,0.06)] reveal-on-scroll reveal-up"
         data-reveal-delay="200ms"
         data-reveal-duration="0.6s"
@@ -79,9 +80,9 @@ export function ContactInfoChips() {
           </p>
           <p
             className="text-xs sm:text-sm font-semibold text-text-main transition-colors group-hover:text-accent-blue duration-300 break-all"
-            title="info@makcautomations.com"
+            title={COMPANY_INFO.email}
           >
-            info@makcautomations.com
+            {COMPANY_INFO.email}
           </p>
         </div>
       </a>

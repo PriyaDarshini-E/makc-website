@@ -1,8 +1,8 @@
-// Import module-specific components
 import CCTVMonitoringSection from "../components/CCTVMonitoringSection";
 import SecurityHero from "../components/SecurityHero";
 import SensorBasedProtection from "../components/SensorBasedProtection";
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import AutomationShowcase from "@/components/common/AutomationShowcase";
 import { Video, Fingerprint, BellRing } from "lucide-react";
 import { getImageUrl } from "@/utils/image";
@@ -44,16 +44,7 @@ const SECURITY_SLIDES = [
 ];
 
 export default function SecurityPage() {
-  useSEO({
-    title: "Smart Home Security Systems in Bangalore | MAKc Automations",
-    description:
-      "Advanced smart home security systems in Bangalore by MAKc Automations: AI CCTV surveillance, biometric digital door locks, motion & environmental leak detectors.",
-    keywords:
-      "smart home security systems, home security system bangalore, cctv surveillance, digital door locks bangalore",
-    canonicalUrl: "https://makcautomations.com/security",
-    robots:
-      "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
-  });
+  useSEO(SEO_ROUTES["/security"]);
 
   return (
     <div className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300">

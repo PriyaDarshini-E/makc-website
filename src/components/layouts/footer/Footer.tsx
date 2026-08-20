@@ -4,6 +4,7 @@ import BrandLogo from "@/components/common/BrandLogo";
 import { Phone, Mail, X, Loader2, CheckCircle2, PhoneCall } from "lucide-react";
 import ContactStrip from "@/components/common/ContactStrip";
 import { toast } from "react-hot-toast";
+import { COMPANY_INFO } from "@/config/constants";
 
 import { submitPhoneEnquiry } from "@/modules/Contact/api/contact.api";
 import { useLocation } from "react-router-dom";
@@ -137,15 +138,14 @@ export default function Footer() {
           <div className="flex flex-col text-left lg:pr-6 lg:pl-0">
             <Link
               to="/#home-top"
-              title="MAKc Automations Home"
+              title={`${COMPANY_INFO.name} Home`}
               className="flex items-center"
               onClick={handleHomeLogoClick}
             >
               <BrandLogo className="h-11 w-auto" />
             </Link>
             <p className="mt-5 text-xs text-text-muted leading-relaxed">
-              Crafting intelligent living experiences through innovative
-              automation, seamless design, and world-class technology.
+              {COMPANY_INFO.tagline}
             </p>
           </div>
 
@@ -294,20 +294,20 @@ export default function Footer() {
               <div className="mt-2">
                 <div className="flex flex-col gap-2">
                   <a
-                    href="tel:+919324226077"
-                    title="Call MAKc Automations at +91 93242 26077"
+                    href={`tel:${COMPANY_INFO.phones.primary.digits}`}
+                    title={`Call ${COMPANY_INFO.name} Sales at ${COMPANY_INFO.phones.primary.display}`}
                     className="flex items-center gap-2 hover:text-accent-blue transition-colors duration-200"
                   >
                     <Phone className="h-4 w-4 shrink-0 text-accent-blue stroke-[1.5]" />
-                    <span>+91-9324226077</span>
+                    <span>{COMPANY_INFO.phones.primary.number}</span>
                   </a>
                   <a
-                    href="tel:+918197783287"
-                    title="Call MAKc Automations at +91 81977 83287"
+                    href={`tel:${COMPANY_INFO.phones.support.digits}`}
+                    title={`Call ${COMPANY_INFO.name} Support at ${COMPANY_INFO.phones.support.display}`}
                     className="flex items-center gap-2 hover:text-accent-blue transition-colors duration-200"
                   >
                     <Phone className="h-4 w-4 shrink-0 text-accent-blue stroke-[1.5]" />
-                    <span>+91-8197783287</span>
+                    <span>{COMPANY_INFO.phones.support.number}</span>
                   </a>
                 </div>
               </div>
@@ -315,20 +315,20 @@ export default function Footer() {
               {/* Email Sub-section */}
               <div className="mt-2">
                 <a
-                  href="mailto:info@makcautomations.com"
-                  title="Email MAKc Automations"
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  title={`Email ${COMPANY_INFO.name}`}
                   className="flex items-center gap-2 hover:text-accent-blue transition-colors duration-200"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-accent-blue stroke-[1.5]" />
-                  <span className="break-all">info@makcautomations.com</span>
+                  <span className="break-all">{COMPANY_INFO.email}</span>
                 </a>
               </div>
 
               {/* Social Media Links */}
               <div className="flex items-center gap-2 mt-3">
                 <a
-                  href="https://www.instagram.com/mak_automation/"
-                  title="Follow MAKc Automations on Instagram"
+                  href={COMPANY_INFO.socials.instagram}
+                  title={`Follow ${COMPANY_INFO.name} on Instagram`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
@@ -337,8 +337,8 @@ export default function Footer() {
                   <Instagram />
                 </a>
                 <a
-                  href="https://www.facebook.com/makcautomation"
-                  title="Visit MAKc Automations on Facebook"
+                  href={COMPANY_INFO.socials.facebook}
+                  title={`Visit ${COMPANY_INFO.name} on Facebook`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Facebook"
@@ -347,8 +347,8 @@ export default function Footer() {
                   <Facebook />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/makc-automations/"
-                  title="Connect with MAKc Automations on LinkedIn"
+                  href={COMPANY_INFO.socials.linkedin}
+                  title={`Connect with ${COMPANY_INFO.name} on LinkedIn`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
@@ -357,8 +357,8 @@ export default function Footer() {
                   <Linkedin />
                 </a>
                 <a
-                  href="https://www.youtube.com/@MAKcAutomation01"
-                  title="Subscribe to MAKc Automations on YouTube"
+                  href={COMPANY_INFO.socials.youtube}
+                  title={`Subscribe to ${COMPANY_INFO.name} on YouTube`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="YouTube"
@@ -377,7 +377,7 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <p className="text-tiny text-text-muted">
-            &copy; {new Date().getFullYear()} Makc Automations. All rights
+            &copy; {new Date().getFullYear()} MAKc Automations. All rights
             reserved.
           </p>
           <div className="flex gap-5 items-center">
