@@ -36,19 +36,12 @@ const serviceLightingImg = getImageUrl("service/fhha.webp");
 const projectVillasImg = getImageUrl("project_villas.webp");
 
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
+import { COMPANY_INFO } from "@/config/constants";
 import { getImageUrl } from "@/utils/image";
 
 export default function AutomationPage() {
-  useSEO({
-    title: "Smart Home Automation Services in Bangalore | MAKc Automations",
-    description:
-      "MAKc Automations delivers complete smart home automation services in Bangalore including touch panel controls, gate, curtain & electrical automation.",
-    keywords:
-      "smart home automation services, home automation company in bangalore, home automation bangalore, curtain automation, gate automation",
-    canonicalUrl: "https://makcautomations.com/automation",
-    robots:
-      "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
-  });
+  useSEO(SEO_ROUTES["/automation"]);
 
   const [activeFeature, setActiveFeature] = useState("scheduling");
 
@@ -582,21 +575,21 @@ export default function AutomationPage() {
                   </div>
                   <div className="space-y-3 mt-8">
                     <a
-                      href="tel:+919324226077"
-                      title="Call MAKc Automations at +91 9324226077"
+                      href={`tel:${COMPANY_INFO.phones.primary.digits}`}
+                      title={`Call ${COMPANY_INFO.name} at ${COMPANY_INFO.phones.primary.display}`}
                       className="flex items-center justify-center gap-2 h-11 w-full rounded-xl bg-accent-blue text-white! text-sm font-bold hover:bg-accent-blue/90 transition-all duration-200 hover:scale-[1.02] active:scale-[0.97]"
                     >
                       Call Us Now
                     </a>
                     <a
-                      href="mailto:info@makcautomations.com"
-                      title="Email MAKc Automations"
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      title={`Email ${COMPANY_INFO.name}`}
                       className="flex items-center justify-center gap-2 h-11 w-full rounded-xl border border-white/25 text-white! text-sm font-medium hover:bg-white/8 transition-all duration-200"
                     >
                       Send an Email
                     </a>
                     <p className="text-center text-white/40 text-xs tracking-wider">
-                      +91 9324226077
+                      {COMPANY_INFO.phones.primary.display}
                     </p>
                   </div>
                 </div>

@@ -2,47 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://makcautomations.com/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://makcautomations.com/automation</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://makcautomations.com/lighting</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://makcautomations.com/networking</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://makcautomations.com/security</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://makcautomations.com/lighting</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://makcautomations.com/networking</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://makcautomations.com/audio</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://makcautomations.com/experience</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://makcautomations.com/about</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://makcautomations.com/contact</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://makcautomations.com/about</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://makcautomations.com/why-us</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://makcautomations.com/blogs</loc>
-    <lastmod>2026-07-15</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://makcautomations.com/service</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

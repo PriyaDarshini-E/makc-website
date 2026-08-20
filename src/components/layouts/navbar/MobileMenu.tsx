@@ -108,12 +108,14 @@ const services = [
   },
 ];
 
+import { COMPANY_INFO } from "@/config/constants";
+
 const company = {
-  street: "141/6, 4th Main, 12th Cross Rd, BEML Layout, Brookefield",
-  cityState: "Bengaluru, Karnataka",
-  pincode: "560066",
-  phone: "+91-8197783287",
-  email: "info@makcautomations.com",
+  street: COMPANY_INFO.address.street,
+  cityState: COMPANY_INFO.address.cityState,
+  pincode: COMPANY_INFO.address.pincode,
+  phone: COMPANY_INFO.phones.primary.number,
+  email: COMPANY_INFO.email,
 };
 
 function MobileServiceAccordion({

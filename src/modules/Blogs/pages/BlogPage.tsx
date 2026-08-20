@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import BlogList from "../components/BlogList";
 import { mockBlogs } from "../data/mockBlogs";
+import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 
 export default function BlogPage() {
+  useSEO(SEO_ROUTES["/blogs"]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Simulate network request

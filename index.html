@@ -37,17 +37,73 @@
       name="twitter:description"
       content="MAKc Automations is a leading smart home automation company in Bangalore providing luxury touch control, smart lighting, security systems, home audio & networking solutions."
     />
-    <script type="application/ld+json">
+    <meta name="twitter:image" content="https://makcautomations.com/icons/MAKc-Logo-white.webp" />
+    <script type="application/ld+json" id="route-jsonld">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "MAKc Automation",
-        "url": "https://makcautomations.com/",
-        "logo": "https://makcautomations.com/icons/MAKc-Logo-white.webp",
-        "telephone": "+91 9324226077",
-        "email": "info@makcautomations.com",
-        "areaServed": ["Bangalore", "Hyderabad", "India"],
-        "description": "Mac Automation - Best Home Automation company in Bangalore. Get all smart home automation solutions with security, safety, and convenient solutions."
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://makcautomations.com/#organization",
+            "name": "MAKc Automations",
+            "legalName": "MAKc Automation & Solutions LLP",
+            "alternateName": [
+              "MAKc Automations",
+              "MAK Automation",
+              "MAKc Automation and Solutions",
+              "MAKc Automation & Solutions"
+            ],
+            "url": "https://makcautomations.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://makcautomations.com/#logo",
+              "url": "https://makcautomations.com/icons/MAKc-Logo-white.webp",
+              "caption": "MAKc Automations Logo"
+            },
+            "email": "info@makcautomations.com",
+            "telephone": "+91-8197783287",
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "telephone": "+91-8197783287",
+                "contactType": "sales",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi", "Kannada"]
+              },
+              {
+                "@type": "ContactPoint",
+                "telephone": "+91-9324226077",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi", "Kannada"]
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "141/6, 4th Main, 12th Cross Rd, BEML Layout, Brookefield",
+              "addressLocality": "Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560066",
+              "addressCountry": "IN"
+            },
+            "sameAs": [
+              "https://www.instagram.com/mak_automation/",
+              "https://www.facebook.com/makcautomation",
+              "https://www.linkedin.com/company/makc-automations/",
+              "https://www.youtube.com/@MAKcAutomation01",
+              "https://www.google.com/search?q=MAKc+Automation+and+Solutions+LLP+reviews"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://makcautomations.com/#website",
+            "url": "https://makcautomations.com/",
+            "name": "MAKc Automations",
+            "publisher": {
+              "@id": "https://makcautomations.com/#organization"
+            }
+          }
+        ]
       }
     </script>
     <script type="speculationrules">
@@ -60,6 +116,7 @@
               "/lighting",
               "/networking",
               "/security",
+              "/audio",
               "/contact",
               "/about",
               "/why-us",

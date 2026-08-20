@@ -4,6 +4,7 @@ import { Phone, Sun, Moon, Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import BrandLogo from "@/components/common/BrandLogo";
 import { MobileMenu } from "./MobileMenu";
+import { COMPANY_INFO } from "@/config/constants";
 
 interface NavLink {
   label: string;
@@ -13,8 +14,8 @@ interface NavLink {
 }
 
 const allLinks: NavLink[] = [
-  { label: "Home", path: "/", title: "MAKc Automations Home" },
-  // { label: "About", path: "/about", title: "About MAKc Automations" },
+  { label: "Home", path: "/", title: `${COMPANY_INFO.name} Home` },
+  // { label: "About", path: "/about", title: `About ${COMPANY_INFO.name}` },
   {
     label: "Automation",
     path: "/automation",
@@ -32,23 +33,8 @@ const allLinks: NavLink[] = [
     title: "Smart Home Security Systems",
   },
   { label: "Audio", path: "/audio", title: "Home Audio Solutions" },
-  { label: "Contact Us", path: "/contact", title: "Contact MAKc Automations" },
+  { label: "Contact Us", path: "/contact", title: `Contact ${COMPANY_INFO.name}` },
 ];
-
-// const moreLinks = [
-//   {
-//     label: "Service",
-//     path: "/service",
-//     title: "Our Services",
-//     desc: "Full solution catalog",
-//   },
-//   {
-//     label: "Experience",
-//     path: "/experience",
-//     title: "Experience Smart Living",
-//     desc: "Visit our experience zone",
-//   },
-// ];
 
 export default function Header() {
   const location = useLocation();
@@ -61,6 +47,11 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Pages that have a full-bleed dark hero image — white nav text is safe on these
@@ -199,10 +190,10 @@ export default function Header() {
           <div className="flex items-center gap-3.5 sm:gap-4 shrink-0">
             {/* Call Button (Desktop) */}
             <a
-              href="tel:+918197783287"
-              title="Call MAKc Automations at +91 81977 83287"
+              href={`tel:${COMPANY_INFO.phones.primary.digits}`}
+              title={`Call ${COMPANY_INFO.name} at ${COMPANY_INFO.phones.primary.display}`}
               className="hidden sm:flex items-center gap-2 h-9 px-4 rounded-full bg-accent-blue text-[#ffffff] text-xs font-semibold tracking-wide hover:bg-accent-blue/90 hover:scale-[1.03] active:scale-95 transition-all duration-200 shadow-[0_4px_18px_rgba(10,132,255,0.35)] cursor-pointer"
-              aria-label="Call MAKc Automation"
+              aria-label={`Call ${COMPANY_INFO.name}`}
             >
               <Phone className="h-3.5 w-3.5 stroke-[2]" aria-hidden="true" />
               <span>Call Now</span>
@@ -210,10 +201,10 @@ export default function Header() {
 
             {/* Call Button (Mobile) */}
             <a
-              href="tel:+918197783287"
-              title="Call MAKc Automations at +91 81977 83287"
+              href={`tel:${COMPANY_INFO.phones.primary.digits}`}
+              title={`Call ${COMPANY_INFO.name} at ${COMPANY_INFO.phones.primary.display}`}
               className="flex sm:hidden h-9 w-9 items-center justify-center rounded-full bg-accent-blue text-[#ffffff] hover:scale-105 active:scale-95 transition-all duration-200 shadow-[0_4px_15px_rgba(10,132,255,0.35)] cursor-pointer"
-              aria-label="Call MAKc Automation"
+              aria-label={`Call ${COMPANY_INFO.name}`}
             >
               <Phone className="h-4 w-4 stroke-[1.8]" aria-hidden="true" />
             </a>

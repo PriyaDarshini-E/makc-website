@@ -1,8 +1,10 @@
+import { COMPANY_INFO } from "@/config/constants";
+
 export default function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/918197783287?text=Hi%20MAKc%20Team,%20I'm%20interested%20in%20your%20services!"
-      title="Chat with MAKc Automations on WhatsApp (+91 8197783287)"
+      href={COMPANY_INFO.whatsapp.url}
+      title={`Chat with ${COMPANY_INFO.name} on WhatsApp (${COMPANY_INFO.whatsapp.number})`}
       target="_blank"
       rel="noopener noreferrer"
       className="group relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#25D366] !text-white shadow-lg shadow-[#25d366]/20 transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] hover:shadow-[#25d366]/40 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 dark:focus:ring-offset-[#061121]"

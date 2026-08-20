@@ -8,6 +8,7 @@ import RGBMoodLightingSection from "../components/RGBMoodLightingSection";
 import SceneBasedLightingSection from "../components/SceneBasedLightingSection";
 
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import AutomationShowcase from "@/components/common/AutomationShowcase";
 import { Sparkles, Palette, SunDim, Trees } from "lucide-react";
 import { getImageUrl } from "@/utils/image";
@@ -61,16 +62,7 @@ const LIGHTING_SLIDES = [
 ];
 
 export default function LightingPage() {
-  useSEO({
-    title: "Smart Lighting Solutions in Bangalore | MAKc Automations",
-    description:
-      "Transform your home ambience with MAKc Automations - expert smart lighting installation, RGB mood scenes, dimming & landscape lighting controls in Bangalore.",
-    keywords:
-      "smart lighting solutions, smart lighting installation bangalore, led lights for home, home smart light",
-    canonicalUrl: "https://makcautomations.com/lighting",
-    robots:
-      "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
-  });
+  useSEO(SEO_ROUTES["/lighting"]);
 
   return (
     <div className="min-h-screen bg-bg-main text-text-main overflow-hidden transition-colors duration-300">

@@ -1,4 +1,5 @@
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import type { ReactNode } from "react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 // import HeroSectionV2 from "../sections/HeroSectionV2";
@@ -55,16 +56,7 @@ function LazyOnView({
 }
 
 export default function HomeV2Page() {
-  useSEO({
-    title: "Smart Home Automation Bangalore | MAKc Automations",
-    description:
-      "MAKc Automations offers smart home automation solutions in Bangalore, including smart lighting, home security, touch control, and networking services. Contact us today.",
-    keywords:
-      "home automation company in bangalore, home automation bangalore, smart home automation, luxury smart home, smart lighting bangalore",
-    canonicalUrl: "https://makcautomations.com/",
-    robots:
-      "INDEX, FOLLOW, MAX-SNIPPET:-1, MAX-VIDEO-PREVIEW:-1, MAX-IMAGE-PREVIEW:LARGE",
-  });
+  useSEO(SEO_ROUTES["/"]);
 
   return (
     <div

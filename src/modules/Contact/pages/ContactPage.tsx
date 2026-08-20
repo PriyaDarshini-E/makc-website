@@ -1,4 +1,5 @@
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import { MapPin } from "lucide-react";
 const bgImage = getImageUrl("contact_villa_night.webp");
 
@@ -8,14 +9,8 @@ import { SocialMediaBar } from "../components/SocialMediaBar";
 import { LocationMap } from "../components/LocationMap";
 import { getImageUrl } from "@/utils/image";
 
-
 export default function ContactPage() {
-  useSEO({
-    title: "Contact MAKc Automations | Smart Home Company in Bangalore",
-    description: "Contact MAKc Automations in Bangalore for smart home automation, luxury lighting, security systems, and high-speed networking solutions.",
-    canonicalUrl: "https://makcautomations.com/contact",
-    robots: "INDEX, FOLLOW",
-  });
+  useSEO(SEO_ROUTES["/contact"]);
 
   return (
     <div

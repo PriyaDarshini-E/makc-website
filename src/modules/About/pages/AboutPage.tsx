@@ -8,16 +8,11 @@ import {
 import Marquee from "react-fast-marquee";
 
 import useSEO from "@/hooks/useSEO";
+import { SEO_ROUTES } from "@/config/seoData";
 import { getImageUrl } from "@/utils/image";
 
-
 export default function AboutPage() {
-  useSEO({
-    title: "About Us | MAKc Automations",
-    description: "Learn about MAKc Automations - Bangalore's leading smart home automation company providing custom lighting, security, networking and audio integration.",
-    keywords: "about makc automations, home automation company in bangalore, smart home team",
-    canonicalUrl: "https://makcautomations.com/about",
-  });
+  useSEO(SEO_ROUTES["/about"]);
   const stats = [
     { value: "4", label: "Experience Centers" },
     { value: "500+", label: "Projects" },
