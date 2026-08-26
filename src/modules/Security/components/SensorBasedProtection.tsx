@@ -31,8 +31,8 @@ export default function SensorBasedProtection() {
       imagePosition="right"
       prefix="sbp"
       serviceName="Sensor-Based"
-      reelUrl="https://instagram.com/reel/DSC30D1jZ1h/"
-      reelTitles={["Watch Home Networking Solutions Reel on Instagram"]}
+      reelUrl="https://www.instagram.com/reel/DSC30D1jZ1h/"
+      reelTitles={["Watch Sensor-Based Security Reel on Instagram"]}
     />
   );
 }

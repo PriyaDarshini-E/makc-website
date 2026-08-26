@@ -16,6 +16,9 @@ export const BRAND_NAME = COMPANY_INFO.name;
 export const LEGAL_NAME = COMPANY_INFO.legalName;
 export const DEFAULT_OG_IMAGE = COMPANY_INFO.logo.whiteWebp;
 
+export const MASTER_META_KEYWORDS =
+  "home automation company in bangalore, best home automation company in bangalore, smart home automation company bangalore, smart home company bangalore, home automation companies in bangalore, smart home companies in bangalore, home automation bangalore, smart home automation bangalore, smart home bangalore, smart home solutions bangalore, home automation solutions bangalore, home automation services bangalore, smart home services bangalore, home automation systems bangalore, smart home automation systems bangalore, smart home system bangalore, smart home technology bangalore, home automation installation bangalore, smart home installation bangalore, home automation installer bangalore, smart home installer bangalore, home automation installers bangalore, smart home installers bangalore, home automation installation companies bangalore, smart home setup bangalore, smart home experts bangalore, smart home specialists bangalore, smart home automation services, smart home automation solutions, connected home automation, connected home solutions, intelligent home automation, residential smart home, home automation consultation, home automation design, home automation maintenance, smart lighting bangalore, smart lighting solutions bangalore, smart lighting automation bangalore, home lighting automation bangalore, lighting automation bangalore, lighting control bangalore, lighting control systems, smart lighting installation bangalore, smart led lighting bangalore, smart lights for home bangalore";
+
 // Shared Base Organization Schema
 export const ORGANIZATION_SCHEMA = {
   "@type": "Organization",
@@ -81,7 +84,7 @@ export const SEO_ROUTES: Record<string, RouteSEOData> = {
   "/": {
     title: "Smart Home Automation Company in Bangalore | MAKc Automations",
     description: "MAKc Automations is a leading smart home automation company in Bangalore providing luxury touch control, smart lighting, security systems, home audio & networking solutions.",
-    keywords: "home automation company in bangalore, home automation bangalore, smart home automation, luxury home automation, smart lighting bangalore, security automation bangalore",
+    keywords: MASTER_META_KEYWORDS,
     canonicalUrl: `${SITE_URL}/`,
     robots: "index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
     ogType: "website",

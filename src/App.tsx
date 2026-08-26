@@ -23,6 +23,9 @@ const ContactPage = lazy(
 const AboutPage = lazy(() => import("./modules/About/pages/AboutPage"));
 const ServicePage = lazy(() => import("./modules/Service/pages/ServicePage"));
 const BlogPage = lazy(() => import("./modules/Blogs/pages/BlogPage"));
+const BlogPostPage = lazy(
+  () => import("./modules/Blogs/pages/BlogPostPage"),
+);
 const ExperiencePage = lazy(
   () => import("./modules/Experience/pages/ExperiencePage"),
 );
@@ -52,6 +55,7 @@ export default function App() {
         <Route path="/why-us" element={<WhyUsPage />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/blogs" element={<BlogPage />} />
+        <Route path="/blogs/:slug" element={<BlogPostPage />} />
         <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/automation-v2" element={<AutomationPageV2 />} />
 

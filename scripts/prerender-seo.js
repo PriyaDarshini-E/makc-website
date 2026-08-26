@@ -80,11 +80,14 @@ const WEBSITE_SCHEMA = {
   }
 };
 
+const MASTER_META_KEYWORDS =
+  "home automation company in bangalore, best home automation company in bangalore, smart home automation company bangalore, smart home company bangalore, home automation companies in bangalore, smart home companies in bangalore, home automation bangalore, smart home automation bangalore, smart home bangalore, smart home solutions bangalore, home automation solutions bangalore, home automation services bangalore, smart home services bangalore, home automation systems bangalore, smart home automation systems bangalore, smart home system bangalore, smart home technology bangalore, home automation installation bangalore, smart home installation bangalore, home automation installer bangalore, smart home installer bangalore, home automation installers bangalore, smart home installers bangalore, home automation installation companies bangalore, smart home setup bangalore, smart home experts bangalore, smart home specialists bangalore, smart home automation services, smart home automation solutions, connected home automation, connected home solutions, intelligent home automation, residential smart home, home automation consultation, home automation design, home automation maintenance, smart lighting bangalore, smart lighting solutions bangalore, smart lighting automation bangalore, home lighting automation bangalore, lighting automation bangalore, lighting control bangalore, lighting control systems, smart lighting installation bangalore, smart led lighting bangalore, smart lights for home bangalore";
+
 const ROUTES = {
   "/": {
     title: "Smart Home Automation Company in Bangalore | MAKc Automations",
     description: "MAKc Automations is a leading smart home automation company in Bangalore providing luxury touch control, smart lighting, security systems, home audio & networking solutions.",
-    keywords: "home automation company in bangalore, home automation bangalore, smart home automation, luxury home automation, smart lighting bangalore, security automation bangalore",
+    keywords: MASTER_META_KEYWORDS,
     canonicalUrl: `${SITE_URL}/`,
     ogImage: DEFAULT_OG_IMAGE,
     schemaGraph: [
@@ -525,6 +528,113 @@ const ROUTES = {
     ]
   }
 };
+
+// Blog post routes — generated from src/modules/Blogs/data/mockBlogs.ts
+const BLOG_POSTS = [
+  {
+    slug: "the-future-of-smart-lighting-beyond-just-bulbs",
+    title: "The Future of Smart Lighting: Beyond Just Bulbs",
+    excerpt: "Discover how intelligent lighting systems are evolving to enhance mood, improve sleep cycles, and drastically reduce energy consumption in modern homes.",
+    author: "Elena Rodriguez",
+    date: "2026-06-12",
+    category: "Lighting",
+    imageUrl: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2070&auto=format&fit=crop",
+    tags: ["Smart Lighting", "Circadian", "Energy Saving", "Wellness"]
+  },
+  {
+    slug: "securing-your-connected-home-a-comprehensive-guide",
+    title: "Securing Your Connected Home: A Comprehensive Guide",
+    excerpt: "With the rise of IoT devices, securing your home network is more critical than ever. Learn the top strategies to keep your smart home safe from cyber threats.",
+    author: "David Chen",
+    date: "2026-05-28",
+    category: "Security",
+    imageUrl: "https://images.unsplash.com/photo-1558002038-bf1dfeb33965?q=80&w=2070&auto=format&fit=crop",
+    tags: ["Cybersecurity", "CCTV", "Biometric Locks", "Network Security"]
+  },
+  {
+    slug: "automating-your-morning-routine-wake-up-to-perfection",
+    title: "Automating Your Morning Routine: Wake Up to Perfection",
+    excerpt: "Imagine your house waking up with you. From automated blinds to the perfect brew of coffee waiting for you, see how automation can transform your mornings.",
+    author: "Sarah Jenkins",
+    date: "2026-05-15",
+    category: "Automation",
+    imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop",
+    tags: ["Routines", "Blinds", "Climate", "Coffee"]
+  },
+  {
+    slug: "building-a-robust-home-network-for-seamless-streaming",
+    title: "Building a Robust Home Network for Seamless Streaming",
+    excerpt: "Tired of buffering? Learn how to set up a commercial-grade home Wi-Fi network that handles 4K streaming, gaming, and smart devices without breaking a sweat.",
+    author: "Michael Chang",
+    date: "2026-04-02",
+    category: "Networking",
+    imageUrl: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop",
+    tags: ["Mesh Wi-Fi", "Cabling", "Gaming", "Streaming"]
+  },
+  {
+    slug: "voice-control-vs-app-control-finding-your-perfect-balance",
+    title: "Voice Control vs. App Control: Finding Your Perfect Balance",
+    excerpt: "While voice assistants are convenient, dedicated apps offer granular control. We explore the pros and cons of both and how to integrate them effectively.",
+    author: "Elena Rodriguez",
+    date: "2026-03-18",
+    category: "Automation",
+    imageUrl: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop",
+    tags: ["Voice Assistants", "UX", "App Control", "Routines"]
+  },
+  {
+    slug: "aesthetics-meets-technology-invisible-speakers-and-hidden-tech",
+    title: "Aesthetics Meets Technology: Invisible Speakers and Hidden Tech",
+    excerpt: "You don't have to sacrifice interior design for high tech. Explore the world of invisible architectural speakers and hidden smart home displays.",
+    author: "James Wilson",
+    date: "2026-02-24",
+    category: "Design",
+    imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop",
+    tags: ["Invisible Speakers", "Interior Design", "Home Theater", "Discreet Tech"]
+  }
+];
+
+for (const post of BLOG_POSTS) {
+  const routePath = `/blogs/${post.slug}`;
+  ROUTES[routePath] = {
+    title: `${post.title} | ${BRAND_NAME}`,
+    description: post.excerpt,
+    keywords: post.tags.join(", "),
+    canonicalUrl: `${SITE_URL}${routePath}`,
+    ogImage: post.imageUrl,
+    schemaGraph: [
+      ORGANIZATION_SCHEMA,
+      WEBSITE_SCHEMA,
+      {
+        "@type": "BlogPosting",
+        "@id": `${SITE_URL}${routePath}#article`,
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": post.imageUrl,
+        "datePublished": post.date,
+        "dateModified": post.date,
+        "author": { "@type": "Person", "name": post.author },
+        "publisher": {
+          "@type": "Organization",
+          "name": BRAND_NAME,
+          "url": SITE_URL,
+          "logo": { "@type": "ImageObject", "url": `${SITE_URL}/icons/MAKc-Logo-white.webp` }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}${routePath}` },
+        "articleSection": post.category,
+        "keywords": post.tags.join(", ")
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}${routePath}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blogs` },
+          { "@type": "ListItem", "position": 3, "name": post.title, "item": `${SITE_URL}${routePath}` }
+        ]
+      }
+    ]
+  };
+}
 
 function prerender() {
   const templatePath = path.join(distDir, "index.html");

@@ -22,13 +22,15 @@ const VIDEO_MAP: Record<string, string> = {
 };
 
 const REEL_MAP: Record<string, string> = {
-  "Curtain Automation": "https://www.instagram.com/reel/DQ38odUkpZr/",
+  "Curtain Automation": "https://www.instagram.com/reel/DZpb-JNSo5Y/",
+  "Gate Automation": "https://www.instagram.com/reel/DTp5xiDj82a/",
   "Electrical Automation": "https://www.instagram.com/reel/DKHEqiVSl4-/",
   "Smart Switches": "https://www.instagram.com/reel/DKHEqiVSl4-/",
   "Wired Network": "https://www.instagram.com/reel/DKeUhreyEct/",
   "Mesh Wi-Fi Network": "https://www.instagram.com/reel/DKeUhreyEct/",
   "Networking": "https://www.instagram.com/reel/DKeUhreyEct/",
-  "Sensor-Based": "https://www.instagram.com/reel/DTJNMgzk284/",
+  "Sensor-Based": "https://www.instagram.com/reel/DSC30D1jZ1h/",
+  "Security": "https://www.instagram.com/reel/DSC30D1jZ1h/",
   "CCTV & Video": "https://www.instagram.com/reel/DTJNMgzk284/",
   "Dimming & Tuning of Lights": "https://www.instagram.com/reel/DZICTA9KjuW/",
 };

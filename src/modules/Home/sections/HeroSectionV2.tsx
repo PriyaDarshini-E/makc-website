@@ -33,8 +33,7 @@ const hotspotsList: HotspotType[] = [
     labelPos: { x: 75.2, y: 24 },
     icon: Blinds,
 
-    videoFile:
-      "https://www.instagram.com/reel/DQ38odUkpZr/?igsh=MTB0dmQ3NnVibXgzYQ==",
+    videoFile: "https://www.instagram.com/reel/DZpb-JNSo5Y/",
   },
   {
     id: "lighting",
@@ -58,8 +57,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 61.3, y: 65 },
     labelPos: { x: 68.2, y: 57.5 },
     icon: Sliders,
-    videoFile:
-      "https://www.instagram.com/reel/DDE2L2ByII8/?igsh=bjJhaDltcW8yaW9r",
+    videoFile: "https://www.instagram.com/reel/DDE2L2ByII8/",
   },
   {
     id: "networking",
@@ -75,7 +73,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 78.3, y: 69 },
     labelPos: { x: 60.8, y: 74.5 },
     icon: ShieldCheck,
-    videoFile: "https://www.instagram.com/reel/DTJNMgzk284/",
+    videoFile: "https://www.instagram.com/reel/DSC30D1jZ1h/",
   },
   {
     id: "gate",
@@ -83,8 +81,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 73.2, y: 78 },
     labelPos: { x: 83, y: 75 },
     icon: ShieldAlert,
-    videoFile:
-      "https://www.instagram.com/reel/DTp5xiDj82a/?igsh=MTZldWR6cm01OWFr",
+    videoFile: "https://www.instagram.com/reel/DTp5xiDj82a/",
   },
 ];
 
@@ -331,56 +328,62 @@ export default function HeroSectionV2() {
             </div>
 
             {/* Video Player Container */}
-            <div className="relative w-full aspect-[4/5] max-h-[460px] bg-black flex items-center justify-center overflow-hidden rounded-b-2xl">
-              {(() => {
-                const activeHotspot = hotspotsList.find(
-                  (h) => h.id === activeId,
-                );
+            {(() => {
+              const activeHotspot = hotspotsList.find((h) => h.id === activeId);
+              const isInstagram = activeHotspot?.videoFile?.includes("instagram.com");
 
-                if (activeHotspot?.videoFile) {
-                  if (activeHotspot.videoFile.includes("instagram.com")) {
-                    return (
-                      <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] bg-black flex flex-col items-center justify-center">
+              return (
+                <div
+                  className={`relative w-full ${
+                    isInstagram
+                      ? "min-h-[500px] sm:min-h-[540px]"
+                      : "aspect-[4/5] max-h-[460px]"
+                  } bg-black flex items-center justify-center overflow-hidden rounded-b-2xl`}
+                >
+                  {activeHotspot?.videoFile ? (
+                    isInstagram ? (
+                      <div className="relative w-full h-full min-h-[500px] sm:min-h-[540px] bg-black flex flex-col items-center justify-center">
                         <InstagramEmbed reelUrl={activeHotspot.videoFile} />
                       </div>
-                    );
-                  }
-
-                  const videoUrl = activeHotspot.videoFile.startsWith("http")
-                    ? activeHotspot.videoFile
-                    : `${VIDEO_BASE_URL}${activeHotspot.videoFile}`;
-
-                  return (
-                    <video
-                      key={activeHotspot.id}
-                      src={videoUrl}
-                      title={`MAKc ${activeHotspot.label} Video Showcase`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover rounded-b-2xl pointer-events-auto"
-                    />
-                  );
-                }
-
-                const ActiveIcon = activeHotspot?.icon || Sliders;
-
-                return (
-                  <div className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
-                    <div className="w-16 h-16 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/30 text-[#0A84FF] flex items-center justify-center mb-4">
-                      <ActiveIcon className="w-8 h-8" />
+                    ) : (
+                      <video
+                        key={activeHotspot.id}
+                        src={
+                          activeHotspot.videoFile.startsWith("http")
+                            ? activeHotspot.videoFile
+                            : `${VIDEO_BASE_URL}${activeHotspot.videoFile}`
+                        }
+                        title={`MAKc ${activeHotspot.label} Video Showcase`}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover rounded-b-2xl pointer-events-auto"
+                      />
+                    )
+                  ) : (
+                    <div className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
+                      {(() => {
+                        const ActiveIcon = activeHotspot?.icon || Sliders;
+                        return (
+                          <>
+                            <div className="w-16 h-16 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/30 text-[#0A84FF] flex items-center justify-center mb-4">
+                              <ActiveIcon className="w-8 h-8" />
+                            </div>
+                            <h4 className="text-base font-bold text-white mb-2">
+                              {activeHotspot?.label}
+                            </h4>
+                            <p className="text-xs text-white/70 max-w-xs leading-relaxed">
+                              Video showcase for this category is coming soon.
+                            </p>
+                          </>
+                        );
+                      })()}
                     </div>
-                    <h4 className="text-base font-bold text-white mb-2">
-                      {activeHotspot?.label}
-                    </h4>
-                    <p className="text-xs text-white/70 max-w-xs leading-relaxed">
-                      Video showcase for this category is coming soon.
-                    </p>
-                  </div>
-                );
-              })()}
-            </div>
+                  )}
+                </div>
+              );
+            })()}
           </motion.div>
         )}
       </AnimatePresence>

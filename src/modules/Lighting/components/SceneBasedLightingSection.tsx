@@ -39,7 +39,7 @@ export default function SceneBasedLightingSection() {
       prefix="sbl"
       serviceName="Scene-Based Lighting"
       reels={[
-        "https://www.instagram.com/reel/DPbMLdFDSGw/",
+        "https://www.instagram.com/reel/DbzFUZxKTbf/",
         "https://www.instagram.com/reel/DZICTA9KjuW/",
       ]}
       reelTitles={[

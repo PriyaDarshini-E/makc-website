@@ -36,8 +36,8 @@ export default function CCTVMonitoringSection() {
       imagePosition="left"
       prefix="cctv"
       serviceName="CCTV & Video"
-      reelUrl="https://www.instagram.com/reel/DALj2GhS-kV/"
-      reelTitles={["Watch Home Networking Installation Reel on Instagram"]}
+      reelUrl="https://www.instagram.com/reel/DTJNMgzk284/"
+      reelTitles={["Watch CCTV & Video Surveillance Reel on Instagram"]}
     />
   );
 }
