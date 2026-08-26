@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { DEFAULT_OG_IMAGE, SITE_URL } from "@/config/seoData";
+import { DEFAULT_OG_IMAGE, MASTER_META_KEYWORDS, SITE_URL } from "@/config/seoData";
 
 export interface SEOProps {
   title: string;
@@ -17,7 +17,7 @@ export interface SEOProps {
 export default function useSEO({
   title,
   description,
-  keywords,
+  keywords = MASTER_META_KEYWORDS,
   canonicalUrl = `${SITE_URL}/`,
   robots = "index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
   author = "MAKc Automations",

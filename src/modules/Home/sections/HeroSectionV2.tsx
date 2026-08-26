@@ -331,56 +331,62 @@ export default function HeroSectionV2() {
             </div>
 
             {/* Video Player Container */}
-            <div className="relative w-full aspect-[4/5] max-h-[460px] bg-black flex items-center justify-center overflow-hidden rounded-b-2xl">
-              {(() => {
-                const activeHotspot = hotspotsList.find(
-                  (h) => h.id === activeId,
-                );
+            {(() => {
+              const activeHotspot = hotspotsList.find((h) => h.id === activeId);
+              const isInstagram = activeHotspot?.videoFile?.includes("instagram.com");
 
-                if (activeHotspot?.videoFile) {
-                  if (activeHotspot.videoFile.includes("instagram.com")) {
-                    return (
-                      <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] bg-black flex flex-col items-center justify-center">
+              return (
+                <div
+                  className={`relative w-full ${
+                    isInstagram
+                      ? "min-h-[500px] sm:min-h-[540px]"
+                      : "aspect-[4/5] max-h-[460px]"
+                  } bg-black flex items-center justify-center overflow-hidden rounded-b-2xl`}
+                >
+                  {activeHotspot?.videoFile ? (
+                    isInstagram ? (
+                      <div className="relative w-full h-full min-h-[500px] sm:min-h-[540px] bg-black flex flex-col items-center justify-center">
                         <InstagramEmbed reelUrl={activeHotspot.videoFile} />
                       </div>
-                    );
-                  }
-
-                  const videoUrl = activeHotspot.videoFile.startsWith("http")
-                    ? activeHotspot.videoFile
-                    : `${VIDEO_BASE_URL}${activeHotspot.videoFile}`;
-
-                  return (
-                    <video
-                      key={activeHotspot.id}
-                      src={videoUrl}
-                      title={`MAKc ${activeHotspot.label} Video Showcase`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover rounded-b-2xl pointer-events-auto"
-                    />
-                  );
-                }
-
-                const ActiveIcon = activeHotspot?.icon || Sliders;
-
-                return (
-                  <div className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
-                    <div className="w-16 h-16 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/30 text-[#0A84FF] flex items-center justify-center mb-4">
-                      <ActiveIcon className="w-8 h-8" />
+                    ) : (
+                      <video
+                        key={activeHotspot.id}
+                        src={
+                          activeHotspot.videoFile.startsWith("http")
+                            ? activeHotspot.videoFile
+                            : `${VIDEO_BASE_URL}${activeHotspot.videoFile}`
+                        }
+                        title={`MAKc ${activeHotspot.label} Video Showcase`}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover rounded-b-2xl pointer-events-auto"
+                      />
+                    )
+                  ) : (
+                    <div className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
+                      {(() => {
+                        const ActiveIcon = activeHotspot?.icon || Sliders;
+                        return (
+                          <>
+                            <div className="w-16 h-16 rounded-full bg-[#0A84FF]/10 border border-[#0A84FF]/30 text-[#0A84FF] flex items-center justify-center mb-4">
+                              <ActiveIcon className="w-8 h-8" />
+                            </div>
+                            <h4 className="text-base font-bold text-white mb-2">
+                              {activeHotspot?.label}
+                            </h4>
+                            <p className="text-xs text-white/70 max-w-xs leading-relaxed">
+                              Video showcase for this category is coming soon.
+                            </p>
+                          </>
+                        );
+                      })()}
                     </div>
-                    <h4 className="text-base font-bold text-white mb-2">
-                      {activeHotspot?.label}
-                    </h4>
-                    <p className="text-xs text-white/70 max-w-xs leading-relaxed">
-                      Video showcase for this category is coming soon.
-                    </p>
-                  </div>
-                );
-              })()}
-            </div>
+                  )}
+                </div>
+              );
+            })()}
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,23 +4,28 @@
 function getReelEmbedUrl(reelUrl: string): string {
   const match = reelUrl.match(/(?:reel|p)\/([A-Za-z0-9_-]+)/);
   if (match && match[1]) {
-    return `https://www.instagram.com/reel/${match[1]}/embed`;
+    return `https://www.instagram.com/reel/${match[1]}/embed/`;
   }
-  return reelUrl.endsWith("/embed") ? reelUrl : `${reelUrl.replace(/\/$/, "")}/embed`;
+  return reelUrl.endsWith("/embed/")
+    ? reelUrl
+    : reelUrl.endsWith("/embed")
+    ? `${reelUrl}/`
+    : `${reelUrl.replace(/\/$/, "")}/embed/`;
 }
 
 export default function InstagramEmbed({ reelUrl }: { reelUrl: string }) {
   const embedUrl = getReelEmbedUrl(reelUrl);
 
   return (
-    <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[640px] bg-black flex items-center justify-center overflow-hidden rounded-xl group">
+    <div className="relative w-full h-full min-h-[480px] sm:min-h-[540px] lg:min-h-[640px] bg-black flex items-center justify-center overflow-hidden rounded-xl group">
       <iframe
         src={embedUrl}
-        className="w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-[640px] border-0 rounded-xl"
+        className="w-full h-full min-h-[480px] sm:min-h-[540px] lg:min-h-[640px] border-0 rounded-xl"
         frameBorder="0"
         scrolling="no"
         allowTransparency={true}
-        allow="encrypted-media"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        allowFullScreen
         title="Instagram Reel Embed"
       />
       <a
