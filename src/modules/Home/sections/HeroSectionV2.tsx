@@ -33,8 +33,7 @@ const hotspotsList: HotspotType[] = [
     labelPos: { x: 75.2, y: 24 },
     icon: Blinds,
 
-    videoFile:
-      "https://www.instagram.com/reel/DQ38odUkpZr/?igsh=MTB0dmQ3NnVibXgzYQ==",
+    videoFile: "https://www.instagram.com/reel/DZpb-JNSo5Y/",
   },
   {
     id: "lighting",
@@ -58,8 +57,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 61.3, y: 65 },
     labelPos: { x: 68.2, y: 57.5 },
     icon: Sliders,
-    videoFile:
-      "https://www.instagram.com/reel/DDE2L2ByII8/?igsh=bjJhaDltcW8yaW9r",
+    videoFile: "https://www.instagram.com/reel/DDE2L2ByII8/",
   },
   {
     id: "networking",
@@ -75,7 +73,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 78.3, y: 69 },
     labelPos: { x: 60.8, y: 74.5 },
     icon: ShieldCheck,
-    videoFile: "https://www.instagram.com/reel/DTJNMgzk284/",
+    videoFile: "https://www.instagram.com/reel/DSC30D1jZ1h/",
   },
   {
     id: "gate",
@@ -83,8 +81,7 @@ const hotspotsList: HotspotType[] = [
     anchor: { x: 73.2, y: 78 },
     labelPos: { x: 83, y: 75 },
     icon: ShieldAlert,
-    videoFile:
-      "https://www.instagram.com/reel/DTp5xiDj82a/?igsh=MTZldWR6cm01OWFr",
+    videoFile: "https://www.instagram.com/reel/DTp5xiDj82a/",
   },
 ];
 

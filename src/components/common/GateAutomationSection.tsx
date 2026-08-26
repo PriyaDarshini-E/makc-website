@@ -24,12 +24,10 @@ export default function GateAutomationSection() {
       prefix="gate"
       serviceName="Gate Automation"
       reels={[
-        "https://www.instagram.com/reel/DZPzLdESjt3/",
-        "https://www.instagram.com/reel/C4liWxmSUuc/",
+        "https://www.instagram.com/reel/DTp5xiDj82a/",
       ]}
       reelTitles={[
-        "Watch Electrical Automation & Smart Switches Reel on Instagram",
-        "Watch Curtain Automation Reel 1 on Instagram",
+        "Watch Gate Automation Reel on Instagram",
       ]}
     />
   );

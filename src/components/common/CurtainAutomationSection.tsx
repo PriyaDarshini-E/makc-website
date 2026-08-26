@@ -19,12 +19,10 @@ export default function CurtainAutomationSection() {
       prefix="curt"
       serviceName="Curtain Automation"
       reels={[
-        "https://www.instagram.com/reel/DV00thoEp7q/",
-        "https://www.instagram.com/reel/DZ19tDvSAsN/",
+        "https://www.instagram.com/reel/DZpb-JNSo5Y/",
       ]}
       reelTitles={[
-        "Watch Gate Automation Reel 1 on Instagram",
-        "Watch Gate Automation Reel 2 on Instagram",
+        "Watch Curtain Automation Reel on Instagram",
       ]}
     />
   );
