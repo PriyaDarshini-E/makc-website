@@ -1,6 +1,9 @@
 export const API_BASE_URL = 'https://makcautomations.com/crmapi/public/api';
 export const IMAGE_BASE_URL = 'https://makcautomations.com/crmapi/public/assets/images/web_images';
 
+// Locally vendored images (public/images) — same-origin, cacheable, no remote TTFB
+export const LOCAL_IMAGE_BASE = '/images';
+
 export const COMPANY_INFO = {
   name: "MAKc Automations",
   legalName: "MAKc Automation & Solutions LLP",

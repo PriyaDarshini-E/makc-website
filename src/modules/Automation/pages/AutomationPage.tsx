@@ -132,7 +132,7 @@ export default function AutomationPage() {
         ref={heroRef}
         className="relative min-h-[90vh] lg:min-h-screen w-full flex items-center justify-start bg-cover bg-center bg-no-repeat transition-colors duration-300"
         style={{
-          backgroundImage: `url('${getImageUrl("automation_banner.png")}')`,
+          backgroundImage: `url('${getImageUrl("automation_banner.webp")}')`,
         }}
       >
         {/* Left side overlay with theme mode aware light and dark */}

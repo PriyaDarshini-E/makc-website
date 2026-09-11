@@ -444,6 +444,70 @@
   font-size: clamp(0.7rem, 0.625vw, 0.875rem);
 }
 
+/* Zero-JS mount animations (replace framer-motion on first paint).
+   Delays via inline --enter-delay. Fill backwards: during the delay the
+   `from` frame applies; after the animation ends the element falls back to
+   its natural styles so hover transitions keep working. */
+.hero-enter {
+  animation: reveal-up 600ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+.hero-pop {
+  animation: pop-in 500ms ease-out backwards;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+.hero-popup {
+  animation: pop-in 300ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.connector-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: connector-draw-in 800ms ease-in-out forwards;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    scale: var(--pop-from, 0.9);
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes connector-draw-in {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-pop,
+  .hero-popup,
+  .connector-draw {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Lenis smooth scroll */
 html.lenis,
 html.lenis body {

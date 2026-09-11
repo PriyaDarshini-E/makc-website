@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import BrandLogo from "@/components/common/BrandLogo";
 import { Phone, Mail, X, Loader2, CheckCircle2, PhoneCall } from "lucide-react";
 import ContactStrip from "@/components/common/ContactStrip";
+import QueryProvider from "@/components/common/QueryProvider";
 import { toast } from "react-hot-toast";
 import { COMPANY_INFO } from "@/config/constants";
 
@@ -127,6 +128,7 @@ export default function Footer() {
   };
 
   return (
+    <QueryProvider>
     <footer className="bg-bg-main border-t border-border-main">
       <div className="my-8 px-4">
         <ContactStrip />
@@ -499,5 +501,6 @@ export default function Footer() {
         </div>
       )}
     </footer>
+    </QueryProvider>
   );
 }

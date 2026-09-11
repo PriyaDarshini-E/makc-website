@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import type { Coordinate } from "./types";
 
 interface HotspotProps {
@@ -27,26 +27,25 @@ export default function Hotspot({
   isMobile = false,
 }: HotspotProps) {
   return (
-    <motion.button
-      style={{
-        position: "absolute",
-        left: `${anchor.x-0.5}%`,
-        top: `${anchor.y-0.9}%`,
-        transform: "translate(-40%, -50%)",
-        zIndex: 50,
-      }}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        transition: { delay, duration: 0.5, ease: "easeOut" },
-      }}
+    <button
+      type="button"
+      style={
+        {
+          position: "absolute",
+          left: `${anchor.x - 0.5}%`,
+          top: `${anchor.y - 0.9}%`,
+          transform: "translate(-40%, -50%)",
+          zIndex: 50,
+          "--enter-delay": `${delay}s`,
+          "--pop-from": 0,
+        } as CSSProperties
+      }
       onMouseEnter={onHoverStart}
       onMouseLeave={onHoverEnd}
       onClick={onClick}
       aria-label={`Toggle info for ${id}`}
       aria-expanded={isActive}
-      className="group outline-none select-none relative"
+      className="hero-pop group outline-none select-none relative"
     >
       {/* Solid center dot */}
       <div
@@ -64,6 +63,6 @@ export default function Hotspot({
           </span>
         )}
       </div>
-    </motion.button>
+    </button>
   );
 }
