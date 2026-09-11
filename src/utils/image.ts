@@ -20,15 +20,26 @@ import projectPenthouses from "@/assets/images/home_v2/project_penthouses.webp";
 import projectVillas from "@/assets/images/home_v2/project_villas.webp";
 import smarterWayBg from "@/assets/images/home_v2/smarter_way_bg.webp";
 import smarterWayBgAvif from "@/assets/images/home_v2/smarter_way_bg.avif";
-import { IMAGE_BASE_URL } from "@/config/constants";
+import { IMAGE_BASE_URL, LOCAL_IMAGE_BASE } from "@/config/constants";
 
 const REMOTE_IMAGE_BASE = IMAGE_BASE_URL;
 
 const LOCAL_IMAGES: Record<string, string> = {
-  "hero_bg.webp": "/images/hero_bg.webp",
-  "hero_bg.avif": "/images/hero_bg.avif",
-  "hero_bg-light.webp": "/images/hero_bg-light.webp",
-  "automation_banner.png": "/images/automation_banner.png",
+  "hero_bg.webp": `${LOCAL_IMAGE_BASE}/hero_bg.webp`,
+  "hero_bg.avif": `${LOCAL_IMAGE_BASE}/hero_bg.avif`,
+  "hero_bg-light.webp": `${LOCAL_IMAGE_BASE}/hero_bg-light-1392.webp`,
+  "hero_bg-768.webp": `${LOCAL_IMAGE_BASE}/hero_bg-768.webp`,
+  "hero_bg-1280.webp": `${LOCAL_IMAGE_BASE}/hero_bg-1280.webp`,
+  "hero_bg-1440.webp": `${LOCAL_IMAGE_BASE}/hero_bg-1440.webp`,
+  "hero_bg-light-768.webp": `${LOCAL_IMAGE_BASE}/hero_bg-light-768.webp`,
+  "hero_bg-light-1280.webp": `${LOCAL_IMAGE_BASE}/hero_bg-light-1280.webp`,
+  "hero_bg-light-1392.webp": `${LOCAL_IMAGE_BASE}/hero_bg-light-1392.webp`,
+  "automation_banner.png": `${LOCAL_IMAGE_BASE}/automation_banner.webp`,
+  "automation_banner.webp": `${LOCAL_IMAGE_BASE}/automation_banner.webp`,
+  "curtain_automation.webp": `${LOCAL_IMAGE_BASE}/curtain_automation.webp`,
+  "doorautomation1.webp": `${LOCAL_IMAGE_BASE}/doorautomation1.webp`,
+  "doorautomation2.webp": `${LOCAL_IMAGE_BASE}/doorautomation2.webp`,
+  "doorautomation3.webp": `${LOCAL_IMAGE_BASE}/doorautomation3.webp`,
   "service_automation.webp": serviceAutomation,
   "service_automation.avif": serviceAutomationAvif,
   "service_energy.webp": serviceEnergy,

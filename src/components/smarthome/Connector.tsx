@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import type { Coordinate } from "./types";
 
 interface ConnectorProps {
@@ -63,19 +63,16 @@ export default function Connector({
         </linearGradient>
       </defs>
 
-      <motion.path
+      <path
         d={d}
         fill="none"
+        pathLength={1}
         stroke={`url(#${gradientId})`}
         strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
-        initial={{ pathLength: 0 }}
-        animate={{
-          pathLength: 1,
-          transition: { delay, duration: 0.8, ease: "easeInOut" },
-        }}
-        className="transition-all duration-300 ease-out"
+        style={{ "--enter-delay": `${delay}s` } as CSSProperties}
+        className="connector-draw transition-all duration-300 ease-out"
       />
     </g>
   );

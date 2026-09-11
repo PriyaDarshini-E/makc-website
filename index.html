@@ -16,11 +16,16 @@
     />
     <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
     <link rel="canonical" href="https://makcautomations.com/" />
+    <!-- Critical origins: remote image/API host (fonts are system stack — no webfont origins) -->
+    <link rel="preconnect" href="https://makcautomations.com" crossorigin />
+    <link rel="dns-prefetch" href="https://makcautomations.com" />
     <link
       rel="preload"
-      href="/images/hero_bg.avif"
+      href="/images/hero_bg-1280.webp"
       as="image"
-      type="image/avif"
+      type="image/webp"
+      imagesrcset="/images/hero_bg-768.webp 768w, /images/hero_bg-1280.webp 1280w, /images/hero_bg-1440.webp 1440w, /images/hero_bg.webp 1920w"
+      imagesizes="100vw"
       fetchpriority="high"
     />
     <meta property="og:type" content="website" />

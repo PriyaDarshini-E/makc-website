@@ -63,8 +63,11 @@ export default function HomeV2Page() {
       id="home-top"
       className="relative bg-bg-main min-h-screen text-text-main"
     >
-      {/* V3 Hero Section */}
-      <HeroSectionV2 />
+      {/* V3 Hero Section — local boundary so the hero chunk never
+          triggers the full-page spinner; fallback reserves the same space */}
+      <Suspense fallback={<div className="min-h-screen bg-bg-main" aria-hidden="true" />}>
+        <HeroSectionV2 />
+      </Suspense>
 
       {/* V2 Stats Section */}
       {/* <StatsSectionV2 /> */}

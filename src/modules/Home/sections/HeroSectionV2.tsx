@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { useTheme } from "next-themes";
 import WaveButton from "@/components/common/WaveButton";
 import { getImageUrl } from "@/utils/image";
 import { IMAGE_BASE_URL } from "@/config/constants";
@@ -22,6 +22,19 @@ import InstagramEmbed from "@/components/common/InstagramEmbed";
 
 const heroBgDark = getImageUrl("hero_bg.webp");
 const heroBgLight = getImageUrl("hero_bg-light.webp");
+
+// Responsive candidates (public/images, q72 webp). sizes="100vw": full-bleed hero.
+const heroBgDarkSrcSet = [
+  `${getImageUrl("hero_bg-768.webp")} 768w`,
+  `${getImageUrl("hero_bg-1280.webp")} 1280w`,
+  `${getImageUrl("hero_bg-1440.webp")} 1440w`,
+  `${heroBgDark} 1920w`,
+].join(", ");
+const heroBgLightSrcSet = [
+  `${getImageUrl("hero_bg-light-768.webp")} 768w`,
+  `${getImageUrl("hero_bg-light-1280.webp")} 1280w`,
+  `${heroBgLight} 1392w`,
+].join(", ");
 
 const VIDEO_BASE_URL = `${IMAGE_BASE_URL}/reels/`;
 
@@ -88,21 +101,44 @@ const hotspotsList: HotspotType[] = [
 export default function HeroSectionV2() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { isMobile, isTablet } = useResponsive();
+  // First paint is always dark (html class + defaultTheme). The day image
+  // (~80-200KB) only downloads when light mode is actually active.
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
 
   // Interaction states
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState<boolean>(
+    () =>
+      typeof window === "undefined" ||
+      typeof IntersectionObserver === "undefined",
+  );
+
+  // Zero-JS replacement for motion's onViewportEnter (fires once)
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (!element || isInView) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [isInView]);
 
   const handleHotspotClick = (id: string) => {
     setActiveId(activeId === id ? null : id);
   };
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       id="home"
-      onViewportEnter={() => setIsInView(true)}
-      viewport={{ once: true, amount: 0.1 }}
       className="group relative w-full min-h-screen bg-bg-main flex items-center justify-between overflow-hidden py-20 sm:py-28 transition-colors duration-300 no-reveal"
     >
       {/* Background Image Container with Smooth Crossfade between Dark (Night) and Light (Day) Themes */}
@@ -110,19 +146,33 @@ export default function HeroSectionV2() {
         {/* Dark Theme Hero Background (Night Villa) */}
         <img
           src={heroBgDark}
+          srcSet={heroBgDarkSrcSet}
+          sizes="100vw"
+          width={1920}
+          height={1080}
           alt="Smart Home Automation Installation in Bangalore - Night View"
           title="Smart Home Automation Installation in Bangalore"
           className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out dark:opacity-100 opacity-0"
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
-        {/* Light Theme Hero Background (Day Villa) */}
-        <img
-          src={heroBgLight}
-          alt="Smart Home Automation Installation in Bangalore - Day View"
-          title="Smart Home Automation Installation in Bangalore"
-          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out dark:opacity-0 opacity-100"
-          loading="eager"
-        />
+        {/* Light Theme Hero Background (Day Villa) — on demand only */}
+        {isLight && (
+          <img
+            src={heroBgLight}
+            srcSet={heroBgLightSrcSet}
+            sizes="100vw"
+            width={1392}
+            height={768}
+            alt="Smart Home Automation Installation in Bangalore - Day View"
+            title="Smart Home Automation Installation in Bangalore"
+            className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out dark:opacity-0 opacity-100"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        )}
 
         {/* Left side overlay with theme mode aware light and dark */}
         <div className="absolute inset-0 bg-gradient-to-r from-bg-main via-bg-main/95 sm:via-bg-main/80 lg:via-bg-main/60 to-transparent pointer-events-none transition-colors duration-300" />
@@ -195,30 +245,30 @@ export default function HeroSectionV2() {
                   )}
 
                   {/* Mobile Tooltip (Popup on Tap) */}
-                  {isMobile && (
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                          animate={{ opacity: 1, y: -10, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                          style={{
-                            position: "absolute",
-                            left: `${hotspot.anchor.x}%`,
-                            top: `${hotspot.anchor.y}%`,
-                            transform: "translate(-50%, -100%)",
-                            zIndex: 100,
-                          }}
-                          className="bg-black/90 border border-[#d4af37] backdrop-blur-md px-3.5 py-1.5 rounded-xl flex items-center gap-2 text-white text-xs shadow-lg whitespace-nowrap"
-                        >
-                          <hotspot.icon className="h-3.5 w-3.5 text-[#d4af37]" />
-                          <span className="font-semibold uppercase tracking-wider">
-                            {hotspot.label}
-                          </span>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  )}
+                  {isMobile &&
+                    (() => {
+                      const hotspot = hotspotsList[idx];
+                      const HotspotIcon = hotspot.icon;
+                      return (
+                        isActive && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: `${hotspot.anchor.x}%`,
+                              top: `${hotspot.anchor.y}%`,
+                              transform: "translate(-50%, calc(-100% - 10px))",
+                              zIndex: 100,
+                            }}
+                            className="hero-pop bg-black/90 border border-[#d4af37] backdrop-blur-md px-3.5 py-1.5 rounded-xl flex items-center gap-2 text-white text-xs shadow-lg whitespace-nowrap"
+                          >
+                            <HotspotIcon className="h-3.5 w-3.5 text-[#d4af37]" />
+                            <span className="font-semibold uppercase tracking-wider">
+                              {hotspot.label}
+                            </span>
+                          </div>
+                        )
+                      );
+                    })()}
                 </div>
               );
             })}
@@ -298,15 +348,8 @@ export default function HeroSectionV2() {
       </div>
 
       {/* Floating MP4 Video Preview Popup */}
-      <AnimatePresence>
-        {activeId && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed sm:absolute right-3 sm:right-6 lg:right-12 top-28 sm:top-32 z-[80] w-[310px] sm:w-[350px] md:w-[370px] bg-[#0c1017]/95 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col pointer-events-auto"
-          >
+      {activeId && (
+        <div className="hero-popup fixed sm:absolute right-3 sm:right-6 lg:right-12 top-28 sm:top-32 z-[80] w-[310px] sm:w-[350px] md:w-[370px] bg-[#0c1017]/95 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col pointer-events-auto">
             {/* Card Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
               <div className="flex flex-col text-left">
@@ -384,9 +427,8 @@ export default function HeroSectionV2() {
                 </div>
               );
             })()}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.section>
+        </div>
+      )}
+    </section>
   );
 }

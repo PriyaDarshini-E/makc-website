@@ -2,7 +2,6 @@ import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/common/Layout";
 import HomeV2Page from "./modules/Home/pages/HomePage";
-import AutomationPageV2 from "@/modules/test-pages/AutomationPageV2";
 
 // Lazy load secondary pages to shrink the initial JS bundle
 const AutomationPage = lazy(
@@ -33,6 +32,10 @@ const WhyUsPage = lazy(() => import("./modules/WhyUs/pages/WhyUsPage"));
 const OldPage = lazy(() => import("./modules/old/pages/OldPage"));
 const AudioPage = lazy(() => import("./modules/Audio/pages/AudioPage"));
 const NotFound = lazy(() => import("./components/common/NotFound"));
+// Test page pulls gsap/ScrollTrigger — keep it out of the critical path
+const AutomationPageV2 = lazy(
+  () => import("@/modules/test-pages/AutomationPageV2"),
+);
 
 export default function App() {
   return (

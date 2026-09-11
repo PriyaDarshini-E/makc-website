@@ -1,7 +1,7 @@
 import { lazy, useEffect, Suspense, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "../layouts/navbar/Header";
+import RouteErrorBoundary from "./RouteErrorBoundary";
 
 const Footer = lazy(() => import("../layouts/footer/Footer"));
 const FloatingActionGroup = lazy(() => import("./FloatingActionGroup"));
@@ -11,10 +11,48 @@ import { Toaster } from "react-hot-toast";
 function FooterWhenVisible() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  // Armed only after first paint settles: transient hydration layout can
+  // report wrong rects (~100ms) and trip the observer instantly, dragging
+  // Footer + form libs into the critical path. Below-fold footer is never
+  // needed that early.
+  const [armed, setArmed] = useState(false);
+
+  useEffect(() => {
+    const w = window as Window & {
+      requestIdleCallback?: (
+        cb: () => void,
+        opts?: { timeout: number },
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    let idleId: number | undefined;
+    let timer: number | undefined;
+    // Footer is 3000px+ below the fold: never needed before first paint
+    // settles. requestIdleCallback alone fires in the first idle gap
+    // (~150ms, still inside hydration layout chaos), so enforce a 2s floor.
+    const arm = () => {
+      const elapsed =
+        typeof performance !== "undefined" ? performance.now() : 2000;
+      if (elapsed >= 2000) {
+        setArmed(true);
+      } else {
+        timer = window.setTimeout(arm, 2000 - elapsed);
+      }
+    };
+    if (typeof w.requestIdleCallback === "function") {
+      idleId = w.requestIdleCallback(arm, { timeout: 3000 });
+    } else {
+      timer = window.setTimeout(arm, 2000);
+    }
+    return () => {
+      if (idleId !== undefined) w.cancelIdleCallback?.(idleId);
+      if (timer !== undefined) window.clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || visible) return;
+    if (!element || visible || !armed) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -28,7 +66,7 @@ function FooterWhenVisible() {
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, [visible]);
+  }, [visible, armed]);
 
   return (
     <div ref={ref} className={visible ? undefined : "min-h-[360px]"}>
@@ -57,7 +95,6 @@ function FloatingActionsWhenIdle() {
 }
 
 export default function Layout() {
-  const [queryClient] = useState(() => new QueryClient());
   const location = useLocation();
 
   useEffect(() => {
@@ -76,8 +113,7 @@ export default function Layout() {
   }, [location.pathname, location.hash]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-bg-main text-text-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main text-text-main transition-colors duration-300">
         {/* Skip to Content Link for Keyboard Accessibility */}
         <a
           href="#main-content"
@@ -95,7 +131,9 @@ export default function Layout() {
               </div>
             }
           >
-            <Outlet />
+            <RouteErrorBoundary>
+              <Outlet />
+            </RouteErrorBoundary>
           </Suspense>
         </main>
         <FooterWhenVisible />
@@ -114,6 +152,5 @@ export default function Layout() {
           }}
         />
       </div>
-    </QueryClientProvider>
   );
 }

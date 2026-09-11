@@ -1,10 +1,16 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent, lazy, Suspense } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Sun, Moon, Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import BrandLogo from "@/components/common/BrandLogo";
-import { MobileMenu } from "./MobileMenu";
 import { COMPANY_INFO } from "@/config/constants";
+
+// Deferred: drawer-only (Radix Sheet + motion). Renders nothing visible until
+// first opened, so gating on first-open is visually identical and keeps
+// motion/Radix-dialog out of the critical path.
+const MobileMenu = lazy(() =>
+  import("./MobileMenu").then((m) => ({ default: m.MobileMenu })),
+);
 
 interface NavLink {
   label: string;
@@ -44,6 +50,7 @@ export default function Header() {
     () => typeof window !== "undefined" && window.scrollY > 20,
   );
   const [drawerOpen, setDrawer] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -80,6 +87,7 @@ export default function Header() {
   };
 
   const toggle = () => {
+    setMenuMounted(true);
     setDrawer((open) => {
       const next = !open;
       document.body.style.overflow = next ? "hidden" : "";
@@ -251,11 +259,15 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileMenu
-        isOpen={drawerOpen}
-        onClose={close}
-        activeHref={location.pathname}
-      />
+      {menuMounted ? (
+        <Suspense fallback={null}>
+          <MobileMenu
+            isOpen={drawerOpen}
+            onClose={close}
+            activeHref={location.pathname}
+          />
+        </Suspense>
+      ) : null}
     </>
   );
 }

@@ -8,11 +8,13 @@ import { ContactInfoChips } from "../components/ContactInfoChips";
 import { SocialMediaBar } from "../components/SocialMediaBar";
 import { LocationMap } from "../components/LocationMap";
 import { getImageUrl } from "@/utils/image";
+import QueryProvider from "@/components/common/QueryProvider";
 
 export default function ContactPage() {
   useSEO(SEO_ROUTES["/contact"]);
 
   return (
+    <QueryProvider>
     <div
       className="pt-20 lg:pt-24 pb-12 min-h-screen bg-bg-main relative w-full overflow-hidden transition-colors duration-300"
       style={{
@@ -86,5 +88,6 @@ export default function ContactPage() {
         <LocationMap />
       </div>
     </div>
+    </QueryProvider>
   );
 }

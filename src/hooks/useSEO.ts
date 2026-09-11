@@ -26,6 +26,11 @@ export default function useSEO({
   ogImage = DEFAULT_OG_IMAGE,
   schemaGraph,
 }: SEOProps) {
+  // Crawlers need absolute image URLs — absolutize "/"-rooted paths.
+  const absoluteOgImage = ogImage.startsWith("/")
+    ? `${SITE_URL}${ogImage}`
+    : ogImage;
+
   useEffect(() => {
     // 1. Set Title
     document.title = title;
@@ -85,13 +90,13 @@ export default function useSEO({
     setMetaProperty("og:title", title);
     setMetaProperty("og:description", description);
     setMetaProperty("og:url", canonicalUrl);
-    setMetaProperty("og:image", ogImage);
+    setMetaProperty("og:image", absoluteOgImage);
 
     // 5. Twitter Card Tags
     setMetaName("twitter:card", "summary_large_image");
     setMetaName("twitter:title", title);
     setMetaName("twitter:description", description);
-    setMetaName("twitter:image", ogImage);
+    setMetaName("twitter:image", absoluteOgImage);
 
     // 6. JSON-LD Schema Tag
     if (schemaGraph && schemaGraph.length > 0) {
@@ -117,6 +122,7 @@ export default function useSEO({
     publisher,
     ogType,
     ogImage,
+    absoluteOgImage,
     schemaGraph,
   ]);
 }
