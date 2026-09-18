@@ -42,19 +42,19 @@ export default function AboutPage() {
     {
       name: "Abhay Kumar",
       role: "Chief Executive Officer",
-      img: getImageUrl("name_01-1.webp"),
+      img: getImageUrl("name_03-1-1.webp"),
       bio: "Visionary behind MAKc's design-led approach to smart living. 15+ years building premium automation experiences across India.",
     },
     {
       name: "Manan Abhay Kumar",
       role: "Chief Technical Officer",
-      img: getImageUrl("name_03-1-1.webp"),
+      img: getImageUrl("name_02-2.webp"),
       bio: "Architects the networks, integrations and on-site engineering that turn a smart-home design into a working reality.",
     },
     {
       name: "Charu Agarwal",
       role: "Director, Operations",
-      img: getImageUrl("name_02-2.webp"),
+      img: getImageUrl("name_01-1.webp"),
       bio: "Keeps every project on schedule and every client happy. The reason 650+ families trust us with their homes.",
     },
     {
